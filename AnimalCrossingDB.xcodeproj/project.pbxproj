@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E8413913D79E2A588375A01 /* Pods_AnimalCrossingDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */; };
+		926B635724336A1200BF9D2B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635624336A1200BF9D2B /* MainTabView.swift */; };
+		926B635A24336A7200BF9D2B /* FishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635924336A7200BF9D2B /* FishListView.swift */; };
+		926B635C24336A8200BF9D2B /* InsectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635B24336A8200BF9D2B /* InsectListView.swift */; };
+		926B635E24336D7B00BF9D2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926B635D24336D7B00BF9D2B /* GoogleService-Info.plist */; };
+		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
+		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
+		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
+		92BB60E32433610E008E23A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60E22433610E008E23A4 /* Preview Assets.xcassets */; };
+		92BB60E62433610E008E23A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60E42433610E008E23A4 /* LaunchScreen.storyboard */; };
+		92BB60F12433610F008E23A4 /* AnimalCrossingDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */; };
+		92BB60FD2433621B008E23A4 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 92BB60FC2433621B008E23A4 /* CodableCSV */; };
+		92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92BB60FF2433623E008E23A4 /* SwifterSwift */; };
+		FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92BB60ED2433610F008E23A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92BB60CE2433610C008E23A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92BB60D52433610C008E23A4;
+			remoteInfo = AnimalCrossingDB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C9FE94EA5B3A7DE2757351E /* Pods-AnimalCrossingDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDB.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB.debug.xcconfig"; sourceTree = "<group>"; };
+		6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DFB4D78EDC116FC017D0B29 /* Pods-AnimalCrossingDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDB.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB.release.xcconfig"; sourceTree = "<group>"; };
+		926B635624336A1200BF9D2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		926B635924336A7200BF9D2B /* FishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishListView.swift; sourceTree = "<group>"; };
+		926B635B24336A8200BF9D2B /* InsectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsectListView.swift; sourceTree = "<group>"; };
+		926B635D24336D7B00BF9D2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossingDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BB60D92433610C008E23A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		92BB60DB2433610C008E23A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		92BB60DF2433610E008E23A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92BB60E22433610E008E23A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		92BB60E52433610E008E23A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		92BB60E72433610E008E23A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92BB60EC2433610F008E23A4 /* AnimalCrossingDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimalCrossingDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCrossingDBTests.swift; sourceTree = "<group>"; };
+		92BB60F22433610F008E23A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92BB60D32433610C008E23A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BB60FD2433621B008E23A4 /* CodableCSV in Frameworks */,
+				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
+				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BB60E92433610F008E23A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E8413913D79E2A588375A01 /* Pods_AnimalCrossingDBTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92BB60CD2433610C008E23A4 = {
+			isa = PBXGroup;
+			children = (
+				92BB60D82433610C008E23A4 /* AnimalCrossingDB */,
+				92BB60EF2433610F008E23A4 /* AnimalCrossingDBTests */,
+				92BB60D72433610C008E23A4 /* Products */,
+				98BF82FC86A90B10F98D24C8 /* Pods */,
+				C4DEAACE8C9DEC3F8CD3E17E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		92BB60D72433610C008E23A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */,
+				92BB60EC2433610F008E23A4 /* AnimalCrossingDBTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92BB60D82433610C008E23A4 /* AnimalCrossingDB */ = {
+			isa = PBXGroup;
+			children = (
+				92BB6131243365DE008E23A4 /* Main */,
+				92BB6130243364F5008E23A4 /* Fish */,
+				92BB6132243365E8008E23A4 /* Insect */,
+				92BB60D92433610C008E23A4 /* AppDelegate.swift */,
+				92BB60DB2433610C008E23A4 /* SceneDelegate.swift */,
+				92BB60DF2433610E008E23A4 /* Assets.xcassets */,
+				92BB60E42433610E008E23A4 /* LaunchScreen.storyboard */,
+				92BB60E72433610E008E23A4 /* Info.plist */,
+				926B635D24336D7B00BF9D2B /* GoogleService-Info.plist */,
+				92BB60E12433610E008E23A4 /* Preview Content */,
+			);
+			path = AnimalCrossingDB;
+			sourceTree = "<group>";
+		};
+		92BB60E12433610E008E23A4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				92BB60E22433610E008E23A4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		92BB60EF2433610F008E23A4 /* AnimalCrossingDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */,
+				92BB60F22433610F008E23A4 /* Info.plist */,
+			);
+			path = AnimalCrossingDBTests;
+			sourceTree = "<group>";
+		};
+		92BB6130243364F5008E23A4 /* Fish */ = {
+			isa = PBXGroup;
+			children = (
+				926B635924336A7200BF9D2B /* FishListView.swift */,
+			);
+			path = Fish;
+			sourceTree = "<group>";
+		};
+		92BB6131243365DE008E23A4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				926B635624336A1200BF9D2B /* MainTabView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		92BB6132243365E8008E23A4 /* Insect */ = {
+			isa = PBXGroup;
+			children = (
+				926B635B24336A8200BF9D2B /* InsectListView.swift */,
+			);
+			path = Insect;
+			sourceTree = "<group>";
+		};
+		98BF82FC86A90B10F98D24C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C9FE94EA5B3A7DE2757351E /* Pods-AnimalCrossingDB.debug.xcconfig */,
+				8DFB4D78EDC116FC017D0B29 /* Pods-AnimalCrossingDB.release.xcconfig */,
+				BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */,
+				E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C4DEAACE8C9DEC3F8CD3E17E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */,
+				A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92BB60D52433610C008E23A4 /* AnimalCrossingDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92BB60F52433610F008E23A4 /* Build configuration list for PBXNativeTarget "AnimalCrossingDB" */;
+			buildPhases = (
+				7E604F473E67B49806504E66 /* [CP] Check Pods Manifest.lock */,
+				92BB60D22433610C008E23A4 /* Sources */,
+				92BB60D32433610C008E23A4 /* Frameworks */,
+				92BB60D42433610C008E23A4 /* Resources */,
+				DD648812967A7FAE9889CCC5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnimalCrossingDB;
+			packageProductDependencies = (
+				92BB60FC2433621B008E23A4 /* CodableCSV */,
+				92BB60FF2433623E008E23A4 /* SwifterSwift */,
+			);
+			productName = AnimalCrossingDB;
+			productReference = 92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		92BB60EB2433610F008E23A4 /* AnimalCrossingDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92BB60F82433610F008E23A4 /* Build configuration list for PBXNativeTarget "AnimalCrossingDBTests" */;
+			buildPhases = (
+				4637CF275381AF29300A0289 /* [CP] Check Pods Manifest.lock */,
+				92BB60E82433610F008E23A4 /* Sources */,
+				92BB60E92433610F008E23A4 /* Frameworks */,
+				92BB60EA2433610F008E23A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92BB60EE2433610F008E23A4 /* PBXTargetDependency */,
+			);
+			name = AnimalCrossingDBTests;
+			productName = AnimalCrossingDBTests;
+			productReference = 92BB60EC2433610F008E23A4 /* AnimalCrossingDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92BB60CE2433610C008E23A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = Shirou;
+				TargetAttributes = {
+					92BB60D52433610C008E23A4 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					92BB60EB2433610F008E23A4 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 92BB60D52433610C008E23A4;
+					};
+				};
+			};
+			buildConfigurationList = 92BB60D12433610C008E23A4 /* Build configuration list for PBXProject "AnimalCrossingDB" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92BB60CD2433610C008E23A4;
+			packageReferences = (
+				92BB60FB2433621B008E23A4 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+				92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
+			);
+			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92BB60D52433610C008E23A4 /* AnimalCrossingDB */,
+				92BB60EB2433610F008E23A4 /* AnimalCrossingDBTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92BB60D42433610C008E23A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BB60E62433610E008E23A4 /* LaunchScreen.storyboard in Resources */,
+				92BB60E32433610E008E23A4 /* Preview Assets.xcassets in Resources */,
+				92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */,
+				926B635E24336D7B00BF9D2B /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BB60EA2433610F008E23A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4637CF275381AF29300A0289 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimalCrossingDBTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E604F473E67B49806504E66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimalCrossingDB-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD648812967A7FAE9889CCC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92BB60D22433610C008E23A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
+				92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */,
+				926B635A24336A7200BF9D2B /* FishListView.swift in Sources */,
+				926B635C24336A8200BF9D2B /* InsectListView.swift in Sources */,
+				926B635724336A1200BF9D2B /* MainTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92BB60E82433610F008E23A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92BB60F12433610F008E23A4 /* AnimalCrossingDBTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92BB60EE2433610F008E23A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92BB60D52433610C008E23A4 /* AnimalCrossingDB */;
+			targetProxy = 92BB60ED2433610F008E23A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		92BB60E42433610E008E23A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92BB60E52433610E008E23A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		92BB60F32433610F008E23A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		92BB60F42433610F008E23A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92BB60F62433610F008E23A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C9FE94EA5B3A7DE2757351E /* Pods-AnimalCrossingDB.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_ASSET_PATHS = "\"AnimalCrossingDB/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BHXT8RHFR;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK",
+				);
+				INFOPLIST_FILE = AnimalCrossingDB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92BB60F72433610F008E23A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DFB4D78EDC116FC017D0B29 /* Pods-AnimalCrossingDB.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_ASSET_PATHS = "\"AnimalCrossingDB/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BHXT8RHFR;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK",
+				);
+				INFOPLIST_FILE = AnimalCrossingDB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		92BB60F92433610F008E23A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4BHXT8RHFR;
+				INFOPLIST_FILE = AnimalCrossingDBTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimalCrossingDB.app/AnimalCrossingDB";
+			};
+			name = Debug;
+		};
+		92BB60FA2433610F008E23A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4BHXT8RHFR;
+				INFOPLIST_FILE = AnimalCrossingDBTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimalCrossingDB.app/AnimalCrossingDB";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92BB60D12433610C008E23A4 /* Build configuration list for PBXProject "AnimalCrossingDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BB60F32433610F008E23A4 /* Debug */,
+				92BB60F42433610F008E23A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92BB60F52433610F008E23A4 /* Build configuration list for PBXNativeTarget "AnimalCrossingDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BB60F62433610F008E23A4 /* Debug */,
+				92BB60F72433610F008E23A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92BB60F82433610F008E23A4 /* Build configuration list for PBXNativeTarget "AnimalCrossingDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92BB60F92433610F008E23A4 /* Debug */,
+				92BB60FA2433610F008E23A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		92BB60FB2433621B008E23A4 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+		92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		92BB60FC2433621B008E23A4 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92BB60FB2433621B008E23A4 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
+		92BB60FF2433623E008E23A4 /* SwifterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
+			productName = SwifterSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 92BB60CE2433610C008E23A4 /* Project object */;
+}
