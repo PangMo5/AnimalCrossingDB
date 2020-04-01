@@ -2,21 +2,30 @@
   "object": {
     "pins": [
       {
-        "package": "CodableCSV",
-        "repositoryURL": "https://github.com/dehesa/CodableCSV",
-        "state": {
-          "branch": null,
-          "revision": "c010320df5a18d963718236da694a044ae832c42",
-          "version": "0.5.1"
-        }
-      },
-      {
         "package": "SwifterSwift",
         "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift",
         "state": {
           "branch": null,
           "revision": "f9f0c151aa70d3199eff512b903d1f8cff7ff856",
           "version": "5.1.0"
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON",
+        "state": {
+          "branch": null,
+          "revision": "2b6054efa051565954e1d2b9da831680026cd768",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "SwiftyUserDefaults",
+        "repositoryURL": "https://github.com/sunshinejr/SwiftyUserDefaults",
+        "state": {
+          "branch": null,
+          "revision": "1930a81a299b074fd72eee09e88e452ad37dc34d",
+          "version": "5.0.0"
         }
       }
     ]

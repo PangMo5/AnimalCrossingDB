@@ -1,6 +1,9 @@
 PODS:
   - Firebase/Analytics (6.18.0):
     - Firebase/Core
+  - Firebase/Auth (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 6.4.3)
   - Firebase/Core (6.18.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.3.0)
@@ -29,6 +32,12 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
   - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseAuth (6.4.3):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (6.6.3):
     - FirebaseCoreDiagnostics (~> 1.2)
@@ -124,6 +133,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Auth
   - Firebase/Crashlytics
   - Firebase/Performance
   - Firebase/Storage
@@ -134,6 +144,7 @@ SPEC REPOS:
     - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
+    - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -159,6 +170,7 @@ SPEC CHECKSUMS:
   FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
   FirebaseAnalytics: 058d71e714a1a6804d9e0f25e3bb18e377a51579
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseAuth: 5ce2b03a3d7fe56b7a6e4c5ec7ff1522890b1d6f
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 78276943ad85e616dfa54dafa6c89512987d9d60
   FirebaseCoreDiagnostics: 2109d10c35e8289b1ee6cabf44d9ffb055620194
@@ -179,6 +191,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
 
-PODFILE CHECKSUM: 0e0e70c614d3afc2f53cfea054e5088c4683131c
+PODFILE CHECKSUM: 8b7e109ed321b8ef804ca9265f39fbcf761c48c9
 
 COCOAPODS: 1.8.4
