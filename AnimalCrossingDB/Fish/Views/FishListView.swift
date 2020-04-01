@@ -48,7 +48,7 @@ struct FishListCellView: View {
     
     var body: some View {
         HStack {
-            FBURLImage(url: "fish/\(fish.id ?? 0).png")
+            Image(uiImage: StorageManager.shared.fishImageList[fish.id ?? 0] ?? UIImage(systemName: "tortoise.fill")!)
                 .frame(width: 64, height: 64)
             VStack(alignment: .leading) {
                 Text(fish.name ?? "")

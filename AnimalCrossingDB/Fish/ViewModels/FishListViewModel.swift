@@ -35,7 +35,8 @@ final class FishListViewModel: ObservableObject {
         
         filteredFishList
             .map { $0.filter(\.isAvailable) }
-            .assign(to: \.availableFishList, on: self).store(in: &disposables)
+            .assign(to: \.availableFishList, on: self)
+            .store(in: &disposables)
         
         filteredFishList
             .map { $0.filter { !$0.isAvailable } }

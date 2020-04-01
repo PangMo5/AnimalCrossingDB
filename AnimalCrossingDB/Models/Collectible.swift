@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BetterCodable
 
 typealias LosslessStringCodable = LosslessStringConvertible & Codable
 

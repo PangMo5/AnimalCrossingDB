@@ -15,16 +15,16 @@
 		926B636524336F0200BF9D2B /* FishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B636424336F0200BF9D2B /* FishListViewModel.swift */; };
 		926B636824336F6900BF9D2B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B636724336F6900BF9D2B /* StorageManager.swift */; };
 		926B637024337BF900BF9D2B /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B636F24337BF900BF9D2B /* Fish.swift */; };
-		926B63732434AB3E00BF9D2B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 926B63722434AB3E00BF9D2B /* SwiftyJSON */; };
 		926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B637C2434D00700BF9D2B /* SearchBar.swift */; };
 		926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B637F2434D0FF00BF9D2B /* Combine+WithLatestFrom.swift */; };
 		926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B63812434F10D00BF9D2B /* View+AnimalCrossingDB.swift */; };
 		926B63842434F71C00BF9D2B /* InsectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B63832434F71C00BF9D2B /* InsectListViewModel.swift */; };
 		926B63862434F75600BF9D2B /* Insect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B63852434F75600BF9D2B /* Insect.swift */; };
-		926B63882434FDDD00BF9D2B /* FirebaseImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B63872434FDDD00BF9D2B /* FirebaseImage.swift */; };
 		926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B638A2434FE8F00BF9D2B /* Collectible.swift */; };
 		927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F0243506D300314ADC /* SwiftyUserDefaults */; };
 		927770F3243507CB00314ADC /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770F2243507CB00314ADC /* Versions.swift */; };
+		927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F524350FBA00314ADC /* ZIPFoundation */; };
+		927770F9243526DC00314ADC /* BetterCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F8243526DC00314ADC /* BetterCodable */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -61,7 +61,6 @@
 		926B63812434F10D00BF9D2B /* View+AnimalCrossingDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AnimalCrossingDB.swift"; sourceTree = "<group>"; };
 		926B63832434F71C00BF9D2B /* InsectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsectListViewModel.swift; sourceTree = "<group>"; };
 		926B63852434F75600BF9D2B /* Insect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insect.swift; sourceTree = "<group>"; };
-		926B63872434FDDD00BF9D2B /* FirebaseImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImage.swift; sourceTree = "<group>"; };
 		926B638A2434FE8F00BF9D2B /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		927770F2243507CB00314ADC /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
 		92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossingDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,10 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927770F9243526DC00314ADC /* BetterCodable in Frameworks */,
 				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
-				926B63732434AB3E00BF9D2B /* SwiftyJSON in Frameworks */,
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */,
+				927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +188,6 @@
 		926B63892434FDEB00BF9D2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				926B63872434FDDD00BF9D2B /* FirebaseImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,8 +319,9 @@
 			name = AnimalCrossingDB;
 			packageProductDependencies = (
 				92BB60FF2433623E008E23A4 /* SwifterSwift */,
-				926B63722434AB3E00BF9D2B /* SwiftyJSON */,
 				927770F0243506D300314ADC /* SwiftyUserDefaults */,
+				927770F524350FBA00314ADC /* ZIPFoundation */,
+				927770F8243526DC00314ADC /* BetterCodable */,
 			);
 			productName = AnimalCrossingDB;
 			productReference = 92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */;
@@ -376,8 +376,9 @@
 			mainGroup = 92BB60CD2433610C008E23A4;
 			packageReferences = (
 				92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
-				926B63712434AB3E00BF9D2B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
 			projectDirPath = "";
@@ -497,7 +498,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				926B63882434FDDD00BF9D2B /* FirebaseImage.swift in Sources */,
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
@@ -791,20 +791,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		926B63712434AB3E00BF9D2B /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.11;
+			};
+		};
+		927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marksands/BetterCodable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 		92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
@@ -818,15 +826,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		926B63722434AB3E00BF9D2B /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 926B63712434AB3E00BF9D2B /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
 		927770F0243506D300314ADC /* SwiftyUserDefaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
 			productName = SwiftyUserDefaults;
+		};
+		927770F524350FBA00314ADC /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		927770F8243526DC00314ADC /* BetterCodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */;
+			productName = BetterCodable;
 		};
 		92BB60FF2433623E008E23A4 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;

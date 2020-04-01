@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "BetterCodable",
+        "repositoryURL": "https://github.com/marksands/BetterCodable",
+        "state": {
+          "branch": null,
+          "revision": "aa8f6c6f963038ebbee48e27b69e722ecdca9c51",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "SwifterSwift",
         "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift",
         "state": {
@@ -11,21 +20,21 @@
         }
       },
       {
-        "package": "SwiftyJSON",
-        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON",
-        "state": {
-          "branch": null,
-          "revision": "2b6054efa051565954e1d2b9da831680026cd768",
-          "version": "5.0.0"
-        }
-      },
-      {
         "package": "SwiftyUserDefaults",
         "repositoryURL": "https://github.com/sunshinejr/SwiftyUserDefaults",
         "state": {
           "branch": null,
           "revision": "1930a81a299b074fd72eee09e88e452ad37dc34d",
           "version": "5.0.0"
+        }
+      },
+      {
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation",
+        "state": {
+          "branch": null,
+          "revision": "ec32d62d412578542c0ffb7a6ce34d3e64b43b94",
+          "version": "0.9.11"
         }
       }
     ]

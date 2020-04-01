@@ -18,6 +18,7 @@ struct Insect: Collectible, Codable, Identifiable {
         case flowerTop = "꽃위"
         case flowerTopWhite = "꽃위(흰꽃)"
         case flowerAround = "꽃주변"
+        case matingFlowerAround = "꽃주변(교배꽃)"
         case wood = "나무기둥"
         case woodUnderCamouflage = "나무밑(도구로 위장)"
         case woodShake = "나무흔들기"
@@ -32,6 +33,7 @@ struct Insect: Collectible, Codable, Identifiable {
         case palmPillar = "야자기둥"
         case beach = "해변"
         case beachRock = "해변바위"
+        case bowelsOfTheEarth = "땅속"
     }
     
     var id: Int?
@@ -124,6 +126,7 @@ extension Insect {
         case englishName = "영문명"
         case price = "가격"
         case area = "출현장소"
+        case availableTime = "출현시간"
         case hour0 = "00시"
         case hour1 = "01시"
         case hour2 = "02시"
