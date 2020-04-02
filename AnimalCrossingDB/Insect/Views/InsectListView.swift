@@ -48,8 +48,8 @@ struct InsectListCellView: View {
     
     var body: some View {
         HStack {
-//            FBURLImage(url: "fish/\(insect.id ?? 0).png")
-//                .frame(width: 64, height: 64)
+            Image(uiImage: StorageManager.shared.insectImageList[insect.id ?? 0] ?? UIImage(systemName: "ant.fill")!)
+                .frame(width: 64, height: 64)
             VStack(alignment: .leading) {
                 Text(insect.name ?? "")
                     .bold()

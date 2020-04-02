@@ -14,6 +14,12 @@ import ZIPFoundation
 
 final class StorageManager {
     
+    enum StaticResponse {
+        case error
+        case someData
+        case success
+    }
+    
     static let shared = StorageManager()
     
     fileprivate let storage = Storage.storage()
@@ -32,7 +38,7 @@ final class StorageManager {
     init() {
     }
     
-    func fetchStaticData(completion: @escaping ((Bool) -> Void)) {
+    func fetchStaticData(completion: @escaping ((StaticResponse) -> Void)) {
         let pathReference = self.storage.reference(withPath: "version.json")
         pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             guard let data = data else { return }
@@ -50,16 +56,17 @@ final class StorageManager {
                 self.fetchFishList(versions: versions, dispatchGroup: dispatchGroup)
                 self.fetchFishImage(versions: versions, dispatchGroup: dispatchGroup)
                 self.fetchInsectList(versions: versions, dispatchGroup: dispatchGroup)
+                self.fetchInsectImage(versions: versions, dispatchGroup: dispatchGroup)
                 
                 dispatchGroup.notify(queue: .global(qos: .background)) {
                     try? self.localVersions.toJSONString()?.write(to: versionURL, atomically: true, encoding: .utf8)
                     DispatchQueue.main.async {
-                        return completion(true)
+                        return completion(.success)
                     }
                 }
             } catch {
                 print(error.localizedDescription)
-                return completion(false)
+                return completion(.error)
             }
         }
     }
@@ -75,6 +82,39 @@ final class StorageManager {
 //    } catch {
 //        print("Extraction of ZIP archive failed with error:\(error)")
 //    }
+    
+    private func fetchInsectImage(versions: Versions, dispatchGroup: DispatchGroup) {
+        let imageURL = cacheURL.appendingPathComponent("insect")
+        let tempURL = cacheURL.appendingPathComponent("temp")
+        if localVersions.insectImage >= versions.insectImage,
+            let contents = try? self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil),
+            !contents.isEmpty {
+            self.insectImageList = contents.toImageDict()
+        } else {
+            dispatchGroup.enter()
+            try? self.fileManager.removeItem(at: tempURL)
+            let pathReference = self.storage.reference(withPath: "insect.zip")
+            pathReference.write(toFile: tempURL) { url, error in
+                guard let url = url else {
+                    dispatchGroup.leave()
+                    return
+                }
+                do {
+                    try? self.fileManager.removeItem(at: imageURL)
+                    try? self.fileManager.removeItem(at: self.cacheURL.appendingPathComponent("__MACOSX"))
+                    try self.fileManager.unzipItem(at: url, to: self.cacheURL)
+                    let contents = try self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil)
+                    self.insectImageList = contents.toImageDict()
+                    self.localVersions.fishImage = versions.fishImage
+                    dispatchGroup.leave()
+                } catch {
+                    print(error.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            }
+        }
+    }
+    
     private func fetchFishImage(versions: Versions, dispatchGroup: DispatchGroup) {
         let imageURL = cacheURL.appendingPathComponent("fish")
         let tempURL = cacheURL.appendingPathComponent("temp")

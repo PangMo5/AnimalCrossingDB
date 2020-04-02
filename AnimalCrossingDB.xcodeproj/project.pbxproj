@@ -24,7 +24,9 @@
 		927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F0243506D300314ADC /* SwiftyUserDefaults */; };
 		927770F3243507CB00314ADC /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770F2243507CB00314ADC /* Versions.swift */; };
 		927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F524350FBA00314ADC /* ZIPFoundation */; };
-		927770F9243526DC00314ADC /* BetterCodable in Frameworks */ = {isa = PBXBuildFile; productRef = 927770F8243526DC00314ADC /* BetterCodable */; };
+		927770FB2435B3FD00314ADC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FA2435B3FD00314ADC /* SplashView.swift */; };
+		927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FC2435B49B00314ADC /* ActivityIndicator.swift */; };
+		927771002435B71600314ADC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FF2435B71600314ADC /* SplashViewModel.swift */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -63,6 +65,9 @@
 		926B63852434F75600BF9D2B /* Insect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insect.swift; sourceTree = "<group>"; };
 		926B638A2434FE8F00BF9D2B /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		927770F2243507CB00314ADC /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
+		927770FA2435B3FD00314ADC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		927770FC2435B49B00314ADC /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		927770FF2435B71600314ADC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossingDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB60D92433610C008E23A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BB60DB2433610C008E23A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				927770F9243526DC00314ADC /* BetterCodable in Frameworks */,
 				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */,
@@ -113,6 +117,7 @@
 		926B636024336ED300BF9D2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				927770FA2435B3FD00314ADC /* SplashView.swift */,
 				926B635624336A1200BF9D2B /* MainTabView.swift */,
 			);
 			path = Views;
@@ -188,8 +193,17 @@
 		926B63892434FDEB00BF9D2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				927770FC2435B49B00314ADC /* ActivityIndicator.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		927770FE2435B70C00314ADC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				927770FF2435B71600314ADC /* SplashViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		92BB60CD2433610C008E23A4 = {
@@ -264,6 +278,7 @@
 		92BB6131243365DE008E23A4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				927770FE2435B70C00314ADC /* ViewModels */,
 				926B636024336ED300BF9D2B /* Views */,
 			);
 			path = Main;
@@ -321,7 +336,6 @@
 				92BB60FF2433623E008E23A4 /* SwifterSwift */,
 				927770F0243506D300314ADC /* SwiftyUserDefaults */,
 				927770F524350FBA00314ADC /* ZIPFoundation */,
-				927770F8243526DC00314ADC /* BetterCodable */,
 			);
 			productName = AnimalCrossingDB;
 			productReference = 92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */;
@@ -378,7 +392,6 @@
 				92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 				927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
 			projectDirPath = "";
@@ -501,13 +514,16 @@
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
+				927771002435B71600314ADC /* SplashViewModel.swift in Sources */,
 				926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */,
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
+				927770FB2435B3FD00314ADC /* SplashView.swift in Sources */,
 				92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */,
 				926B635A24336A7200BF9D2B /* FishListView.swift in Sources */,
 				926B636824336F6900BF9D2B /* StorageManager.swift in Sources */,
 				926B635C24336A8200BF9D2B /* InsectListView.swift in Sources */,
 				926B63862434F75600BF9D2B /* Insect.swift in Sources */,
+				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,
 				926B636524336F0200BF9D2B /* FishListViewModel.swift in Sources */,
 				926B637024337BF900BF9D2B /* Fish.swift in Sources */,
@@ -807,14 +823,6 @@
 				minimumVersion = 0.9.11;
 			};
 		};
-		927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marksands/BetterCodable";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
@@ -835,11 +843,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
-		};
-		927770F8243526DC00314ADC /* BetterCodable */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 927770F7243526DC00314ADC /* XCRemoteSwiftPackageReference "BetterCodable" */;
-			productName = BetterCodable;
 		};
 		92BB60FF2433623E008E23A4 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;

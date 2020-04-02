@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "BetterCodable",
-        "repositoryURL": "https://github.com/marksands/BetterCodable",
-        "state": {
-          "branch": null,
-          "revision": "aa8f6c6f963038ebbee48e27b69e722ecdca9c51",
-          "version": "0.0.1"
-        }
-      },
-      {
         "package": "SwifterSwift",
         "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift",
         "state": {
