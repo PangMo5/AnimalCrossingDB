@@ -99,7 +99,7 @@ extension Collectible {
     }
     
     var isAvailable: Bool {
-        hourList[Date().hour] && monthList[Date().month]
+        (hourList[safe: Date().hour] ?? false) && (monthList[safe: Date().month - 1] ?? false)
     }
     
     var monthString: String {
