@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Insect: Collectible, Codable, Identifiable {
     
@@ -164,4 +165,16 @@ extension Insect {
         case month11 = "11月"
         case month12 = "12月"
     }
+}
+
+extension Insect {
+    
+    var image: UIImage {
+        StorageManager.shared.insectImageList[id ?? 0] ?? UIImage(systemName: "ant.fill")!
+    }
+}
+
+extension Insect {
+    
+    static var sampleInsect: Insect = .init(id: 1, name: "이름", englishName: "english name", price: 10000, area: .anywhere, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
 }

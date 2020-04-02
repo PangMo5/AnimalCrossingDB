@@ -27,6 +27,14 @@
 		927770FB2435B3FD00314ADC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FA2435B3FD00314ADC /* SplashView.swift */; };
 		927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FC2435B49B00314ADC /* ActivityIndicator.swift */; };
 		927771002435B71600314ADC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927770FF2435B71600314ADC /* SplashViewModel.swift */; };
+		927771042435CA0600314ADC /* FishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771032435CA0600314ADC /* FishDetailView.swift */; };
+		927771062435D06700314ADC /* FishDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771052435D06700314ADC /* FishDetailViewModel.swift */; };
+		927771082435E24000314ADC /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771072435E24000314ADC /* TabBar.swift */; };
+		927771102435E62600314ADC /* InsectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277710F2435E62600314ADC /* InsectDetailView.swift */; };
+		927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771112435E62F00314ADC /* InsectDetailViewModel.swift */; };
+		927771162435E90200314ADC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771152435E90200314ADC /* SettingView.swift */; };
+		927771182435E90A00314ADC /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771172435E90A00314ADC /* SettingViewModel.swift */; };
+		9277711A2435E95800314ADC /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771192435E95800314ADC /* MailView.swift */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -68,6 +76,14 @@
 		927770FA2435B3FD00314ADC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		927770FC2435B49B00314ADC /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		927770FF2435B71600314ADC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		927771032435CA0600314ADC /* FishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishDetailView.swift; sourceTree = "<group>"; };
+		927771052435D06700314ADC /* FishDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishDetailViewModel.swift; sourceTree = "<group>"; };
+		927771072435E24000314ADC /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		9277710F2435E62600314ADC /* InsectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsectDetailView.swift; sourceTree = "<group>"; };
+		927771112435E62F00314ADC /* InsectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsectDetailViewModel.swift; sourceTree = "<group>"; };
+		927771152435E90200314ADC /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		927771172435E90A00314ADC /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		927771192435E95800314ADC /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		92BB60D62433610C008E23A4 /* AnimalCrossingDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossingDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB60D92433610C008E23A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BB60DB2433610C008E23A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				926B635924336A7200BF9D2B /* FishListView.swift */,
+				927771032435CA0600314ADC /* FishDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				926B635B24336A8200BF9D2B /* InsectListView.swift */,
+				9277710F2435E62600314ADC /* InsectDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				926B636424336F0200BF9D2B /* FishListViewModel.swift */,
+				927771052435D06700314ADC /* FishDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -143,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				926B63832434F71C00BF9D2B /* InsectListViewModel.swift */,
+				927771112435E62F00314ADC /* InsectDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -176,6 +196,7 @@
 		926B637B2434CFF800BF9D2B /* Representable */ = {
 			isa = PBXGroup;
 			children = (
+				927771192435E95800314ADC /* MailView.swift */,
 				926B637C2434D00700BF9D2B /* SearchBar.swift */,
 			);
 			path = Representable;
@@ -194,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				927770FC2435B49B00314ADC /* ActivityIndicator.swift */,
+				927771072435E24000314ADC /* TabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +224,31 @@
 			isa = PBXGroup;
 			children = (
 				927770FF2435B71600314ADC /* SplashViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9277710C2435E5B800314ADC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9277710E2435E5C500314ADC /* ViewModels */,
+				9277710D2435E5BF00314ADC /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9277710D2435E5BF00314ADC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				927771152435E90200314ADC /* SettingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9277710E2435E5C500314ADC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				927771172435E90A00314ADC /* SettingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -238,6 +285,7 @@
 				92BB6131243365DE008E23A4 /* Main */,
 				92BB6130243364F5008E23A4 /* Fish */,
 				92BB6132243365E8008E23A4 /* Insect */,
+				9277710C2435E5B800314ADC /* Settings */,
 				92BB60D92433610C008E23A4 /* AppDelegate.swift */,
 				92BB60DB2433610C008E23A4 /* SceneDelegate.swift */,
 				92BB60DF2433610E008E23A4 /* Assets.xcassets */,
@@ -511,22 +559,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				927771042435CA0600314ADC /* FishDetailView.swift in Sources */,
+				927771062435D06700314ADC /* FishDetailViewModel.swift in Sources */,
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
+				927771182435E90A00314ADC /* SettingViewModel.swift in Sources */,
 				927771002435B71600314ADC /* SplashViewModel.swift in Sources */,
+				927771082435E24000314ADC /* TabBar.swift in Sources */,
+				927771102435E62600314ADC /* InsectDetailView.swift in Sources */,
 				926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */,
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
+				9277711A2435E95800314ADC /* MailView.swift in Sources */,
 				927770FB2435B3FD00314ADC /* SplashView.swift in Sources */,
 				92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */,
 				926B635A24336A7200BF9D2B /* FishListView.swift in Sources */,
 				926B636824336F6900BF9D2B /* StorageManager.swift in Sources */,
+				927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */,
 				926B635C24336A8200BF9D2B /* InsectListView.swift in Sources */,
 				926B63862434F75600BF9D2B /* Insect.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,
 				926B636524336F0200BF9D2B /* FishListViewModel.swift in Sources */,
 				926B637024337BF900BF9D2B /* Fish.swift in Sources */,
+				927771162435E90200314ADC /* SettingView.swift in Sources */,
 				926B63842434F71C00BF9D2B /* InsectListViewModel.swift in Sources */,
 				926B635724336A1200BF9D2B /* MainTabView.swift in Sources */,
 			);

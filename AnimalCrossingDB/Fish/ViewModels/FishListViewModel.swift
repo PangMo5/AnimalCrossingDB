@@ -10,10 +10,24 @@ import Foundation
 import SwiftUI
 import Combine
 import SwifterSwift
+import SwiftyUserDefaults
+
+extension DefaultsKeys {
+    var fishFilterMonth: DefaultsKey<Int?> { return .init("fishFilterMonth", defaultValue: Date().month) }
+}
 
 final class FishListViewModel: ObservableObject {
     
     private var disposables = Set<AnyCancellable>()
+    
+    @SwiftyUserDefault(keyPath: \.fishFilterMonth)
+    fileprivate var filterMonthDefault: Int?
+    
+    @Published var filterMonth: Int? {
+        didSet {
+            filterMonthDefault = filterMonth
+        }
+    }
     
     @Published var searchText = ""
     
@@ -21,15 +35,22 @@ final class FishListViewModel: ObservableObject {
     @Published var disavailableFishList = [Fish]()
     
     init() {
+        filterMonth = filterMonthDefault
+        
         let sortedFishList = StorageManager.shared.fishListSubject
             .map { $0.sorted { ($0.id ?? 0) > ($1.id ?? 0) } }
         
-        let filteredFishList = Publishers.CombineLatest($searchText, sortedFishList)
-            .map { text, fishList in
+        let filteredFishList = Publishers.CombineLatest3(sortedFishList, $searchText, $filterMonth)
+            .map { fishList, text, month in
                 fishList.filter {
-                    ($0.name?.lowercased().contains(text.lowercased()) ?? false)
+                    var filtered = false
+                    filtered = ($0.name?.lowercased().contains(text.lowercased()) ?? false)
                         || ($0.englishName?.lowercased().contains(text.lowercased()) ?? false)
                         || text.isEmpty
+                    if let month = month {
+                        filtered = ($0.monthList[safe: month - 1] ?? false) && filtered
+                    }
+                    return filtered
                 }
         }
         

@@ -10,11 +10,24 @@ import Foundation
 import SwiftUI
 import Combine
 import SwifterSwift
+import SwiftyUserDefaults
+
+extension DefaultsKeys {
+    var insectFilterMonth: DefaultsKey<Int?> { return .init("insectFilterMonth", defaultValue: Date().month) }
+}
 
 final class InsectListViewModel: ObservableObject {
     
     private var disposables = Set<AnyCancellable>()
     
+    @SwiftyUserDefault(keyPath: \.insectFilterMonth)
+    fileprivate var filterMonthDefault: Int?
+    
+    @Published var filterMonth: Int? {
+        didSet {
+            filterMonthDefault = filterMonth
+        }
+    }
     @Published var searchText = ""
     
     @Published var availableInsectList = [Insect]()
@@ -24,13 +37,18 @@ final class InsectListViewModel: ObservableObject {
         let sortedInsectList = StorageManager.shared.insectListSubject
             .map { $0.sorted { ($0.id ?? 0) > ($1.id ?? 0) } }
         
-        let filteredInsectList = Publishers.CombineLatest($searchText, sortedInsectList)
-            .map { text, fishList in
-                fishList.filter {
-                    ($0.name?.lowercased().contains(text.lowercased()) ?? false)
-                        || ($0.englishName?.lowercased().contains(text.lowercased()) ?? false)
-                        || text.isEmpty
+        let filteredInsectList = Publishers.CombineLatest3(sortedInsectList, $searchText, $filterMonth)
+        .map { fishList, text, month in
+            fishList.filter {
+                var filtered = false
+                filtered = ($0.name?.lowercased().contains(text.lowercased()) ?? false)
+                    || ($0.englishName?.lowercased().contains(text.lowercased()) ?? false)
+                    || text.isEmpty
+                if let month = month {
+                    filtered = ($0.monthList[safe: month - 1] ?? false) && filtered
                 }
+                return filtered
+            }
         }
         
         filteredInsectList

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Fish: Collectible, Codable, Identifiable {
     
@@ -43,15 +44,15 @@ struct Fish: Collectible, Codable, Identifiable {
     }
     
     enum Size: String, Codable {
-        case thin = "좁음"
-        case xSmall = "초소형"
-        case small = "소형"
-        case mediumFin = "중형\n(+지느러미)"
-        case medium = "중형"
-        case mediumLarge = "중대형"
-        case large = "대형"
-        case xLarge = "특대형"
-        case xLargeHasFin = "특대형\n(+지느러미)"
+        case thin = "L"
+        case xSmall = "1"
+        case small = "2"
+        case mediumFin = "3F"
+        case medium = "3"
+        case mediumLarge = "4"
+        case large = "5"
+        case xLarge = "6"
+        case xLargeHasFin = "6F"
         
         var localized: String {
             switch self {
@@ -169,7 +170,7 @@ extension Fish {
         case englishName = "영문명"
         case price = "가격"
         case area = "출현"
-        case size = "크기__1"
+        case size = "크기"
         case availableTime = "출현시간"
         case hour0 = "00시"
         case hour1 = "01시"
@@ -208,4 +209,16 @@ extension Fish {
         case month11 = "11月"
         case month12 = "12月"
     }
+}
+
+extension Fish {
+    
+    var image: UIImage {
+        StorageManager.shared.fishImageList[id ?? 0] ?? UIImage(systemName: "tortoise.fill")!
+    }
+}
+
+extension Fish {
+    
+    static var sampleFish: Fish = .init(id: 1, name: "이름", englishName: "english name", price: 10000, area: .river, size: .large, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
 }

@@ -15,15 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-XZ-vnv">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-Ne-CSo">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                                <color key="color" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rbx-XZ-vnv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3Y1-XT-NGl"/>
-                            <constraint firstItem="rbx-XZ-vnv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MMn-uY-spO"/>
+                            <constraint firstItem="0sk-Ne-CSo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xcv-wD-4F2"/>
+                            <constraint firstItem="0sk-Ne-CSo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Yac-2T-Z2P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

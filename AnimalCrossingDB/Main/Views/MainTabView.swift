@@ -9,19 +9,14 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    @State var currentTab = 0
+    
     var body: some View {
-        TabView {
-            FishListView()
-                .tabItem {
-                    Image(systemName: "tortoise.fill")
-                    Text("고기")
-            }
-            InsectListView()
-                .tabItem {
-                    Image(systemName: "ant.fill")
-                    Text("곤충")
-            }
-        }
+        UIKitTabView([
+            .init(view: FishListView(), title: "고기", image: "tortoise.fill"),
+            .init(view: InsectListView(), title: "곤충", image: "ant.fill")
+        ])
     }
 }
 

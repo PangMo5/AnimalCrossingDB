@@ -11,6 +11,7 @@ import Combine
 import FirebaseAuth
 import FirebaseStorage
 import ZIPFoundation
+import SwiftyUserDefaults
 
 final class StorageManager {
     
@@ -23,6 +24,9 @@ final class StorageManager {
     static let shared = StorageManager()
     
     fileprivate let storage = Storage.storage()
+    
+    @SwiftyUserDefault(keyPath: \.hemisphere)
+    fileprivate var hemisphereDefault: Hemisphere
     
     let fileManager = FileManager.default
     lazy var cacheURL = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
@@ -70,18 +74,6 @@ final class StorageManager {
             }
         }
     }
-//    let fileManager = FileManager()
-//    let currentWorkingPath = fileManager.currentDirectoryPath
-//    var sourceURL = URL(fileURLWithPath: currentWorkingPath)
-//    sourceURL.appendPathComponent("archive.zip")
-//    var destinationURL = URL(fileURLWithPath: currentWorkingPath)
-//    destinationURL.appendPathComponent("directory")
-//    do {
-//        try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
-//        try fileManager.unzipItem(at: sourceURL, to: destinationURL)
-//    } catch {
-//        print("Extraction of ZIP archive failed with error:\(error)")
-//    }
     
     private func fetchInsectImage(versions: Versions, dispatchGroup: DispatchGroup) {
         let imageURL = cacheURL.appendingPathComponent("insect")
@@ -148,14 +140,14 @@ final class StorageManager {
     }
     
     private func fetchFishList(versions: Versions, dispatchGroup: DispatchGroup) {
-        let fishURL = cacheURL.appendingPathComponent("fish.json")
+        let fishURL = cacheURL.appendingPathComponent("fish_\(hemisphereDefault.rawValue).json")
         if localVersions.fish >= versions.fish,
            let fishData = try? Data(contentsOf: fishURL),
             let fishList = try? JSONDecoder().decode([Fish].self, from: fishData) {
             fishListSubject.send(fishList)
         } else {
             dispatchGroup.enter()
-            let pathReference = self.storage.reference(withPath: "fish.json")
+            let pathReference = self.storage.reference(withPath: "fish_\(hemisphereDefault.rawValue).json")
             pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 guard let data = data else {
                     dispatchGroup.leave()
@@ -176,14 +168,14 @@ final class StorageManager {
     }
     
     private func fetchInsectList(versions: Versions, dispatchGroup: DispatchGroup) {
-        let insectURL = cacheURL.appendingPathComponent("insect.json")
+        let insectURL = cacheURL.appendingPathComponent("insect_\(hemisphereDefault.rawValue).json")
         if localVersions.insect >= versions.insect,
            let insectData = try? Data(contentsOf: insectURL),
             let insectList = try? JSONDecoder().decode([Insect].self, from: insectData) {
             insectListSubject.send(insectList)
         } else {
             dispatchGroup.enter()
-            let pathReference = self.storage.reference(withPath: "insect.json")
+            let pathReference = self.storage.reference(withPath: "insect_\(hemisphereDefault.rawValue).json")
             pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 guard let data = data else {
                     dispatchGroup.leave()

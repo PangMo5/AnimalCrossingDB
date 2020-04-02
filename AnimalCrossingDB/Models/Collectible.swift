@@ -100,4 +100,11 @@ extension Collectible {
     var isAvailable: Bool {
         hourList[Date().hour] && monthList[Date().month]
     }
+    
+    var monthString: String {
+        monthList.enumerated().compactMap {
+            guard $0.element else { return nil }
+            return "\($0.offset + 1)월"
+        }.joined(separator: ", ")
+    }
 }
