@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Fish: Collectible, Codable, Identifiable {
+struct Fish: Collectible, Codable {
     
     enum Area: String, Codable {
         case pier = "Pier"

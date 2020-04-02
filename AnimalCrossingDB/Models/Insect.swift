@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Insect: Collectible, Codable, Identifiable {
+struct Insect: Collectible, Codable {
     
     enum Area: String, Codable {
         case head = "가려운 주민 머리"

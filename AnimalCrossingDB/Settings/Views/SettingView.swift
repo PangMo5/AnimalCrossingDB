@@ -1,8 +1,8 @@
 //
-//  SettingView.swift
-//  AnimeRadio
+//  SettingViewModel.swift
+//  AnimalCrossingDB
 //
-//  Created by Shirou on 2020/02/02.
+//  Created by Shirou on 2020/03/31.
 //  Copyright © 2020 Shirou. All rights reserved.
 //
 
@@ -33,6 +33,14 @@ struct SettingView: View {
                                 .font(.callout)
                         }
                     }
+//                    Toggle(isOn: $viewModel.enabledBookmarkPush) {
+//                        VStack(alignment: .leading) {
+//                            Text("채집물 푸시 알림")
+//                            Text("채집물을 잡을 수 있는 시간이 되었을때 관련 정보 푸시 알림을 받습니다.")
+//                                .font(.caption)
+//                                .foregroundColor(.gray)
+//                        }
+//                    }
                 }
                 Section(header: Text("기타")) {
                     Button(action: {
@@ -45,7 +53,7 @@ struct SettingView: View {
                         MailView(result: self.$result)
                     }
                 }
-                Section(header: Text("PangMo5")) {
+                Section(header: Text("Dev by PangMo5"),footer: Text("App Icon by 화라낙현")) {
                     Button(action: {
                         self.viewModel.openURL(.blog)
                     }) {

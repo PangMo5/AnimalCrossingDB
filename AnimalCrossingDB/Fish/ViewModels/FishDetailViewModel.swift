@@ -11,6 +11,7 @@ import SwiftUI
 import Combine
 import SwifterSwift
 import SwiftyUserDefaults
+import SwiftEntryKit
 
 extension DefaultsKeys {
     var favoriteFishIDs: DefaultsKey<[Int]> { return .init("favoriteFishIDs", defaultValue: []) }

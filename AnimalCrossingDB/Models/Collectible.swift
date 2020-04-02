@@ -39,10 +39,11 @@ struct IntBoolTransform<T: LosslessStringCodable>: Codable {
     }
 }
 
-protocol Collectible {
+protocol Collectible: Identifiable {
     
     associatedtype Area
     
+    var id: Int? { get set }
     var name: String? { get set }
     var englishName: String? { get set }
     var price: Int? { get set }

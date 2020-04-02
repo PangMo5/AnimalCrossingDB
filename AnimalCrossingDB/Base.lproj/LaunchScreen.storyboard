@@ -15,14 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-Ne-CSo">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="채집보벳따우🎵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkw-Nm-gfL">
+                                <rect key="frame" x="100" y="427.5" width="214.5" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0sk-Ne-CSo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xcv-wD-4F2"/>
-                            <constraint firstItem="0sk-Ne-CSo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Yac-2T-Z2P"/>
+                            <constraint firstItem="mkw-Nm-gfL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4B2-UB-TAo"/>
+                            <constraint firstItem="mkw-Nm-gfL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="raE-l3-jkr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
