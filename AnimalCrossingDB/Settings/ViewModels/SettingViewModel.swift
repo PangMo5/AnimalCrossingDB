@@ -36,6 +36,7 @@ final class SettingViewModel: ObservableObject {
     enum URL {
         case github
         case blog
+        case gebob
         
         var url: Foundation.URL {
             switch self {
@@ -43,6 +44,8 @@ final class SettingViewModel: ObservableObject {
                 return Foundation.URL(string: "https://pangmo5.dev")!
             case .blog:
                 return Foundation.URL(string: "https://blog.pangmo5.dev")!
+            case .gebob:
+                return Foundation.URL(string: "https://gebob123.wordpress.com")!
             }
         }
     }

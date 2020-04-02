@@ -65,6 +65,13 @@ struct SettingView: View {
                         Text("Github")
                     }
                 }
+                Section(header: Text("DB 정리 by 게밥")) {
+                    Button(action: {
+                        self.viewModel.openURL(.gebob)
+                    }) {
+                        Text("Blog")
+                    }
+                }
             }.listStyle(GroupedListStyle())
                 .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text("설정"))
