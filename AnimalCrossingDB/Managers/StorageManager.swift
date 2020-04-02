@@ -12,6 +12,43 @@ import FirebaseAuth
 import FirebaseStorage
 import ZIPFoundation
 import SwiftyUserDefaults
+import SystemConfiguration
+
+public class Reachability {
+
+    class func isConnectedToNetwork() -> Bool {
+
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+
+        /* Only Working for WIFI
+        let isReachable = flags == .reachable
+        let needsConnection = flags == .connectionRequired
+
+        return isReachable && !needsConnection
+        */
+
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+
+        return ret
+
+    }
+}
 
 final class StorageManager {
     
@@ -43,35 +80,51 @@ final class StorageManager {
     }
     
     func fetchStaticData(completion: @escaping ((StaticResponse) -> Void)) {
-        let pathReference = self.storage.reference(withPath: "version.json")
-        pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            guard let data = data else { return }
-            do {
-                let versions = try JSONDecoder().decode(Versions.self, from: data)
-                
-                let versionURL = self.cacheURL.appendingPathComponent("staticDataVersions.json")
-                
-                if let data = try? Data(contentsOf: versionURL),
-                    let localVersions = try? JSONDecoder().decode(Versions.self, from: data) {
-                        self.localVersions = localVersions
-                }
-
-                let dispatchGroup = DispatchGroup()
-                self.fetchFishList(versions: versions, dispatchGroup: dispatchGroup)
-                self.fetchFishImage(versions: versions, dispatchGroup: dispatchGroup)
-                self.fetchInsectList(versions: versions, dispatchGroup: dispatchGroup)
-                self.fetchInsectImage(versions: versions, dispatchGroup: dispatchGroup)
-                
-                dispatchGroup.notify(queue: .global(qos: .background)) {
-                    try? self.localVersions.toJSONString()?.write(to: versionURL, atomically: true, encoding: .utf8)
-                    DispatchQueue.main.async {
-                        return completion(.success)
-                    }
-                }
-            } catch {
-                print(error.localizedDescription)
-                return completion(.error)
+        guard Reachability.isConnectedToNetwork() else {
+            self.fetchStaticData(data: nil, completion: completion)
+            return
+        }
+        Auth.auth().signInAnonymously { user, error in
+            guard error == nil else { return }
+            let pathReference = self.storage.reference(withPath: "version.json")
+            pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                self.fetchStaticData(data: data, completion: completion)
             }
+        }
+    }
+    
+    fileprivate func fetchStaticData(data: Data?, completion: @escaping ((StaticResponse) -> Void)) {
+        do {
+            let versions: Versions
+            
+            if let data = data {
+                versions = try JSONDecoder().decode(Versions.self, from: data)
+            } else {
+                versions = Versions(fish: 0, insect: 0, fishImage: 0, insectImage: 0)
+            }
+            
+            let versionURL = self.cacheURL.appendingPathComponent("staticDataVersions.json")
+            
+            if let data = try? Data(contentsOf: versionURL),
+                let localVersions = try? JSONDecoder().decode(Versions.self, from: data) {
+                self.localVersions = localVersions
+            }
+            
+            let dispatchGroup = DispatchGroup()
+            self.fetchFishList(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchFishImage(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchInsectList(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchInsectImage(versions: versions, dispatchGroup: dispatchGroup)
+            
+            dispatchGroup.notify(queue: .global(qos: .background)) {
+                try? self.localVersions.toJSONString()?.write(to: versionURL, atomically: true, encoding: .utf8)
+                DispatchQueue.main.async {
+                    return completion(.success)
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            return completion(.error)
         }
     }
     
@@ -97,7 +150,7 @@ final class StorageManager {
                     try self.fileManager.unzipItem(at: url, to: self.cacheURL)
                     let contents = try self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil)
                     self.insectImageList = contents.toImageDict()
-                    self.localVersions.fishImage = versions.fishImage
+                    self.localVersions.insectImage = versions.insectImage
                     dispatchGroup.leave()
                 } catch {
                     print(error.localizedDescription)
@@ -156,7 +209,7 @@ final class StorageManager {
                 do {
                     let fishList = try JSONDecoder().decode([Fish].self, from: data)
                     self.fishListSubject.send(fishList)
-                    try fishList.toJSONString()?.write(to: fishURL, atomically: true, encoding: .utf8)
+                    try data.write(to: fishURL)
                     self.localVersions.fish = versions.fish
                     dispatchGroup.leave()
                 } catch {
@@ -184,7 +237,7 @@ final class StorageManager {
                 do {
                     let insectList = try JSONDecoder().decode([Insect].self, from: data)
                     self.insectListSubject.send(insectList)
-                    try insectList.toJSONString()?.write(to: insectURL, atomically: true, encoding: .utf8)
+                    try data.write(to: insectURL)
                     self.localVersions.insect = versions.insect
                     dispatchGroup.leave()
                 } catch {

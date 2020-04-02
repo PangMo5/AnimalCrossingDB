@@ -26,7 +26,7 @@ struct SettingView: View {
                         self.viewModel.switchHemisphere()
                     }) {
                         HStack {
-                            Text("지역")
+                            Text("위치")
                             Spacer()
                             Divider()
                             Text(self.viewModel.hemisphere.localized)
