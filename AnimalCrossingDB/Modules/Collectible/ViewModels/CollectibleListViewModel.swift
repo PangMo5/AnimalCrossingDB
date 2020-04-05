@@ -61,10 +61,15 @@ final class CollectibleListViewModel: ObservableObject {
     fileprivate var filterMonthDefault: Int?
     
     @SwiftyUserDefault(keyPath: \.collectibleSortType)
-    var sortType: SortType
+    fileprivate var sortTypeDefault: SortType
     
     @Published fileprivate var refresh = false
     
+    @Published var sortType: SortType = .id {
+        didSet {
+            sortTypeDefault = sortType
+        }
+    }
     @Published var filterMonth: Int? {
         didSet {
             filterMonthDefault = filterMonth
@@ -89,12 +94,14 @@ final class CollectibleListViewModel: ObservableObject {
     
     init(style: Style) {
         self.style = style
+        self.sortType = sortTypeDefault
+        
         Refresher.shared.collectibleFlagableRefreshSubject.assign(to: \.refresh, on: self).store(in: &disposables)
         
         filterMonth = filterMonthDefault
         
-        let sortedFishList = StorageManager.shared.fishListSubject
-            .map { $0.sorted(sort: self.sortType) }
+        let sortedFishList = Publishers.CombineLatest(StorageManager.shared.fishListSubject, $sortType)
+            .map { $0.0.sorted(sort: $0.1) }
         
         let filteredFishList = Publishers.CombineLatest4($refresh, sortedFishList, $searchText, $filterMonth)
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
@@ -128,8 +135,8 @@ final class CollectibleListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.endowmentedFishList, on: self).store(in: &disposables)
         
-        let sortedInsectList = StorageManager.shared.insectListSubject
-            .map { $0.sorted(sort: self.sortType) }
+        let sortedInsectList = Publishers.CombineLatest(StorageManager.shared.insectListSubject, $sortType)
+        .map { $0.0.sorted(sort: $0.1) }
         
         let filteredInsectList = Publishers.CombineLatest4($refresh, sortedInsectList, $searchText, $filterMonth)
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
