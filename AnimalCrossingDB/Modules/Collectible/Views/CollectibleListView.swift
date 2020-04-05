@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CollectibleListView: View {
     
+    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
     @State private var segmentIndex = 0
     @State private var isModalSettingView = false
     @State private var showingSortSheet = false
@@ -18,8 +20,8 @@ struct CollectibleListView: View {
     @ObservedObject var viewModel: CollectibleListViewModel
     
     var body: some View {
-        GeometryReader { geometry in
-            NavigationView {
+        NavigationView {
+            GeometryReader { geometry in
                 VStack {
                     SearchBar(text: self.$viewModel.searchText)
                     if self.viewModel.style == .all {
