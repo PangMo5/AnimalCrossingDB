@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyUserDefaults
 
 struct Insect: Collectible, Codable {
     
@@ -117,6 +118,13 @@ struct Insect: Collectible, Codable {
     var month11: Bool
     @IntBoolTransform
     var month12: Bool
+    
+    @SwiftyUserDefault(keyPath: \.favoriteInsectIDs)
+    fileprivate var favoriteInsectIDsDefault: [Int]
+    @SwiftyUserDefault(keyPath: \.gatheredInsectIDs)
+    fileprivate var gatheredInsectIDsDefault: [Int]
+    @SwiftyUserDefault(keyPath: \.endowmentedInsectIDs)
+    fileprivate var endowmentedInsectIDsDefault: [Int]
 }
 
 extension Insect {
@@ -167,10 +175,43 @@ extension Insect {
     }
 }
 
+extension Insect: Equatable {
+    
+    static func == (lhs: Insect, rhs: Insect) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+extension Insect: Comparable {
+    static func < (lhs: Insect, rhs: Insect) -> Bool {
+        (lhs.id ?? 0) < (rhs.id ?? 0)
+    }
+    
+    
+    static func > (lhs: Insect, rhs: Insect) -> Bool {
+        (lhs.id ?? 0) > (rhs.id ?? 0)
+    }
+}
+
 extension Insect {
     
     var image: UIImage {
         StorageManager.shared.insectImageList[id ?? 0] ?? UIImage(systemName: "ant.fill")!
+    }
+    
+    var isFavorite: Bool {
+        guard let id = id else { return false }
+        return favoriteInsectIDsDefault.contains(id)
+    }
+    
+    var isGathered: Bool {
+        guard let id = id else { return false }
+        return gatheredInsectIDsDefault.contains(id)
+    }
+    
+    var isEndowmented: Bool {
+        guard let id = id else { return false }
+        return endowmentedInsectIDsDefault.contains(id)
     }
 }
 

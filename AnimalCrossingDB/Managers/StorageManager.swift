@@ -193,14 +193,14 @@ final class StorageManager {
     }
     
     private func fetchFishList(versions: Versions, dispatchGroup: DispatchGroup) {
-        let fishURL = cacheURL.appendingPathComponent("fish_\(hemisphereDefault.rawValue).json")
+        let fishURL = cacheURL.appendingPathComponent("fish_\(hemisphereDefault.rawValue)_v2.json")
         if localVersions.fish >= versions.fish,
            let fishData = try? Data(contentsOf: fishURL),
             let fishList = try? JSONDecoder().decode([Fish].self, from: fishData) {
-            fishListSubject.send(fishList)
+            fishListSubject.value = fishList
         } else {
             dispatchGroup.enter()
-            let pathReference = self.storage.reference(withPath: "fish_\(hemisphereDefault.rawValue).json")
+            let pathReference = self.storage.reference(withPath: "fish_\(hemisphereDefault.rawValue)_v2.json")
             pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 guard let data = data else {
                     dispatchGroup.leave()
@@ -208,7 +208,7 @@ final class StorageManager {
                 }
                 do {
                     let fishList = try JSONDecoder().decode([Fish].self, from: data)
-                    self.fishListSubject.send(fishList)
+                    self.fishListSubject.value = fishList
                     try data.write(to: fishURL)
                     self.localVersions.fish = versions.fish
                     dispatchGroup.leave()
@@ -225,7 +225,7 @@ final class StorageManager {
         if localVersions.insect >= versions.insect,
            let insectData = try? Data(contentsOf: insectURL),
             let insectList = try? JSONDecoder().decode([Insect].self, from: insectData) {
-            insectListSubject.send(insectList)
+            insectListSubject.value = insectList
         } else {
             dispatchGroup.enter()
             let pathReference = self.storage.reference(withPath: "insect_\(hemisphereDefault.rawValue).json")
@@ -236,7 +236,7 @@ final class StorageManager {
                 }
                 do {
                     let insectList = try JSONDecoder().decode([Insect].self, from: data)
-                    self.insectListSubject.send(insectList)
+                    self.insectListSubject.value = insectList
                     try data.write(to: insectURL)
                     self.localVersions.insect = versions.insect
                     dispatchGroup.leave()

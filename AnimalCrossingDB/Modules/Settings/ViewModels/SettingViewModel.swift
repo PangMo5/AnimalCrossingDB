@@ -78,7 +78,9 @@ final class SettingViewModel: ObservableObject {
     func switchHemisphere() {
         hemisphereDefault = hemisphereDefault == .north ? .south : .north
         updateHemisphere()
-        StorageManager.shared.fetchStaticData { _ in }
+        StorageManager.shared.fetchStaticData { _ in
+            Refresher.shared.collectibleFlagableRefreshSubject.send(true)
+        }
     }
     
     fileprivate func updateHemisphere() {

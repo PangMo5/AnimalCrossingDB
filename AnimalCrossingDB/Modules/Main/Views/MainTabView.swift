@@ -14,8 +14,8 @@ struct MainTabView: View {
     
     var body: some View {
         UIKitTabView([
-            .init(view: FishListView(), title: "고기", image: "tortoise.fill"),
-            .init(view: InsectListView(), title: "곤충", image: "ant.fill")
+            .init(view: CollectibleListView(viewModel: .init(style: .forYou)), title: "For You", image: "heart.fill"),
+            .init(view: CollectibleListView(viewModel: .init(style: .all)), title: "도감", image: "list.bullet")
         ])
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyUserDefaults
 
 struct Fish: Collectible, Codable {
     
@@ -46,11 +47,15 @@ struct Fish: Collectible, Codable {
     enum Size: String, Codable {
         case thin = "L"
         case xSmall = "1"
+        case xSmallFin = "1F"
         case small = "2"
-        case mediumFin = "3F"
+        case smallFin = "2F"
         case medium = "3"
+        case mediumFin = "3F"
         case mediumLarge = "4"
+        case mediumLargeFin = "4F"
         case large = "5"
+        case largeFin = "5F"
         case xLarge = "6"
         case xLargeHasFin = "6F"
         
@@ -60,16 +65,24 @@ struct Fish: Collectible, Codable {
                 return "좁음"
             case .xSmall:
                 return "초소형"
+            case .xSmallFin:
+                return "초소형 + 지느러미"
             case .small:
                 return "소형"
-            case .mediumFin:
-                return "중형 + 지느러미"
+            case .smallFin:
+                return "소형 + 지느러미"
             case .medium:
                 return "중형"
+            case .mediumFin:
+                return "중형 + 지느러미"
             case .mediumLarge:
                 return "중대형"
+            case .mediumLargeFin:
+                return "중대형 + 지느러미"
             case .large:
                 return "대형"
+            case .largeFin:
+                return "대형 + 지느러미"
             case .xLarge:
                 return "특대형"
             case .xLargeHasFin:
@@ -160,6 +173,13 @@ struct Fish: Collectible, Codable {
     var month11: Bool
     @IntBoolTransform
     var month12: Bool
+    
+    @SwiftyUserDefault(keyPath: \.favoriteFishIDs)
+    fileprivate var favoriteFishIDsDefault: [Int]
+    @SwiftyUserDefault(keyPath: \.gatheredFishIDs)
+    fileprivate var gatheredFishIDsDefault: [Int]
+    @SwiftyUserDefault(keyPath: \.endowmentedFishIDs)
+    fileprivate var endowmentedFishIDsDefault: [Int]
 }
 
 extension Fish {
@@ -211,10 +231,43 @@ extension Fish {
     }
 }
 
+extension Fish: Equatable {
+    
+    static func == (lhs: Fish, rhs: Fish) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+extension Fish: Comparable {
+    static func < (lhs: Fish, rhs: Fish) -> Bool {
+        (lhs.id ?? 0) < (rhs.id ?? 0)
+    }
+    
+    
+    static func > (lhs: Fish, rhs: Fish) -> Bool {
+        (lhs.id ?? 0) > (rhs.id ?? 0)
+    }
+}
+
 extension Fish {
     
     var image: UIImage {
         StorageManager.shared.fishImageList[id ?? 0] ?? UIImage(systemName: "tortoise.fill")!
+    }
+    
+    var isFavorite: Bool {
+        guard let id = id else { return false }
+        return favoriteFishIDsDefault.contains(id)
+    }
+    
+    var isGathered: Bool {
+        guard let id = id else { return false }
+        return gatheredFishIDsDefault.contains(id)
+    }
+    
+    var isEndowmented: Bool {
+        guard let id = id else { return false }
+        return endowmentedFishIDsDefault.contains(id)
     }
 }
 

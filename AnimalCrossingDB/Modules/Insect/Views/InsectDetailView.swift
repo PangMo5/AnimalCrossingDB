@@ -37,7 +37,7 @@ struct InsectDetailView: View {
                     Divider()
                     HStack {
                         Text("가격")
-                        Text(viewModel.insect.price?.string ?? "")
+                        Text("\(viewModel.insect.price?.string ?? "")벨")
                             .font(.title)
                             .bold()
                     }
@@ -53,9 +53,7 @@ struct InsectDetailView: View {
                     Divider()
                     HStack {
                         Text("출현 시기")
-                        Text(viewModel.insect.monthString)
-                            .font(.title)
-                            .bold()
+                        AvailableMonthView(monthList: viewModel.insect.monthList)
                     }
                     Divider()
                     HStack {
@@ -68,11 +66,27 @@ struct InsectDetailView: View {
             }.padding()
         }
         .navigationBarTitle(viewModel.insect.name ?? "")
-        .navigationBarItems(trailing: Button(action: {
-            self.viewModel.switchFavorite()
-        }) {
-            Image(systemName: self.viewModel.isFavorite ? "bookmark.fill" : "bookmark")
-        })
+        .navigationBarItems(trailing:
+            HStack {
+                Button(action: {
+                    self.viewModel.switchEndowment()
+                }) {
+                    Image(self.viewModel.isEndowmented ? "owl.fill" : "owl")
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                }
+                Button(action: {
+                    self.viewModel.switchGathering()
+                }) {
+                    Image(systemName: self.viewModel.isGathered ? "checkmark.circle.fill" : "checkmark.circle")
+                }.padding()
+                Button(action: {
+                    self.viewModel.switchFavorite()
+                }) {
+                    Image(systemName: self.viewModel.isFavorite ? "bookmark.fill" : "bookmark")
+                }
+            }
+        )
     }
 }
 

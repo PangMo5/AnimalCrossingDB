@@ -53,7 +53,7 @@ struct SettingView: View {
                         MailView(result: self.$result)
                     }
                 }
-                Section(header: Text("Dev by PangMo5"),footer: Text("App Icon by 화라낙현")) {
+                Section(header: Text("Dev by PangMo5"), footer: Text("App Icon by 화라낙현, Icon by icons8.com")) {
                     Button(action: {
                         self.viewModel.openURL(.blog)
                     }) {

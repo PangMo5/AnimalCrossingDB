@@ -87,6 +87,10 @@ protocol Collectible: Identifiable {
     var month10: Bool { get set }
     var month11: Bool { get set }
     var month12: Bool { get set }
+    
+    var isFavorite: Bool { get }
+    var isGathered: Bool { get }
+    var isEndowmented: Bool { get }
 }
 
 extension Collectible {
@@ -94,6 +98,11 @@ extension Collectible {
     var hourList: [Bool] {
         [hour0, hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8, hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17, hour18, hour19, hour20, hour21, hour22, hour23]
     }
+    
+    var firstHour: Int {
+        hourList.enumerated().first(where: \.element).map(\.offset) ?? 0
+    }
+    
     var monthList: [Bool] {
         [month1, month2, month3, month4, month5, month6, month7, month8, month9, month10, month11, month12]
     }
