@@ -92,7 +92,10 @@ struct Fish: Collectible, Codable {
     }
     
     
-    var id: Int?
+    var id: String {
+        "\(realID ?? 0)_fish"
+    }
+    var realID: Int?
     var name: String?
     var englishName: String?
     var price: Int?
@@ -185,7 +188,7 @@ struct Fish: Collectible, Codable {
 extension Fish {
     
     enum CodingKeys: String, CodingKey {
-        case id = "ID"
+        case realID = "ID"
         case name = "명"
         case englishName = "영문명"
         case price = "가격"
@@ -240,38 +243,74 @@ extension Fish: Equatable {
 
 extension Fish: Comparable {
     static func < (lhs: Fish, rhs: Fish) -> Bool {
-        (lhs.id ?? 0) < (rhs.id ?? 0)
+        (lhs.realID ?? 0) < (rhs.realID ?? 0)
     }
     
     
     static func > (lhs: Fish, rhs: Fish) -> Bool {
-        (lhs.id ?? 0) > (rhs.id ?? 0)
+        (lhs.realID ?? 0) > (rhs.realID ?? 0)
     }
 }
 
 extension Fish {
     
     var image: UIImage {
-        StorageManager.shared.fishImageList[id ?? 0] ?? UIImage(systemName: "tortoise.fill")!
+        StorageManager.shared.fishImageList[realID ?? 0] ?? UIImage(systemName: "tortoise.fill")!
     }
     
     var isFavorite: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return favoriteFishIDsDefault.contains(id)
     }
     
     var isGathered: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return gatheredFishIDsDefault.contains(id)
     }
     
     var isEndowmented: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return endowmentedFishIDsDefault.contains(id)
     }
 }
 
 extension Fish {
     
-    static var sampleFish: Fish = .init(id: 1, name: "이름", englishName: "english name", price: 10000, area: .river, size: .large, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
+    static var sampleFish: Fish = .init(realID: 1, name: "이름", englishName: "english name", price: 10000, area: .river, size: .large, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
+}
+
+extension Fish {
+    
+    func switchFavorite() {
+        guard let id = realID else { return }
+        if isFavorite {
+            favoriteFishIDsDefault.removeAll(id)
+        } else {
+            favoriteFishIDsDefault.append(id)
+        }
+    }
+    
+    func switchGathering() {
+        guard let id = realID else { return }
+        if isGathered {
+            gatheredFishIDsDefault.removeAll(id)
+            if isEndowmented {
+                switchEndowment()
+            }
+        } else {
+            gatheredFishIDsDefault.append(id)
+        }
+    }
+    
+    func switchEndowment() {
+        guard let id = realID else { return }
+        if isEndowmented {
+            endowmentedFishIDsDefault.removeAll(id)
+        } else {
+            endowmentedFishIDsDefault.append(id)
+            if !isGathered {
+                switchGathering()
+            }
+        }
+    }
 }

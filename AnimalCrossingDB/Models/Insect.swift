@@ -38,7 +38,10 @@ struct Insect: Collectible, Codable {
         case bowelsOfTheEarth = "땅속"
     }
     
-    var id: Int?
+    var id: String {
+        "\(realID ?? 0)_insect"
+    }
+    var realID: Int?
     var name: String?
     var englishName: String?
     var price: Int?
@@ -130,7 +133,7 @@ struct Insect: Collectible, Codable {
 extension Insect {
     
     enum CodingKeys: String, CodingKey {
-        case id = "ID"
+        case realID = "ID"
         case name = "명"
         case englishName = "영문명"
         case price = "가격"
@@ -184,38 +187,74 @@ extension Insect: Equatable {
 
 extension Insect: Comparable {
     static func < (lhs: Insect, rhs: Insect) -> Bool {
-        (lhs.id ?? 0) < (rhs.id ?? 0)
+        (lhs.realID ?? 0) < (rhs.realID ?? 0)
     }
     
     
     static func > (lhs: Insect, rhs: Insect) -> Bool {
-        (lhs.id ?? 0) > (rhs.id ?? 0)
+        (lhs.realID ?? 0) > (rhs.realID ?? 0)
     }
 }
 
 extension Insect {
     
     var image: UIImage {
-        StorageManager.shared.insectImageList[id ?? 0] ?? UIImage(systemName: "ant.fill")!
+        StorageManager.shared.insectImageList[realID ?? 0] ?? UIImage(systemName: "ant.fill")!
     }
     
     var isFavorite: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return favoriteInsectIDsDefault.contains(id)
     }
     
     var isGathered: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return gatheredInsectIDsDefault.contains(id)
     }
     
     var isEndowmented: Bool {
-        guard let id = id else { return false }
+        guard let id = realID else { return false }
         return endowmentedInsectIDsDefault.contains(id)
     }
 }
 
 extension Insect {
     
-    static var sampleInsect: Insect = .init(id: 1, name: "이름", englishName: "english name", price: 10000, area: .anywhere, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
+    static var sampleInsect: Insect = .init(realID: 1, name: "이름", englishName: "english name", price: 10000, area: .anywhere, availableTime: "All Days", hour0: true, hour1: true, hour2: true, hour3: true, hour4: true, hour5: true, hour6: true, hour7: true, hour8: true, hour9: true, hour10: true, hour11: true, hour12: true, hour13: true, hour14: true, hour15: true, hour16: true, hour17: true, hour18: true, hour19: true, hour20: true, hour21: true, hour22: true, hour23: true, month1: true, month2: true, month3: true, month4: true, month5: true, month6: true, month7: true, month8: true, month9: true, month10: true, month11: true, month12: true)
+}
+
+extension Insect {
+    
+    func switchFavorite() {
+        guard let id = realID else { return }
+        if isFavorite {
+            favoriteInsectIDsDefault.removeAll(id)
+        } else {
+            favoriteInsectIDsDefault.append(id)
+        }
+    }
+    
+    func switchGathering() {
+        guard let id = realID else { return }
+        if isGathered {
+            gatheredInsectIDsDefault.removeAll(id)
+            if isEndowmented {
+                switchEndowment()
+            }
+        } else {
+            gatheredInsectIDsDefault.append(id)
+        }
+    }
+    
+    func switchEndowment() {
+        guard let id = realID else { return }
+        if isEndowmented {
+            endowmentedInsectIDsDefault.removeAll(id)
+        } else {
+            endowmentedInsectIDsDefault.append(id)
+            if !isGathered {
+                switchGathering()
+            }
+        }
+    }
 }

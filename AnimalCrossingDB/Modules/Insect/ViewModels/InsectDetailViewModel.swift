@@ -49,56 +49,35 @@ final class InsectDetailViewModel: ObservableObject {
     }
     
     func switchFavorite() {
-        guard let id = insect.id else { return }
-        if isFavorite {
-            favoriteInsectIDsDefault.removeAll(id)
-        } else {
-            favoriteInsectIDsDefault.append(id)
-        }
+        insect.switchFavorite()
         updateFavorite()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     func switchGathering() {
-        guard let id = insect.id else { return }
-        if isGathered {
-            gatheredInsectIDsDefault.removeAll(id)
-            if isEndowmented {
-                switchEndowment()
-            }
-        } else {
-            gatheredInsectIDsDefault.append(id)
-        }
+        insect.switchGathering()
         updateGathering()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     func switchEndowment() {
-        guard let id = insect.id else { return }
-        if isEndowmented {
-            endowmentedInsectIDsDefault.removeAll(id)
-        } else {
-            endowmentedInsectIDsDefault.append(id)
-            if !isGathered {
-                switchGathering()
-            }
-        }
+        insect.switchEndowment()
         updateEndowment()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     fileprivate func updateFavorite() {
-        guard let id = insect.id else { return }
+        guard let id = insect.realID else { return }
         isFavorite = favoriteInsectIDsDefault.contains(id)
     }
     
     fileprivate func updateGathering() {
-        guard let id = insect.id else { return }
+        guard let id = insect.realID else { return }
         isGathered = gatheredInsectIDsDefault.contains(id)
     }
     
     fileprivate func updateEndowment() {
-        guard let id = insect.id else { return }
+        guard let id = insect.realID else { return }
         isEndowmented = endowmentedInsectIDsDefault.contains(id)
     }
 }

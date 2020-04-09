@@ -43,7 +43,8 @@ protocol Collectible: Identifiable {
     
     associatedtype Area
     
-    var id: Int? { get set }
+    var id: String { get }
+    var realID: Int? { get set }
     var name: String? { get set }
     var englishName: String? { get set }
     var price: Int? { get set }
@@ -91,6 +92,10 @@ protocol Collectible: Identifiable {
     var isFavorite: Bool { get }
     var isGathered: Bool { get }
     var isEndowmented: Bool { get }
+    
+    func switchFavorite()
+    func switchGathering()
+    func switchEndowment()
 }
 
 extension Collectible {

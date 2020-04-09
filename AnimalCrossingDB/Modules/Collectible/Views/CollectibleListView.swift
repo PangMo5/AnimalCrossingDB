@@ -111,23 +111,23 @@ extension CollectibleListView {
         List {
             Section(header: Text("채집 가능").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
-                    ForEach(self.viewModel.availableFishList) {
-                        FishListCellView(fish: $0)
+                    ForEach(self.viewModel.availableFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
                 } else {
-                    ForEach(self.viewModel.availableInsectList) {
-                        InsectListCellView(insect: $0)
+                    ForEach(self.viewModel.availableInsectList) { insect in
+                        InsectListCellView(insect: insect)
                     }
                 }
             }
             Section(header: Text("채집 불가능").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
-                    ForEach(self.viewModel.disavailableFishList) {
-                        FishListCellView(fish: $0)
+                    ForEach(self.viewModel.disavailableFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
                 } else {
-                    ForEach(self.viewModel.disavailableInsectList) {
-                        InsectListCellView(insect: $0)
+                    ForEach(self.viewModel.disavailableInsectList) { insect in
+                        InsectListCellView(insect: insect)
                     }
                 }
             }
@@ -138,34 +138,34 @@ extension CollectibleListView {
         List {
             Section(header: Text("북마크").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
-                    ForEach(self.viewModel.favoritedFishList) {
-                        FishListCellView(fish: $0)
+                    ForEach(self.viewModel.favoritedFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
                 } else {
-                    ForEach(self.viewModel.favoritedInsectList) {
-                        InsectListCellView(insect: $0)
+                    ForEach(self.viewModel.favoritedInsectList) { insect in
+                        InsectListCellView(insect: insect)
                     }
                 }
             }
             Section(header: Text("기증됨").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
-                    ForEach(self.viewModel.endowmentedFishList) {
-                        FishListCellView(fish: $0)
+                    ForEach(self.viewModel.endowmentedFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
                 } else {
-                    ForEach(self.viewModel.endowmentedInsectList) {
-                        InsectListCellView(insect: $0)
+                    ForEach(self.viewModel.endowmentedInsectList) { insect in
+                        InsectListCellView(insect: insect)
                     }
                 }
             }
             Section(header: Text("채집됨").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
-                    ForEach(self.viewModel.gatheredFishList) {
-                        FishListCellView(fish: $0)
+                    ForEach(self.viewModel.gatheredFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
                 } else {
-                    ForEach(self.viewModel.gatheredInsectList) {
-                        InsectListCellView(insect: $0)
+                    ForEach(self.viewModel.gatheredInsectList) { insect in
+                        InsectListCellView(insect: insect)
                     }
                 }
             }
@@ -218,6 +218,8 @@ struct FishListCellView: View {
                             .bold()
                     }
                 }
+            }.contextMenu {
+                fish.contextMenuContents()
             }
         }
     }
@@ -259,6 +261,37 @@ struct InsectListCellView: View {
                             .bold()
                     }
                 }
+            }.contextMenu {
+                insect.contextMenuContents()
+            }
+        }
+    }
+}
+
+extension Collectible {
+    
+    func contextMenuContents() -> some View {
+        Group {
+            Button(action: {
+                self.switchFavorite()
+                Refresher.shared.collectibleFlagableRefreshSubject.send(true)
+            }) {
+                Text("북마크 상태 전환")
+                Image(systemName: "bookmark")
+            }
+            Button(action: {
+                self.switchGathering()
+                Refresher.shared.collectibleFlagableRefreshSubject.send(true)
+            }) {
+                Text("채집 상태 전환")
+                Image(systemName: "checkmark.circle")
+            }
+            Button(action: {
+                self.switchEndowment()
+                Refresher.shared.collectibleFlagableRefreshSubject.send(true)
+            }) {
+                Text("기부 상태 전환")
+                Image("owl")
             }
         }
     }

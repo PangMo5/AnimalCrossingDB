@@ -50,56 +50,35 @@ final class FishDetailViewModel: ObservableObject {
     }
     
     func switchFavorite() {
-        guard let id = fish.id else { return }
-        if isFavorite {
-            favoriteFishIDsDefault.removeAll(id)
-        } else {
-            favoriteFishIDsDefault.append(id)
-        }
+        fish.switchFavorite()
         updateFavorite()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     func switchGathering() {
-        guard let id = fish.id else { return }
-        if isGathered {
-            gatheredFishIDsDefault.removeAll(id)
-            if isEndowmented {
-                switchEndowment()
-            }
-        } else {
-            gatheredFishIDsDefault.append(id)
-        }
+        fish.switchGathering()
         updateGathering()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     func switchEndowment() {
-        guard let id = fish.id else { return }
-        if isEndowmented {
-            endowmentedFishIDsDefault.removeAll(id)
-        } else {
-            endowmentedFishIDsDefault.append(id)
-            if !isGathered {
-                switchGathering()
-            }
-        }
+        fish.switchEndowment()
         updateEndowment()
         Refresher.shared.collectibleFlagableRefreshSubject.send(true)
     }
     
     fileprivate func updateFavorite() {
-        guard let id = fish.id else { return }
+        guard let id = fish.realID else { return }
         isFavorite = favoriteFishIDsDefault.contains(id)
     }
     
     fileprivate func updateGathering() {
-        guard let id = fish.id else { return }
+        guard let id = fish.realID else { return }
         isGathered = gatheredFishIDsDefault.contains(id)
     }
     
     fileprivate func updateEndowment() {
-        guard let id = fish.id else { return }
+        guard let id = fish.realID else { return }
         isEndowmented = endowmentedFishIDsDefault.contains(id)
     }
 }

@@ -179,7 +179,7 @@ extension Array where Element: Collectible {
         sorted { lhs, rhs -> Bool in
             switch sort {
             case .id:
-                return (lhs.id ?? 0) < (rhs.id ?? 0)
+                return (lhs.realID ?? 0) < (rhs.realID ?? 0)
             case .lowerPrice:
                 return (lhs.price ?? 0) < (rhs.price ?? 0)
             case .greaterPrice:
