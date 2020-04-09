@@ -10,8 +10,6 @@ import SwiftUI
 
 struct CollectibleListView: View {
     
-    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
-    
     @State private var segmentIndex = 0
     @State private var isModalSettingView = false
     @State private var showingSortSheet = false
@@ -194,6 +192,18 @@ struct FishListCellView: View {
                     .scaledToFit()
                     .frame(width: 64, height: 64)
                 VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "bookmark.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(fish.isFavorite ? .label : .gray) )
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(fish.isGathered ? .label : .gray) )
+                            Image(uiImage: UIImage(named: "owl.fill")!.withRenderingMode(.alwaysTemplate))
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .colorMultiply(Color(fish.isEndowmented ? .label : .gray) )
+                    }
                     Text(fish.name ?? "")
                         .bold()
                     Text("(\(fish.englishName ?? ""))")
@@ -237,6 +247,18 @@ struct InsectListCellView: View {
                     .scaledToFit()
                     .frame(width: 64, height: 64)
                 VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "bookmark.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(insect.isFavorite ? .label : .gray) )
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(insect.isGathered ? .label : .gray) )
+                        Image(uiImage: UIImage(named: "owl.fill")!.withRenderingMode(.alwaysTemplate))
+                            .resizable()
+                            .frame(width: 11, height: 11)
+                            .colorMultiply(Color(insect.isEndowmented ? .label : .gray) )
+                    }
                     Text(insect.name ?? "")
                         .bold()
                     Text("(\(insect.englishName ?? ""))")
