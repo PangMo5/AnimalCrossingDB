@@ -135,14 +135,25 @@ extension CollectibleListView {
     var forYouView: some View {
         List {
             Section(header: Text("\(Date().month)월까지 잡아야 하는 채집물").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
                     ForEach(self.viewModel.lastMonthFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
                     ForEach(self.viewModel.lastMonthInsectList) { insect in
                         InsectListCellView(insect: insect)
                     }
+                } else {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 16) {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(.largeTitle)
+                            Text("\(Date().month)월까지 잡아야 하는\n모든 채집물을 잡았습니다.")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    }.padding()
                 }
             }
             Section(header: Text("북마크").font(.headline).bold()) {
