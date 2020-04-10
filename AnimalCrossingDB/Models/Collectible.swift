@@ -122,4 +122,12 @@ extension Collectible {
             return "\($0.offset + 1)월"
         }.joined(separator: ", ")
     }
+    
+    var isLastMonth: Bool {
+        if let nextMonthFlag = monthList[safe: Date().month] {
+            return !nextMonthFlag && monthList[Date().month - 1]
+        } else {
+            return monthList[Date().month - 1] && !monthList[0]
+        }
+    }
 }

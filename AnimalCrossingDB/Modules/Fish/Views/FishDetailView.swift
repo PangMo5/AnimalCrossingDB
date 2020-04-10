@@ -62,11 +62,14 @@ struct FishDetailView: View {
                             .bold()
                     }
                     Divider()
-                    HStack {
-                        Text("크기")
-                        Text(viewModel.fish.size?.localized ?? "")
-                            .font(.title)
-                            .bold()
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("크기")
+                            Text(viewModel.fish.size?.localized ?? "")
+                                .font(.title)
+                                .bold()
+                        }
+                        FishSizeView(size: viewModel.fish.size ?? .thin)
                     }
                 }
             }.padding()
@@ -99,6 +102,52 @@ struct FishDetailView: View {
 struct FishDetailView_Previews: PreviewProvider {
     static var previews: some View {
         FishDetailView(viewModel: .init(fish: .sampleFish))
+    }
+}
+
+struct FishSizeView: View {
+    
+    var size: Fish.Size
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Image(uiImage: Fish.Size.thin.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .thin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.xSmall.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .xSmall || size == .xSmallFin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.small.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .small || size == .smallFin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.medium.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .medium || size == .mediumFin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.mediumLarge.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .mediumLarge || size == .mediumLargeFin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.large.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .large || size == .largeFin ? 1.0 : 0.1)
+            Image(uiImage: Fish.Size.xLarge.image)
+                .resizable()
+                .scaledToFit()
+                .opacity(size == .xLarge || size == .xLargeHasFin ? 1.0 : 0.1)
+            if size.hasFin {
+                Text("+")
+                Image("Finned")
+                    .resizable()
+                    .scaledToFit()
+            }
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: Alignment.topLeading)
+            .background(Color.gray)
+            .cornerRadius(8)
     }
 }
 

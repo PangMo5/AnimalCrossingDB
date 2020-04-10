@@ -134,6 +134,17 @@ extension CollectibleListView {
     
     var forYouView: some View {
         List {
+            Section(header: Text("\(Date().month)월까지 잡아야 하는 채집물").font(.headline).bold()) {
+                if self.segmentIndex == 0 {
+                    ForEach(self.viewModel.lastMonthFishList) { fish in
+                        FishListCellView(fish: fish)
+                    }
+                } else {
+                    ForEach(self.viewModel.lastMonthInsectList) { insect in
+                        InsectListCellView(insect: insect)
+                    }
+                }
+            }
             Section(header: Text("북마크").font(.headline).bold()) {
                 if self.segmentIndex == 0 {
                     ForEach(self.viewModel.favoritedFishList) { fish in

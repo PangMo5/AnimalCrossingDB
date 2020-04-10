@@ -89,6 +89,36 @@ struct Fish: Collectible, Codable {
                 return "특대형 + 지느러미"
             }
         }
+        
+        var image: UIImage! {
+            switch self {
+            case .thin:
+                return UIImage(named: "Narrow")
+            case .xSmall, .xSmallFin:
+                return UIImage(named: "Tiny")
+            case .small, .smallFin:
+                return UIImage(named: "Small")
+            case .medium, .mediumFin:
+                return UIImage(named: "Medium")
+            case .mediumLarge, .mediumLargeFin:
+                return UIImage(named: "Large")
+            case .large, .largeFin:
+                return UIImage(named: "VeryLarge")
+            case .xLarge, .xLargeHasFin:
+                return UIImage(named: "Huge")
+            }
+        }
+        
+        var hasFin: Bool {
+            switch self {
+            case .largeFin, .mediumFin, .smallFin, .xLargeHasFin, .mediumLargeFin, .xSmallFin:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        static var defaultCases: [Size] = [.thin, .xSmall, .small, .medium, .mediumLarge, .large, .xLarge]
     }
     
     
