@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E8413913D79E2A588375A01 /* Pods_AnimalCrossingDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */; };
+		9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFCD2441B9FF002FD871 /* DateManager.swift */; };
 		922623E9243A1E0900080F0F /* Refresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922623E8243A1E0900080F0F /* Refresher.swift */; };
 		926B635724336A1200BF9D2B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635624336A1200BF9D2B /* MainTabView.swift */; };
 		926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635924336A7200BF9D2B /* CollectibleListView.swift */; };
@@ -62,6 +63,7 @@
 		3C9FE94EA5B3A7DE2757351E /* Pods-AnimalCrossingDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDB.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB.debug.xcconfig"; sourceTree = "<group>"; };
 		6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFB4D78EDC116FC017D0B29 /* Pods-AnimalCrossingDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDB.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB.release.xcconfig"; sourceTree = "<group>"; };
+		9206FFCD2441B9FF002FD871 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		922623E8243A1E0900080F0F /* Refresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresher.swift; sourceTree = "<group>"; };
 		926B635624336A1200BF9D2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		926B635924336A7200BF9D2B /* CollectibleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleListView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				926B636724336F6900BF9D2B /* StorageManager.swift */,
 				9277711B2435FBDE00314ADC /* PushManager.swift */,
 				922623E8243A1E0900080F0F /* Refresher.swift */,
+				9206FFCD2441B9FF002FD871 /* DateManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */,
 				926B63862434F75600BF9D2B /* Insect.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
+				9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,
 				926B636524336F0200BF9D2B /* CollectibleListViewModel.swift in Sources */,
 				927771212435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift in Sources */,

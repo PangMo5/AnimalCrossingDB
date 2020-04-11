@@ -113,7 +113,7 @@ extension Collectible {
     }
     
     var isAvailable: Bool {
-        (hourList[safe: Date().hour] ?? false) && (monthList[safe: Date().month - 1] ?? false)
+        (hourList[safe: DateManager.shared.currentDate.hour] ?? false) && (monthList[safe: DateManager.shared.currentDate.month - 1] ?? false)
     }
     
     var monthString: String {
@@ -124,10 +124,10 @@ extension Collectible {
     }
     
     var isLastMonth: Bool {
-        if let nextMonthFlag = monthList[safe: Date().month] {
-            return !nextMonthFlag && monthList[Date().month - 1]
+        if let nextMonthFlag = monthList[safe: DateManager.shared.currentDate.month] {
+            return !nextMonthFlag && monthList[DateManager.shared.currentDate.month - 1]
         } else {
-            return monthList[Date().month - 1] && !monthList[0]
+            return monthList[DateManager.shared.currentDate.month - 1] && !monthList[0]
         }
     }
 }

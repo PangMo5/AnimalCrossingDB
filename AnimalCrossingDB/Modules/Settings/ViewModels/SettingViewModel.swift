@@ -64,11 +64,18 @@ final class SettingViewModel: ObservableObject {
     @Published
     var hemisphere: Hemisphere = .north
     
+    @Published
+    var currentDate = DateManager.shared.currentDate
+    
     init() {
         updateHemisphere()
         enabledBookmarkPush = enabledBookmarkPushDefault
         
         $enabledBookmarkPush.dropFirst(2).sink(receiveValue: updateEnabledBookmarkPush(flag:)).store(in: &disposables)
+        
+        $currentDate.sink { date in
+            DateManager.shared.adjustDate = date
+        }.store(in: &disposables)
     }
     
     func openURL(_ url: URL) {

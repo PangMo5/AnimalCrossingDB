@@ -13,7 +13,7 @@ import SwifterSwift
 import SwiftyUserDefaults
 
 extension DefaultsKeys {
-    var fishFilterMonth: DefaultsKey<Int?> { return .init("fishFilterMonth", defaultValue: Date().month) }
+    var fishFilterMonth: DefaultsKey<Int?> { return .init("fishFilterMonth", defaultValue: DateManager.shared.currentDate.month) }
     var collectibleSortType: DefaultsKey<CollectibleListViewModel.SortType> { return .init("collectibleSortType", defaultValue: .id) }
 }
 

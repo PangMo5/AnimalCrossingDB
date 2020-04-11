@@ -11,6 +11,15 @@ import SwiftUI
 struct CollectibleListView: View {
     
     @State private var segmentIndex = 0
+    
+    private var localizedSegment: String {
+        if segmentIndex == 0 {
+            return "고기"
+        } else {
+            return "곤충"
+        }
+    }
+    
     @State private var isModalSettingView = false
     @State private var showingSortSheet = false
     @State private var showingFilterSheet = false
@@ -134,26 +143,28 @@ extension CollectibleListView {
     
     var forYouView: some View {
         List {
-            Section(header: Text("\(Date().month)월까지 잡아야 하는 채집물").font(.headline).bold()) {
-                if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
-                    ForEach(self.viewModel.lastMonthFishList) { fish in
-                        FishListCellView(fish: fish)
-                    }
-                } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
-                    ForEach(self.viewModel.lastMonthInsectList) { insect in
-                        InsectListCellView(insect: insect)
-                    }
-                } else {
-                    HStack {
-                        Spacer()
-                        VStack(alignment: .center, spacing: 16) {
-                            Image(systemName: "checkmark.seal.fill")
-                                .font(.largeTitle)
-                            Text("\(Date().month)월까지 잡아야 하는\n모든 채집물을 잡았습니다.")
-                                .multilineTextAlignment(.center)
+            if self.viewModel.filterMonth == nil || self.viewModel.filterMonth == DateManager.shared.currentDate.month {
+                Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(localizedSegment)").font(.headline).bold()) {
+                    if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
+                        ForEach(self.viewModel.lastMonthFishList) { fish in
+                            FishListCellView(fish: fish)
                         }
-                        Spacer()
-                    }.padding()
+                    } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
+                        ForEach(self.viewModel.lastMonthInsectList) { insect in
+                            InsectListCellView(insect: insect)
+                        }
+                    } else {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center, spacing: 16) {
+                                Image(systemName: "checkmark.seal.fill")
+                                    .font(.largeTitle)
+                                Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(localizedSegment)을 잡았습니다.")
+                                    .multilineTextAlignment(.center)
+                            }
+                            Spacer()
+                        }.padding()
+                    }
                 }
             }
             Section(header: Text("북마크").font(.headline).bold()) {
@@ -240,7 +251,7 @@ struct FishListCellView: View {
                             Text(fish.availableTime ?? "")
                                 .font(.footnote)
                                 .bold()
-                        }.foregroundColor(Color(fish.hourList[safe: Date().hour] == true ? .label : .red) )
+                        }.foregroundColor(Color(fish.hourList[safe: DateManager.shared.currentDate.hour] == true ? .label : .red) )
                     }
                     HStack {
                         Image(systemName: "location")
@@ -295,7 +306,7 @@ struct InsectListCellView: View {
                             Text(insect.availableTime ?? "")
                                 .font(.footnote)
                                 .bold()
-                        }.foregroundColor(Color(insect.hourList[safe: Date().hour] == true ? .label : .red) )
+                        }.foregroundColor(Color(insect.hourList[safe: DateManager.shared.currentDate.hour] == true ? .label : .red) )
                     }
                     HStack {
                         Image(systemName: "location")

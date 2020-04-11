@@ -16,6 +16,7 @@ struct SettingView: View {
     @ObservedObject var viewModel = SettingViewModel()
     
     @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingDatePicker = false
     @State var isShowingMailView = false
     
     var body: some View {
@@ -33,14 +34,29 @@ struct SettingView: View {
                                 .font(.callout)
                         }
                     }
-//                    Toggle(isOn: $viewModel.enabledBookmarkPush) {
-//                        VStack(alignment: .leading) {
-//                            Text("채집물 푸시 알림")
-//                            Text("채집물을 잡을 수 있는 시간이 되었을때 관련 정보 푸시 알림을 받습니다.")
-//                                .font(.caption)
-//                                .foregroundColor(.gray)
-//                        }
-//                    }
+                    Button(action: {
+                        self.isShowingDatePicker = !self.isShowingDatePicker
+                    }) {
+                        HStack {
+                            Text("시간 설정")
+                            Spacer()
+                            Text(self.viewModel.currentDate.dateTimeString())
+                        }
+                    }
+                    if self.isShowingDatePicker {
+                        Button(action: {
+                            self.viewModel.currentDate = Date()
+                            DateManager.shared.adjustDate = nil
+                            self.isShowingDatePicker = false
+                        }) {
+                            HStack {
+                                Spacer()
+                                Text("초기화")
+                            }
+                        }
+                        DatePicker("", selection: $viewModel.currentDate, in: DateManager.shared.initDate...)
+                            .labelsHidden()
+                    }
                 }
                 Section(header: Text("기타")) {
                     Button(action: {
@@ -81,6 +97,9 @@ struct SettingView: View {
                 Image(systemName: "xmark")
             })            
         }.navigationViewStyle(StackNavigationViewStyle())
+            .onDisappear {
+                Refresher.shared.collectibleFlagableRefreshSubject.send(true)
+        }
     }
 }
 
