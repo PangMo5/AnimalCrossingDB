@@ -141,8 +141,24 @@ extension CollectibleListView {
         }
     }
     
+    func achievementText(_ tuple: (Int, Int)) -> some View {
+        Text("\(String(format: "%.2f", tuple.0.float / tuple.1.float * 100))% (\(tuple.0)/\(tuple.1))")
+            .font(.headline).bold()
+    }
+    
     var forYouView: some View {
         List {
+            Section(header: HStack {
+                Text("\(localizedSegment) 채집 달성률:")
+                    .font(.headline).bold()
+                if segmentIndex == 0 {
+                    achievementText(self.viewModel.fishAchievement)
+                } else {
+                    achievementText(self.viewModel.insectAchievement)
+                }
+            }) {
+                EmptyView()
+            }
             if self.viewModel.filterMonth == nil || self.viewModel.filterMonth == DateManager.shared.currentDate.month {
                 Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(localizedSegment)").font(.headline).bold()) {
                     if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {

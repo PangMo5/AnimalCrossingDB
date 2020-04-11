@@ -94,6 +94,9 @@ final class CollectibleListViewModel: ObservableObject {
     @Published var gatheredInsectList = [Insect]()
     @Published var endowmentedInsectList = [Insect]()
     
+    @Published var fishAchievement: (Int, Int) = (0, 0)
+    @Published var insectAchievement: (Int, Int) = (0, 0)
+    
     init(style: Style) {
         self.style = style
         self.sortType = sortTypeDefault
@@ -182,6 +185,14 @@ final class CollectibleListViewModel: ObservableObject {
             .map { $0.filter(\.isEndowmented) }
             .receive(on: DispatchQueue.main)
             .assign(to: \.endowmentedInsectList, on: self).store(in: &disposables)
+        
+        Publishers.CombineLatest(StorageManager.shared.fishListSubject, $refresh).map { fishes, _ in
+            (fishes.count { $0.isGathered }, fishes.count)
+        }.assign(to: \.fishAchievement, on: self).store(in: &disposables)
+        
+        Publishers.CombineLatest(StorageManager.shared.insectListSubject, $refresh).map { insects, _ in
+            (insects.count { $0.isGathered }, insects.count)
+        }.assign(to: \.insectAchievement, on: self).store(in: &disposables)
     }
 }
 
