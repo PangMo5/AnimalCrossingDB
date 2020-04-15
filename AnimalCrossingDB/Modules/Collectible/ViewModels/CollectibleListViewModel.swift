@@ -13,7 +13,7 @@ import SwifterSwift
 import SwiftyUserDefaults
 
 extension DefaultsKeys {
-    var fishFilterMonth: DefaultsKey<Int?> { return .init("fishFilterMonth", defaultValue: DateManager.shared.currentDate.month) }
+    var collectibleFilter: DefaultsKey<CollectibleFilter> { return .init("collectibleFilter", defaultValue: .init()) }
     var collectibleSortType: DefaultsKey<CollectibleListViewModel.SortType> { return .init("collectibleSortType", defaultValue: .id) }
 }
 
@@ -57,22 +57,23 @@ final class CollectibleListViewModel: ObservableObject {
     
     private var disposables = Set<AnyCancellable>()
     
-    @SwiftyUserDefault(keyPath: \.fishFilterMonth)
-    fileprivate var filterMonthDefault: Int?
+    @SwiftyUserDefault(keyPath: \.collectibleFilter)
+    fileprivate var collectibleFilterDefault: CollectibleFilter
     
     @SwiftyUserDefault(keyPath: \.collectibleSortType)
     fileprivate var sortTypeDefault: SortType
     
     @Published fileprivate var refresh = false
     
+    @Published var collectibleFilter = CollectibleFilter() {
+        didSet {
+            collectibleFilterDefault = collectibleFilter
+        }
+    }
+    
     @Published var sortType: SortType = .id {
         didSet {
             sortTypeDefault = sortType
-        }
-    }
-    @Published var filterMonth: Int? {
-        didSet {
-            filterMonthDefault = filterMonth
         }
     }
     
@@ -102,16 +103,17 @@ final class CollectibleListViewModel: ObservableObject {
         self.sortType = sortTypeDefault
         
         Refresher.shared.collectibleFlagableRefreshSubject.assign(to: \.refresh, on: self).store(in: &disposables)
+        Refresher.shared.collectibleFilterRefreshSubject.assign(to: \.collectibleFilter, on: self).store(in: &disposables)
         
-        filterMonth = filterMonthDefault
+        collectibleFilter = collectibleFilterDefault
         
         let sortedFishList = Publishers.CombineLatest(StorageManager.shared.fishListSubject, $sortType)
             .map { $0.0.sorted(sort: $0.1) }
         
-        let filteredFishList = Publishers.CombineLatest4($refresh, sortedFishList, $searchText, $filterMonth)
+        let filteredFishList = Publishers.CombineLatest4($refresh, sortedFishList, $searchText, $collectibleFilter)
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
-            .map { _, fishList, text, month in
-                fishList.filtered(searchText: text, month: month)
+            .map { _, fishList, text, filter in
+                fishList.filtered(searchText: text, filter: filter)
         }
         
         filteredFishList
@@ -148,10 +150,10 @@ final class CollectibleListViewModel: ObservableObject {
         let sortedInsectList = Publishers.CombineLatest(StorageManager.shared.insectListSubject, $sortType)
         .map { $0.0.sorted(sort: $0.1) }
         
-        let filteredInsectList = Publishers.CombineLatest4($refresh, sortedInsectList, $searchText, $filterMonth)
+        let filteredInsectList = Publishers.CombineLatest4($refresh, sortedInsectList, $searchText, $collectibleFilter)
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
-            .map { _, fishList, text, month in
-                fishList.filtered(searchText: text, month: month)
+            .map { _, fishList, text, filter in
+                fishList.filtered(searchText: text, filter: filter)
         }
         
         filteredInsectList
@@ -213,19 +215,13 @@ extension Array where Element: Collectible {
         }
     }
     
-    func filtered(style: CollectibleListViewModel.Style) -> [Element] {
-        filter {
-            (($0.isFavorite || $0.isGathered || $0.isEndowmented) && style == .forYou) || style == .all
-        }
-    }
-    
-    func filtered(searchText: String, month: Int?) -> [Element] {
-        filter {
+    func filtered(searchText: String, filter: CollectibleFilter) -> [Element] {
+        self.filter {
             var filtered = false
             filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
                 || ($0.englishName?.lowercased().contains(searchText.lowercased()) ?? false)
                 || searchText.isEmpty
-            if let month = month {
+            if let month = filter.month {
                 filtered = ($0.monthList[safe: month - 1] ?? false) && filtered
             }
             return filtered

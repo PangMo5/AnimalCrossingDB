@@ -14,5 +14,6 @@ final class Refresher {
     static let shared = Refresher()
     
     var collectibleFlagableRefreshSubject = PassthroughSubject<Bool, Never>()
+    var collectibleFilterRefreshSubject = PassthroughSubject<CollectibleFilter, Never>()
 }
 

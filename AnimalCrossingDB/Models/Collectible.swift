@@ -98,6 +98,20 @@ protocol Collectible: Identifiable {
     func switchEndowment()
 }
 
+enum CollectibleType {
+    case fish
+    case insect
+    
+    var localized: String {
+        switch self {
+        case .fish:
+            return "고기"
+        case .insect:
+            return "곤충"
+        }
+    }
+}
+
 extension Collectible {
     
     var hourList: [Bool] {

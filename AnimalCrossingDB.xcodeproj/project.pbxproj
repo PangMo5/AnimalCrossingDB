@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8E8413913D79E2A588375A01 /* Pods_AnimalCrossingDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */; };
 		9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFCD2441B9FF002FD871 /* DateManager.swift */; };
+		9206FFD1244753D1002FD871 /* CollectibleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFD0244753D1002FD871 /* CollectibleFilter.swift */; };
+		9206FFD52447551D002FD871 /* CollectibleFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFD42447551D002FD871 /* CollectibleFilterView.swift */; };
+		9206FFD724475777002FD871 /* CollectibleFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */; };
 		922623E9243A1E0900080F0F /* Refresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922623E8243A1E0900080F0F /* Refresher.swift */; };
 		926B635724336A1200BF9D2B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635624336A1200BF9D2B /* MainTabView.swift */; };
 		926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635924336A7200BF9D2B /* CollectibleListView.swift */; };
@@ -64,6 +67,9 @@
 		6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFB4D78EDC116FC017D0B29 /* Pods-AnimalCrossingDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDB.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDB/Pods-AnimalCrossingDB.release.xcconfig"; sourceTree = "<group>"; };
 		9206FFCD2441B9FF002FD871 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		9206FFD0244753D1002FD871 /* CollectibleFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleFilter.swift; sourceTree = "<group>"; };
+		9206FFD42447551D002FD871 /* CollectibleFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleFilterView.swift; sourceTree = "<group>"; };
+		9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleFilterViewModel.swift; sourceTree = "<group>"; };
 		922623E8243A1E0900080F0F /* Refresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresher.swift; sourceTree = "<group>"; };
 		926B635624336A1200BF9D2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		926B635924336A7200BF9D2B /* CollectibleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleListView.swift; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 				926B636F24337BF900BF9D2B /* Fish.swift */,
 				926B63852434F75600BF9D2B /* Insect.swift */,
 				927770F2243507CB00314ADC /* Versions.swift */,
+				9206FFD0244753D1002FD871 /* CollectibleFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				926B635924336A7200BF9D2B /* CollectibleListView.swift */,
+				9206FFD42447551D002FD871 /* CollectibleFilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				926B636424336F0200BF9D2B /* CollectibleListViewModel.swift */,
+				9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -625,7 +634,9 @@
 			files = (
 				927771042435CA0600314ADC /* FishDetailView.swift in Sources */,
 				927771062435D06700314ADC /* FishDetailViewModel.swift in Sources */,
+				9206FFD1244753D1002FD871 /* CollectibleFilter.swift in Sources */,
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
+				9206FFD724475777002FD871 /* CollectibleFilterViewModel.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
 				927771182435E90A00314ADC /* SettingViewModel.swift in Sources */,
@@ -649,6 +660,7 @@
 				926B636524336F0200BF9D2B /* CollectibleListViewModel.swift in Sources */,
 				927771212435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift in Sources */,
 				926B637024337BF900BF9D2B /* Fish.swift in Sources */,
+				9206FFD52447551D002FD871 /* CollectibleFilterView.swift in Sources */,
 				927771162435E90200314ADC /* SettingView.swift in Sources */,
 				926B635724336A1200BF9D2B /* MainTabView.swift in Sources */,
 			);

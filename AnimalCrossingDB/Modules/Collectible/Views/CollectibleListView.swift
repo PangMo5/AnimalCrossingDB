@@ -12,17 +12,17 @@ struct CollectibleListView: View {
     
     @State private var segmentIndex = 0
     
-    private var localizedSegment: String {
+    private var collectibleType: CollectibleType {
         if segmentIndex == 0 {
-            return "고기"
+            return .fish
         } else {
-            return "곤충"
+            return .insect
         }
     }
     
     @State private var isModalSettingView = false
     @State private var showingSortSheet = false
-    @State private var showingFilterSheet = false
+    @State private var isModalFilterView = false
     
     @ObservedObject var viewModel: CollectibleListViewModel
     
@@ -86,25 +86,15 @@ struct CollectibleListView: View {
                             return ActionSheet(title: Text("정렬 방법을 선택해주세요."), buttons: buttons)
                         }
                         Button(action: {
-                            self.showingFilterSheet = true
+                            self.isModalFilterView = true
                         }) {
-                            if self.viewModel.filterMonth == nil {
-                                Text("전체")
+                            if self.viewModel.collectibleFilter.isEnableFilter(fromFish: self.collectibleType == .fish) {
+                                Image(systemName: "line.horizontal.3.decrease.circle.fill")
                             } else {
-                                Text("\(self.viewModel.filterMonth ?? 0)월")
+                                Image(systemName: "line.horizontal.3.decrease.circle")
                             }
-                        }.actionSheet(isPresented: self.$showingFilterSheet) {
-                            var buttons = [
-                                    ActionSheet.Button.default(Text("전체")) {
-                                        self.viewModel.filterMonth = nil
-                                    }
-                                ]
-                                buttons.append(contentsOf: (1...12).compactMap(Int.init).map { month in ActionSheet.Button.default(Text("\(month)월")) {
-                                    self.viewModel.filterMonth = month
-                                    }
-                                })
-                                buttons.append(.cancel())
-                                return ActionSheet(title: Text("필러링 할 날짜를 선택해주세요."), buttons: buttons)
+                        }.sheet(isPresented: self.$isModalFilterView) {
+                            CollectibleFilterView(viewModel: .init(fromFish: self.collectibleType == .fish, filter: self.viewModel.collectibleFilter))
                         }
                 })
             }
@@ -149,7 +139,7 @@ extension CollectibleListView {
     var forYouView: some View {
         List {
             Section(header: HStack {
-                Text("\(localizedSegment) 채집 달성률:")
+                Text("\(collectibleType.localized) 채집 달성률:")
                     .font(.headline).bold()
                 if segmentIndex == 0 {
                     achievementText(self.viewModel.fishAchievement)
@@ -159,8 +149,8 @@ extension CollectibleListView {
             }) {
                 EmptyView()
             }
-            if self.viewModel.filterMonth == nil || self.viewModel.filterMonth == DateManager.shared.currentDate.month {
-                Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(localizedSegment)").font(.headline).bold()) {
+            if self.viewModel.collectibleFilter.month == nil || self.viewModel.collectibleFilter.month == DateManager.shared.currentDate.month {
+                Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(collectibleType.localized)").font(.headline).bold()) {
                     if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
                         ForEach(self.viewModel.lastMonthFishList) { fish in
                             FishListCellView(fish: fish)
@@ -175,7 +165,7 @@ extension CollectibleListView {
                             VStack(alignment: .center, spacing: 16) {
                                 Image(systemName: "checkmark.seal.fill")
                                     .font(.largeTitle)
-                                Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(localizedSegment)을 잡았습니다.")
+                                Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(collectibleType.localized)을 잡았습니다.")
                                     .multilineTextAlignment(.center)
                             }
                             Spacer()
