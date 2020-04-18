@@ -22,14 +22,12 @@ struct CollectibleFilter: Codable, DefaultsSerializable {
     var insectArea: Insect.Area?
     
     func isEnableFilter(fromFish: Bool) -> Bool {
-        !(!onlyFavorite &&
-        !onlyGathered &&
-        !onlyEndowmented &&
-        !onlyAvailable &&
-        !onlyDisavailable &&
-        month == nil &&
-        (fishSize == nil && fromFish) &&
-        (fishArea == nil && fromFish) &&
-        (insectArea == nil && !fromFish))
+        onlyFavorite ||
+        onlyGathered ||
+        onlyEndowmented ||
+        month != nil ||
+        (fishSize != nil && fromFish) ||
+        (fishArea != nil && fromFish) ||
+        (insectArea != nil && !fromFish)
     }
 }

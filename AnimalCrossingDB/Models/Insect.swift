@@ -12,7 +12,7 @@ import SwiftyUserDefaults
 
 struct Insect: Collectible, Codable {
     
-    enum Area: String, Codable {
+    enum Area: String, Codable, CaseIterable {
         case head = "가려운 주민 머리"
         case river = "강"
         case riverPond = "강/연못"

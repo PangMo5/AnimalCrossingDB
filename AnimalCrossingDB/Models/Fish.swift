@@ -12,7 +12,7 @@ import SwiftyUserDefaults
 
 struct Fish: Collectible, Codable {
     
-    enum Area: String, Codable {
+    enum Area: String, Codable, CaseIterable {
         case pier = "Pier"
         case rainingSea = "Sea (Raining)"
         case sea = "Sea"
@@ -44,7 +44,7 @@ struct Fish: Collectible, Codable {
         }
     }
     
-    enum Size: String, Codable {
+    enum Size: String, Codable, CaseIterable {
         case thin = "L"
         case xSmall = "1"
         case xSmallFin = "1F"

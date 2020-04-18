@@ -149,28 +149,37 @@ extension CollectibleListView {
             }) {
                 EmptyView()
             }
-            if self.viewModel.collectibleFilter.month == nil || self.viewModel.collectibleFilter.month == DateManager.shared.currentDate.month {
-                Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(collectibleType.localized)").font(.headline).bold()) {
-                    if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
-                        ForEach(self.viewModel.lastMonthFishList) { fish in
-                            FishListCellView(fish: fish)
-                        }
-                    } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
-                        ForEach(self.viewModel.lastMonthInsectList) { insect in
-                            InsectListCellView(insect: insect)
-                        }
-                    } else {
-                        HStack {
-                            Spacer()
-                            VStack(alignment: .center, spacing: 16) {
-                                Image(systemName: "checkmark.seal.fill")
-                                    .font(.largeTitle)
-                                Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(collectibleType.localized)을 잡았습니다.")
-                                    .multilineTextAlignment(.center)
-                            }
-                            Spacer()
-                        }.padding()
+            Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(collectibleType.localized)").font(.headline).bold()) {
+                if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
+                    ForEach(self.viewModel.lastMonthFishList) { fish in
+                        FishListCellView(fish: fish)
                     }
+                } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
+                    ForEach(self.viewModel.lastMonthInsectList) { insect in
+                        InsectListCellView(insect: insect)
+                    }
+                } else if viewModel.collectibleFilter.isEnableFilter(fromFish: collectibleType == .fish) {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 16) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.largeTitle)
+                            Text("필터에 맞는 \(collectibleType.localized)가 없습니다.")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    }.padding()
+                } else {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 16) {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(.largeTitle)
+                            Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(collectibleType.localized)을 잡았습니다.")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    }.padding()
                 }
             }
             Section(header: Text("북마크").font(.headline).bold()) {

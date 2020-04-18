@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "CodableCSV",
-        "repositoryURL": "https://github.com/dehesa/CodableCSV",
+        "package": "QuickLayout",
+        "repositoryURL": "https://github.com/huri000/QuickLayout",
         "state": {
           "branch": null,
-          "revision": "c010320df5a18d963718236da694a044ae832c42",
-          "version": "0.5.1"
+          "revision": "6be62decbe508d8fc8f9dbafc349d05bab03c38b",
+          "version": "3.0.1"
+        }
+      },
+      {
+        "package": "SwiftEntryKit",
+        "repositoryURL": "https://github.com/huri000/SwiftEntryKit",
+        "state": {
+          "branch": null,
+          "revision": "796981500de29ee72f72ef8e9c46eaed2fe6364e",
+          "version": "1.2.3"
         }
       },
       {
@@ -17,6 +26,24 @@
           "branch": null,
           "revision": "f9f0c151aa70d3199eff512b903d1f8cff7ff856",
           "version": "5.1.0"
+        }
+      },
+      {
+        "package": "SwiftyUserDefaults",
+        "repositoryURL": "https://github.com/sunshinejr/SwiftyUserDefaults",
+        "state": {
+          "branch": null,
+          "revision": "1930a81a299b074fd72eee09e88e452ad37dc34d",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation",
+        "state": {
+          "branch": null,
+          "revision": "ec32d62d412578542c0ffb7a6ce34d3e64b43b94",
+          "version": "0.9.11"
         }
       }
     ]

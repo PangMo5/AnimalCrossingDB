@@ -198,6 +198,40 @@ final class CollectibleListViewModel: ObservableObject {
     }
 }
 
+extension Array where Element == Insect {
+    
+    func filtered(searchText: String, filter: CollectibleFilter) -> [Element] {
+        let filtered = collectibleFiltered(searchText: searchText, filter: filter)
+        return filtered.filter {
+            var filtered = true
+            
+            if let area = filter.insectArea {
+                filtered = $0.area == area && filtered
+            }
+            return filtered
+        }
+    }
+}
+
+extension Array where Element == Fish {
+    
+    func filtered(searchText: String, filter: CollectibleFilter) -> [Element] {
+        let filtered = collectibleFiltered(searchText: searchText, filter: filter)
+        return filtered.filter {
+            var filtered = true
+            
+            if let size = filter.fishSize {
+                filtered = $0.size == size && filtered
+            }
+            
+            if let area = filter.fishArea {
+                filtered = $0.area == area && filtered
+            }
+            return filtered
+        }
+    }
+}
+
 extension Array where Element: Collectible {
     
     func sorted(sort: CollectibleListViewModel.SortType) -> [Element] {
@@ -215,14 +249,18 @@ extension Array where Element: Collectible {
         }
     }
     
-    func filtered(searchText: String, filter: CollectibleFilter) -> [Element] {
+    func collectibleFiltered(searchText: String, filter: CollectibleFilter) -> [Element] {
         self.filter {
-            var filtered = false
-            filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
+            var filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
                 || ($0.englishName?.lowercased().contains(searchText.lowercased()) ?? false)
                 || searchText.isEmpty
             if let month = filter.month {
                 filtered = ($0.monthList[safe: month - 1] ?? false) && filtered
+            }
+            
+            if filter.onlyFavorite || filter.onlyGathered || filter.onlyEndowmented {
+                filtered = (($0.isFavorite && filter.onlyFavorite) || ($0.isGathered && filter.onlyGathered) ||
+                    ($0.isEndowmented && filter.onlyEndowmented)) && filtered
             }
             return filtered
         }

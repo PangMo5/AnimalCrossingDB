@@ -137,40 +137,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		922623EA243A257D00080F0F /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				922623ED243A261500080F0F /* ViewModels */,
-				922623EC243A261100080F0F /* Views */,
-			);
-			path = Filter;
-			sourceTree = "<group>";
-		};
 		922623EB243A25A400080F0F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				92BB6131243365DE008E23A4 /* Main */,
 				927771262439A50D00314ADC /* Collectible */,
-				922623EA243A257D00080F0F /* Filter */,
 				92BB6130243364F5008E23A4 /* Fish */,
 				92BB6132243365E8008E23A4 /* Insect */,
 				9277710C2435E5B800314ADC /* Settings */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		922623EC243A261100080F0F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		922623ED243A261500080F0F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		926B635F24336ECC00BF9D2B /* Views */ = {
