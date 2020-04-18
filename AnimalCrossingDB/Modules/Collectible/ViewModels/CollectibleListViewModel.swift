@@ -86,11 +86,13 @@ final class CollectibleListViewModel: ObservableObject {
     @Published var disavailableInsectList = [Insect]()
     
     @Published var lastMonthFishList = [Fish]()
+    @Published var nextMonthAvailableFishList = [Fish]()
     @Published var favoritedFishList = [Fish]()
     @Published var gatheredFishList = [Fish]()
     @Published var endowmentedFishList = [Fish]()
     
     @Published var lastMonthInsectList = [Insect]()
+    @Published var nextMonthAvailableInsectList = [Insect]()
     @Published var favoritedInsectList = [Insect]()
     @Published var gatheredInsectList = [Insect]()
     @Published var endowmentedInsectList = [Insect]()
@@ -133,6 +135,11 @@ final class CollectibleListViewModel: ObservableObject {
             .assign(to: \.lastMonthFishList, on: self).store(in: &disposables)
         
         filteredFishList
+            .map { $0.filter(\.isAvailableNextMonth) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.nextMonthAvailableFishList, on: self).store(in: &disposables)
+        
+        filteredFishList
             .map { $0.filter(\.isFavorite) }
             .receive(on: DispatchQueue.main)
             .assign(to: \.favoritedFishList, on: self).store(in: &disposables)
@@ -172,6 +179,11 @@ final class CollectibleListViewModel: ObservableObject {
             .map { $0.filter { $0.isLastMonth && !$0.isGathered } }
             .receive(on: DispatchQueue.main)
             .assign(to: \.lastMonthInsectList, on: self).store(in: &disposables)
+        
+        filteredInsectList
+            .map { $0.filter(\.isAvailableNextMonth) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.nextMonthAvailableInsectList, on: self).store(in: &disposables)
         
         filteredInsectList
             .map { $0.filter(\.isFavorite) }

@@ -144,4 +144,12 @@ extension Collectible {
             return monthList[DateManager.shared.currentDate.month - 1] && !monthList[0]
         }
     }
+    
+    var isAvailableNextMonth: Bool {
+        if let nextMonthFlag = monthList[safe: DateManager.shared.currentDate.month] {
+            return nextMonthFlag && !monthList[DateManager.shared.currentDate.month - 1]
+        } else {
+            return monthList[0] && !monthList[DateManager.shared.currentDate.month - 1]
+        }
+    }
 }

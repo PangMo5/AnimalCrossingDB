@@ -45,58 +45,68 @@ struct CollectibleListView: View {
                 }
                 .navigationBarTitle(self.viewModel.style.navigationTitle)
                 .navigationBarItems(leading:
-                    HStack {
-                        Button(action: {
-                            self.isModalSettingView = true
-                        }) {
-                            Image(systemName: "gear")
-                        }.sheet(isPresented: self.$isModalSettingView) {
-                            SettingView()
+                    self.leadingNavigationBarItems(geometry: geometry)
+                    , trailing:
+                    self.trailingNavigationBarItems
+                )
+            }
+        }
+    }
+    
+    func leadingNavigationBarItems(geometry: GeometryProxy) -> some View {
+        HStack {
+            Button(action: {
+                self.isModalSettingView = true
+            }) {
+                Image(systemName: "gear")
+            }.sheet(isPresented: self.$isModalSettingView) {
+                SettingView()
+            }
+            Picker(selection: self.$segmentIndex, label: Text("Picker")) {
+                Text("고기")
+                    .tag(0)
+                Text("곤충")
+                    .tag(1)
+            }
+            .frame(width: 130)
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.leading, (geometry.size.width / 2.0) - 108)
+        }
+    }
+    
+    var trailingNavigationBarItems: some View {
+        HStack {
+            Button(action: {
+                self.showingSortSheet = true
+            }) {
+                if self.viewModel.sortType == .id {
+                    Image(systemName: "arrow.up.arrow.down.circle")
+                } else {
+                    Image(systemName: "arrow.up.arrow.down.circle.fill")
+                }
+            }.actionSheet(isPresented: self.$showingSortSheet) {
+                var buttons = CollectibleListViewModel.SortType.allCases.compactMap { sort -> ActionSheet.Button? in
+                    if sort == self.viewModel.sortType {
+                        return nil
+                    } else {
+                        return ActionSheet.Button.default(Text(sort.localized)) {
+                            self.viewModel.sortType = sort
                         }
-                        Picker(selection: self.$segmentIndex, label: Text("Picker")) {
-                            Text("고기")
-                                .tag(0)
-                            Text("곤충")
-                                .tag(1)
-                        }
-                        .frame(width: 130)
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.leading, (geometry.size.width / 2.0) - 108)
-                    }, trailing:
-                    HStack {
-                        Button(action: {
-                            self.showingSortSheet = true
-                        }) {
-                            if self.viewModel.sortType == .id {
-                                Image(systemName: "arrow.up.arrow.down.circle")
-                            } else {
-                                Image(systemName: "arrow.up.arrow.down.circle.fill")
-                            }
-                        }.actionSheet(isPresented: self.$showingSortSheet) {
-                            var buttons = CollectibleListViewModel.SortType.allCases.compactMap { sort -> ActionSheet.Button? in
-                                if sort == self.viewModel.sortType {
-                                    return nil
-                                } else {
-                                    return ActionSheet.Button.default(Text(sort.localized)) {
-                                        self.viewModel.sortType = sort
-                                    }
-                                }
-                            }
-                            buttons.append(.cancel())
-                            return ActionSheet(title: Text("정렬 방법을 선택해주세요."), buttons: buttons)
-                        }
-                        Button(action: {
-                            self.isModalFilterView = true
-                        }) {
-                            if self.viewModel.collectibleFilter.isEnableFilter(fromFish: self.collectibleType == .fish) {
-                                Image(systemName: "line.horizontal.3.decrease.circle.fill")
-                            } else {
-                                Image(systemName: "line.horizontal.3.decrease.circle")
-                            }
-                        }.sheet(isPresented: self.$isModalFilterView) {
-                            CollectibleFilterView(viewModel: .init(fromFish: self.collectibleType == .fish, filter: self.viewModel.collectibleFilter))
-                        }
-                })
+                    }
+                }
+                buttons.append(.cancel())
+                return ActionSheet(title: Text("정렬 방법을 선택해주세요."), buttons: buttons)
+            }
+            Button(action: {
+                self.isModalFilterView = true
+            }) {
+                if self.viewModel.collectibleFilter.isEnableFilter(fromFish: self.collectibleType == .fish) {
+                    Image(systemName: "line.horizontal.3.decrease.circle.fill")
+                } else {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                }
+            }.sheet(isPresented: self.$isModalFilterView) {
+                CollectibleFilterView(viewModel: .init(fromFish: self.collectibleType == .fish, filter: self.viewModel.collectibleFilter))
             }
         }
     }
@@ -107,7 +117,7 @@ extension CollectibleListView {
     var allView: some View {
         List {
             Section(header: Text("채집 가능").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     ForEach(self.viewModel.availableFishList) { fish in
                         FishListCellView(fish: fish)
                     }
@@ -118,7 +128,7 @@ extension CollectibleListView {
                 }
             }
             Section(header: Text("채집 불가능").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     ForEach(self.viewModel.disavailableFishList) { fish in
                         FishListCellView(fish: fish)
                     }
@@ -141,7 +151,7 @@ extension CollectibleListView {
             Section(header: HStack {
                 Text("\(collectibleType.localized) 채집 달성률:")
                     .font(.headline).bold()
-                if segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     achievementText(self.viewModel.fishAchievement)
                 } else {
                     achievementText(self.viewModel.insectAchievement)
@@ -150,11 +160,11 @@ extension CollectibleListView {
                 EmptyView()
             }
             Section(header: Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는 \(collectibleType.localized)").font(.headline).bold()) {
-                if self.segmentIndex == 0 && !self.viewModel.lastMonthFishList.isEmpty {
+                if self.collectibleType == .fish && !self.viewModel.lastMonthFishList.isEmpty {
                     ForEach(self.viewModel.lastMonthFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else if self.segmentIndex == 1 && !self.viewModel.lastMonthInsectList.isEmpty {
+                } else if self.collectibleType == .insect && !self.viewModel.lastMonthInsectList.isEmpty {
                     ForEach(self.viewModel.lastMonthInsectList) { insect in
                         InsectListCellView(insect: insect)
                     }
@@ -182,8 +192,41 @@ extension CollectibleListView {
                     }.padding()
                 }
             }
+            Section(header: Text("다음달부터 새로 출현하는 \(collectibleType.localized)").font(.headline).bold()) {
+                if self.collectibleType == .fish && !self.viewModel.nextMonthAvailableFishList.isEmpty {
+                    ForEach(self.viewModel.nextMonthAvailableFishList) { fish in
+                        FishListCellView(fish: fish)
+                    }
+                } else if self.collectibleType == .insect && !self.viewModel.nextMonthAvailableInsectList.isEmpty {
+                    ForEach(self.viewModel.nextMonthAvailableInsectList) { insect in
+                        InsectListCellView(insect: insect)
+                    }
+                } else if viewModel.collectibleFilter.isEnableFilter(fromFish: collectibleType == .fish) {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 16) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.largeTitle)
+                            Text("필터에 맞는 \(collectibleType.localized)가 없습니다.")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    }.padding()
+                } else {
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center, spacing: 16) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.largeTitle)
+                            Text("다음달부터 출현하는 \(collectibleType.localized)가 없습니다.")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                    }.padding()
+                }
+            }
             Section(header: Text("북마크").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     ForEach(self.viewModel.favoritedFishList) { fish in
                         FishListCellView(fish: fish)
                     }
@@ -194,7 +237,7 @@ extension CollectibleListView {
                 }
             }
             Section(header: Text("기증됨").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     ForEach(self.viewModel.endowmentedFishList) { fish in
                         FishListCellView(fish: fish)
                     }
@@ -205,7 +248,7 @@ extension CollectibleListView {
                 }
             }
             Section(header: Text("채집됨").font(.headline).bold()) {
-                if self.segmentIndex == 0 {
+                if self.collectibleType == .fish {
                     ForEach(self.viewModel.gatheredFishList) { fish in
                         FishListCellView(fish: fish)
                     }
