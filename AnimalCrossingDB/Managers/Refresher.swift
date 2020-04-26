@@ -15,5 +15,6 @@ final class Refresher {
     
     var collectibleFlagableRefreshSubject = PassthroughSubject<Bool, Never>()
     var collectibleFilterRefreshSubject = PassthroughSubject<CollectibleFilter, Never>()
+    var artFilterRefreshSubject = PassthroughSubject<ArtFilter, Never>()
 }
 

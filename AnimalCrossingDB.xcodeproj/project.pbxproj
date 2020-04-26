@@ -53,6 +53,13 @@
 		92F819442455919D00A91DED /* ArtListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819432455919D00A91DED /* ArtListView.swift */; };
 		92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F81945245591B600A91DED /* ArtListViewModel.swift */; };
 		92F8194924559CE800A91DED /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 92F8194824559CE800A91DED /* WaterfallGrid */; };
+		92F8194D2455A62E00A91DED /* ArtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8194C2455A62E00A91DED /* ArtDetailView.swift */; };
+		92F8194F2455A63D00A91DED /* ArtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8194E2455A63D00A91DED /* ArtDetailViewModel.swift */; };
+		92F819512455A73600A91DED /* Gatherable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819502455A73600A91DED /* Gatherable.swift */; };
+		92F819532455B5A700A91DED /* ArtFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819522455B5A700A91DED /* ArtFilterView.swift */; };
+		92F819552455B5BF00A91DED /* ArtFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819542455B5BF00A91DED /* ArtFilterViewModel.swift */; };
+		92F819572455B5DB00A91DED /* GatherableFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819562455B5DB00A91DED /* GatherableFilter.swift */; };
+		92F819592455B68300A91DED /* ArtFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819582455B68300A91DED /* ArtFilter.swift */; };
 		FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +122,13 @@
 		92F819392455811900A91DED /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
 		92F819432455919D00A91DED /* ArtListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtListView.swift; sourceTree = "<group>"; };
 		92F81945245591B600A91DED /* ArtListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtListViewModel.swift; sourceTree = "<group>"; };
+		92F8194C2455A62E00A91DED /* ArtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailView.swift; sourceTree = "<group>"; };
+		92F8194E2455A63D00A91DED /* ArtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewModel.swift; sourceTree = "<group>"; };
+		92F819502455A73600A91DED /* Gatherable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gatherable.swift; sourceTree = "<group>"; };
+		92F819522455B5A700A91DED /* ArtFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtFilterView.swift; path = AnimalCrossingDB/Modules/Art/Views/ArtFilterView.swift; sourceTree = SOURCE_ROOT; };
+		92F819542455B5BF00A91DED /* ArtFilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtFilterViewModel.swift; path = AnimalCrossingDB/Modules/Art/ViewModels/ArtFilterViewModel.swift; sourceTree = SOURCE_ROOT; };
+		92F819562455B5DB00A91DED /* GatherableFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatherableFilter.swift; sourceTree = "<group>"; };
+		92F819582455B68300A91DED /* ArtFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtFilter.swift; sourceTree = "<group>"; };
 		A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,12 +227,15 @@
 		926B636E24337BEA00BF9D2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				92F819502455A73600A91DED /* Gatherable.swift */,
 				926B638A2434FE8F00BF9D2B /* Collectible.swift */,
 				926B636F24337BF900BF9D2B /* Fish.swift */,
 				926B63852434F75600BF9D2B /* Insect.swift */,
 				927770F2243507CB00314ADC /* Versions.swift */,
 				9206FFD0244753D1002FD871 /* CollectibleFilter.swift */,
 				92F819392455811900A91DED /* Art.swift */,
+				92F819562455B5DB00A91DED /* GatherableFilter.swift */,
+				92F819582455B68300A91DED /* ArtFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,8 +416,8 @@
 		92F8193E2455912E00A91DED /* Art */ = {
 			isa = PBXGroup;
 			children = (
-				92F819402455913700A91DED /* Views */,
 				92F8193F2455913300A91DED /* ViewModels */,
+				92F819402455913700A91DED /* Views */,
 			);
 			path = Art;
 			sourceTree = "<group>";
@@ -409,6 +426,8 @@
 			isa = PBXGroup;
 			children = (
 				92F81945245591B600A91DED /* ArtListViewModel.swift */,
+				92F8194E2455A63D00A91DED /* ArtDetailViewModel.swift */,
+				92F819542455B5BF00A91DED /* ArtFilterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -417,6 +436,8 @@
 			isa = PBXGroup;
 			children = (
 				92F819432455919D00A91DED /* ArtListView.swift */,
+				92F8194C2455A62E00A91DED /* ArtDetailView.swift */,
+				92F819522455B5A700A91DED /* ArtFilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -646,9 +667,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				927771042435CA0600314ADC /* FishDetailView.swift in Sources */,
+				92F8194D2455A62E00A91DED /* ArtDetailView.swift in Sources */,
 				927771062435D06700314ADC /* FishDetailViewModel.swift in Sources */,
 				9206FFD1244753D1002FD871 /* CollectibleFilter.swift in Sources */,
+				92F819592455B68300A91DED /* ArtFilter.swift in Sources */,
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
+				92F819512455A73600A91DED /* Gatherable.swift in Sources */,
+				92F819532455B5A700A91DED /* ArtFilterView.swift in Sources */,
 				9206FFD724475777002FD871 /* CollectibleFilterViewModel.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
@@ -657,6 +682,7 @@
 				922623E9243A1E0900080F0F /* Refresher.swift in Sources */,
 				927771082435E24000314ADC /* TabBar.swift in Sources */,
 				92F8193A2455811900A91DED /* Art.swift in Sources */,
+				92F819572455B5DB00A91DED /* GatherableFilter.swift in Sources */,
 				927771102435E62600314ADC /* InsectDetailView.swift in Sources */,
 				926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */,
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
@@ -667,8 +693,10 @@
 				926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */,
 				9277711C2435FBDE00314ADC /* PushManager.swift in Sources */,
 				926B636824336F6900BF9D2B /* StorageManager.swift in Sources */,
+				92F819552455B5BF00A91DED /* ArtFilterViewModel.swift in Sources */,
 				927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */,
 				926B63862434F75600BF9D2B /* Insect.swift in Sources */,
+				92F8194F2455A63D00A91DED /* ArtDetailViewModel.swift in Sources */,
 				92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
 				9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */,

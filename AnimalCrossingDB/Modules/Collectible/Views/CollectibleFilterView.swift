@@ -60,6 +60,9 @@ extension CollectibleFilterView {
             Toggle(isOn: $viewModel.filter.onlyEndowmented) {
                 Text("기증한 채집물만")
             }
+            Toggle(isOn: $viewModel.filter.onlyNeedGathered) {
+                Text("채집 못한 채집물만")
+            }
         }
     }
     

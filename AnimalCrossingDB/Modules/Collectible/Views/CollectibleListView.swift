@@ -381,7 +381,7 @@ struct InsectListCellView: View {
     }
 }
 
-extension Collectible {
+extension Gatherable {
     
     func contextMenuContents() -> some View {
         Group {

@@ -9,11 +9,12 @@
 import Foundation
 import SwiftyUserDefaults
 
-struct CollectibleFilter: Codable, DefaultsSerializable {
+struct CollectibleFilter: GatherableFilter, Codable, DefaultsSerializable {
     
     var onlyFavorite: Bool = false
     var onlyGathered: Bool = false
     var onlyEndowmented: Bool = false
+    var onlyNeedGathered: Bool = false
     var onlyAvailable: Bool = false
     var onlyDisavailable: Bool = false
     var month: Int?
@@ -25,6 +26,7 @@ struct CollectibleFilter: Codable, DefaultsSerializable {
         onlyFavorite ||
         onlyGathered ||
         onlyEndowmented ||
+        onlyNeedGathered ||
         month != nil ||
         (fishSize != nil && fromFish) ||
         (fishArea != nil && fromFish) ||

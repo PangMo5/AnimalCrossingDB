@@ -39,7 +39,7 @@ struct IntBoolTransform<T: LosslessStringCodable>: Codable {
     }
 }
 
-protocol Collectible: Identifiable {
+protocol Collectible: Gatherable, Identifiable {
     
     associatedtype Area
     
@@ -88,14 +88,6 @@ protocol Collectible: Identifiable {
     var month10: Bool { get set }
     var month11: Bool { get set }
     var month12: Bool { get set }
-    
-    var isFavorite: Bool { get }
-    var isGathered: Bool { get }
-    var isEndowmented: Bool { get }
-    
-    func switchFavorite()
-    func switchGathering()
-    func switchEndowment()
 }
 
 enum CollectibleType {

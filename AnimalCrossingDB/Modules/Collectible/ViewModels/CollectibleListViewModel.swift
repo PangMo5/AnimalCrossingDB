@@ -113,7 +113,7 @@ final class CollectibleListViewModel: ObservableObject {
             .map { $0.0.sorted(sort: $0.1) }
         
         let filteredFishList = Publishers.CombineLatest4($refresh, sortedFishList, $searchText, $collectibleFilter)
-            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
+            .debounce(for: .milliseconds(250), scheduler: DispatchQueue.global(qos: .background))
             .map { _, fishList, text, filter in
                 fishList.filtered(searchText: text, filter: filter)
         }
@@ -158,7 +158,7 @@ final class CollectibleListViewModel: ObservableObject {
         .map { $0.0.sorted(sort: $0.1) }
         
         let filteredInsectList = Publishers.CombineLatest4($refresh, sortedInsectList, $searchText, $collectibleFilter)
-            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.global(qos: .background))
+            .debounce(for: .milliseconds(250), scheduler: DispatchQueue.global(qos: .background))
             .map { _, fishList, text, filter in
                 fishList.filtered(searchText: text, filter: filter)
         }
@@ -262,17 +262,36 @@ extension Array where Element: Collectible {
     }
     
     func collectibleFiltered(searchText: String, filter: CollectibleFilter) -> [Element] {
-        self.filter {
+        let filtered = gatherableFiltered(filter: filter)
+        return filtered.filter {
             var filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
                 || ($0.englishName?.lowercased().contains(searchText.lowercased()) ?? false)
                 || searchText.isEmpty
             if let month = filter.month {
                 filtered = ($0.monthList[safe: month - 1] ?? false) && filtered
             }
+            return filtered
+        }
+    }
+}
+
+extension Array where Element: Gatherable {
+    
+    func gatherableFiltered(filter: GatherableFilter) -> [Element] {
+        self.filter {
+            var filtered = true
             
-            if filter.onlyFavorite || filter.onlyGathered || filter.onlyEndowmented {
-                filtered = (($0.isFavorite && filter.onlyFavorite) || ($0.isGathered && filter.onlyGathered) ||
-                    ($0.isEndowmented && filter.onlyEndowmented)) && filtered
+            if filter.onlyFavorite {
+                filtered = $0.isFavorite && filtered
+            }
+            if filter.onlyGathered {
+                filtered = $0.isGathered && filtered
+            }
+            if filter.onlyEndowmented {
+                filtered = $0.isEndowmented && filtered
+            }
+            if filter.onlyNeedGathered {
+                filtered = !$0.isGathered && filtered
             }
             return filtered
         }
