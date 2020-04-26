@@ -50,6 +50,7 @@ protocol Collectible: Gatherable, Identifiable {
     var price: Int? { get set }
     var area: Area? { get set }
     var availableTime: String? { get set }
+    var allDayMonths: [Int]? { get set }
     
     var hour0: Bool { get set }
     var hour1: Bool { get set }
@@ -119,7 +120,8 @@ extension Collectible {
     }
     
     var isAvailable: Bool {
-        (hourList[safe: DateManager.shared.currentDate.hour] ?? false) && (monthList[safe: DateManager.shared.currentDate.month - 1] ?? false)
+        ((hourList[safe: DateManager.shared.currentDate.hour] ?? false) && (monthList[safe: DateManager.shared.currentDate.month - 1] ?? false))
+            || ((allDayMonths?.contains(DateManager.shared.currentDate.month) ?? false))
     }
     
     var monthString: String {

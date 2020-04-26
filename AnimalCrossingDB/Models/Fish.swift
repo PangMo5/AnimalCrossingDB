@@ -20,7 +20,6 @@ struct Fish: Collectible, Codable {
         case riverMouth = "River (Mouth)"
         case riverClifftop = "River (Clifftop)"
         case river = "River"
-        case riverClifftopPond = "River (Clifftop) Pond"
         
         var localized: String {
             switch self {
@@ -38,8 +37,6 @@ struct Fish: Collectible, Codable {
                 return "절벽"
             case .river:
                 return "강"
-            case .riverClifftopPond:
-                return "절벽, 연못"
             }
         }
     }
@@ -132,6 +129,7 @@ struct Fish: Collectible, Codable {
     var area: Area?
     var size: Size?
     var availableTime: String?
+    var allDayMonths: [Int]?
     
     @IntBoolTransform
     var hour0: Bool
@@ -225,6 +223,7 @@ extension Fish {
         case area = "출현"
         case size = "크기"
         case availableTime = "출현시간"
+        case allDayMonths
         case hour0 = "00시"
         case hour1 = "01시"
         case hour2 = "02시"

@@ -47,6 +47,7 @@ struct Insect: Collectible, Codable {
     var price: Int?
     var area: Area?
     var availableTime: String?
+    var allDayMonths: [Int]?
     
     @IntBoolTransform
     var hour0: Bool
