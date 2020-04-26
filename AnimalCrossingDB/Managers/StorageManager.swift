@@ -352,13 +352,13 @@ extension Array where Element == URL {
             let name = url.deletingPathExtension().lastPathComponent
             if name.contains("-"),
                 let id = name.split(separator: "-").first.map(String.init)?.int {
-                var images = dict[id]
-                images?.append(image)
-                dict[id] = images ?? []
+                var images = dict[id] ?? []
+                images.append(image)
+                dict[id] = images
             } else if let id = name.int {
-                var images = dict[id]
-                images?.insert(image, at: 0)
-                dict[id] = images ?? []
+                var images = dict[id] ?? []
+                images.insert(image, at: 0)
+                dict[id] = images
             }
         }
         return dict

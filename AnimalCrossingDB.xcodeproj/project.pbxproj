@@ -50,6 +50,9 @@
 		92BB60F12433610F008E23A4 /* AnimalCrossingDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */; };
 		92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92BB60FF2433623E008E23A4 /* SwifterSwift */; };
 		92F8193A2455811900A91DED /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819392455811900A91DED /* Art.swift */; };
+		92F819442455919D00A91DED /* ArtListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819432455919D00A91DED /* ArtListView.swift */; };
+		92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F81945245591B600A91DED /* ArtListViewModel.swift */; };
+		92F8194924559CE800A91DED /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 92F8194824559CE800A91DED /* WaterfallGrid */; };
 		FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +113,8 @@
 		92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCrossingDBTests.swift; sourceTree = "<group>"; };
 		92BB60F22433610F008E23A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92F819392455811900A91DED /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
+		92F819432455919D00A91DED /* ArtListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtListView.swift; sourceTree = "<group>"; };
+		92F81945245591B600A91DED /* ArtListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtListViewModel.swift; sourceTree = "<group>"; };
 		A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +128,7 @@
 				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */,
+				92F8194924559CE800A91DED /* WaterfallGrid in Frameworks */,
 				927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */,
 				927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */,
 			);
@@ -142,6 +148,7 @@
 		922623EB243A25A400080F0F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				92F8193E2455912E00A91DED /* Art */,
 				92BB6131243365DE008E23A4 /* Main */,
 				927771262439A50D00314ADC /* Collectible */,
 				92BB6130243364F5008E23A4 /* Fish */,
@@ -389,6 +396,31 @@
 			path = Insect;
 			sourceTree = "<group>";
 		};
+		92F8193E2455912E00A91DED /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				92F819402455913700A91DED /* Views */,
+				92F8193F2455913300A91DED /* ViewModels */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		92F8193F2455913300A91DED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				92F81945245591B600A91DED /* ArtListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		92F819402455913700A91DED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92F819432455919D00A91DED /* ArtListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		98BF82FC86A90B10F98D24C8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +465,7 @@
 				927770F0243506D300314ADC /* SwiftyUserDefaults */,
 				927770F524350FBA00314ADC /* ZIPFoundation */,
 				9277711E2435FCA300314ADC /* SwiftEntryKit */,
+				92F8194824559CE800A91DED /* WaterfallGrid */,
 			);
 			productName = AnimalCrossingDB;
 			productReference = 92BB60D62433610C008E23A4 /* 채집보벳따우.app */;
@@ -491,6 +524,7 @@
 				927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
 			projectDirPath = "";
@@ -628,12 +662,14 @@
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
 				9277711A2435E95800314ADC /* MailView.swift in Sources */,
 				927770FB2435B3FD00314ADC /* SplashView.swift in Sources */,
+				92F819442455919D00A91DED /* ArtListView.swift in Sources */,
 				92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */,
 				926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */,
 				9277711C2435FBDE00314ADC /* PushManager.swift in Sources */,
 				926B636824336F6900BF9D2B /* StorageManager.swift in Sources */,
 				927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */,
 				926B63862434F75600BF9D2B /* Insect.swift in Sources */,
+				92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
 				9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,
@@ -960,6 +996,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -982,6 +1026,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
 			productName = SwifterSwift;
+		};
+		92F8194824559CE800A91DED /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
