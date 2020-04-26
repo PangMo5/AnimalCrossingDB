@@ -12,6 +12,8 @@ struct Versions: Codable {
     
     var fish: Int
     var insect: Int
+    var art: Int
     var fishImage: Int
     var insectImage: Int
+    var artImage: Int
 }

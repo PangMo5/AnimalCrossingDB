@@ -49,6 +49,7 @@
 		92BB60E62433610E008E23A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60E42433610E008E23A4 /* LaunchScreen.storyboard */; };
 		92BB60F12433610F008E23A4 /* AnimalCrossingDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */; };
 		92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 92BB60FF2433623E008E23A4 /* SwifterSwift */; };
+		92F8193A2455811900A91DED /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819392455811900A91DED /* Art.swift */; };
 		FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA4370A5036F2B43F4309F4 /* Pods_AnimalCrossingDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		92BB60EC2433610F008E23A4 /* AnimalCrossingDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimalCrossingDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB60F02433610F008E23A4 /* AnimalCrossingDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCrossingDBTests.swift; sourceTree = "<group>"; };
 		92BB60F22433610F008E23A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92F819392455811900A91DED /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
 		A64FA5D7FF9527B725E4C0EB /* Pods_AnimalCrossingDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossingDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE724DB6D36683AE8D02CF5D /* Pods-AnimalCrossingDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8858EFAB9D71F770090CF2F /* Pods-AnimalCrossingDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossingDBTests.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossingDBTests/Pods-AnimalCrossingDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				926B63852434F75600BF9D2B /* Insect.swift */,
 				927770F2243507CB00314ADC /* Versions.swift */,
 				9206FFD0244753D1002FD871 /* CollectibleFilter.swift */,
+				92F819392455811900A91DED /* Art.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				927771002435B71600314ADC /* SplashViewModel.swift in Sources */,
 				922623E9243A1E0900080F0F /* Refresher.swift in Sources */,
 				927771082435E24000314ADC /* TabBar.swift in Sources */,
+				92F8193A2455811900A91DED /* Art.swift in Sources */,
 				927771102435E62600314ADC /* InsectDetailView.swift in Sources */,
 				926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */,
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,

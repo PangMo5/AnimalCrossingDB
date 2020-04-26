@@ -68,13 +68,15 @@ final class StorageManager {
     let fileManager = FileManager.default
     lazy var cacheURL = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     
-    var localVersions = Versions(fish: 0, insect: 0, fishImage: 0, insectImage: 0)
+    var localVersions = Versions(fish: 0, insect: 0, art: 0, fishImage: 0, insectImage: 0, artImage: 0)
     
     var fishImageList = [Int: UIImage]()
     var insectImageList = [Int: UIImage]()
+    var artImageList = [Int: [UIImage]]()
     
     let fishListSubject = CurrentValueSubject<[Fish], Never>([])
     let insectListSubject = CurrentValueSubject<[Insect], Never>([])
+    let artListSubject = CurrentValueSubject<[Art], Never>([])
     
     init() {
     }
@@ -100,7 +102,7 @@ final class StorageManager {
             if let data = data {
                 versions = try JSONDecoder().decode(Versions.self, from: data)
             } else {
-                versions = Versions(fish: 0, insect: 0, fishImage: 0, insectImage: 0)
+                versions = Versions(fish: 0, insect: 0, art: 0, fishImage: 0, insectImage: 0, artImage: 0)
             }
             
             let versionURL = self.cacheURL.appendingPathComponent("staticDataVersions.json")
@@ -115,6 +117,8 @@ final class StorageManager {
             self.fetchFishImage(versions: versions, dispatchGroup: dispatchGroup)
             self.fetchInsectList(versions: versions, dispatchGroup: dispatchGroup)
             self.fetchInsectImage(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchArtList(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchArtImage(versions: versions, dispatchGroup: dispatchGroup)
             
             dispatchGroup.notify(queue: .global(qos: .background)) {
                 try? self.localVersions.toJSONString()?.write(to: versionURL, atomically: true, encoding: .utf8)
@@ -125,6 +129,38 @@ final class StorageManager {
         } catch {
             print(error.localizedDescription)
             return completion(.error)
+        }
+    }
+    
+    private func fetchFishImage(versions: Versions, dispatchGroup: DispatchGroup) {
+        let imageURL = cacheURL.appendingPathComponent("fish")
+        let tempURL = cacheURL.appendingPathComponent("temp")
+        if localVersions.fishImage >= versions.fishImage,
+            let contents = try? self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil),
+            !contents.isEmpty {
+            self.fishImageList = contents.toImageDict()
+        } else {
+            dispatchGroup.enter()
+            try? self.fileManager.removeItem(at: tempURL)
+            let pathReference = self.storage.reference(withPath: "fish.zip")
+            pathReference.write(toFile: tempURL) { url, error in
+                guard let url = url else {
+                    dispatchGroup.leave()
+                    return
+                }
+                do {
+                    try? self.fileManager.removeItem(at: imageURL)
+                    try? self.fileManager.removeItem(at: self.cacheURL.appendingPathComponent("__MACOSX"))
+                    try self.fileManager.unzipItem(at: url, to: self.cacheURL)
+                    let contents = try self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil)
+                    self.fishImageList = contents.toImageDict()
+                    self.localVersions.fishImage = versions.fishImage
+                    dispatchGroup.leave()
+                } catch {
+                    print(error.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            }
         }
     }
     
@@ -160,17 +196,17 @@ final class StorageManager {
         }
     }
     
-    private func fetchFishImage(versions: Versions, dispatchGroup: DispatchGroup) {
-        let imageURL = cacheURL.appendingPathComponent("fish")
+    private func fetchArtImage(versions: Versions, dispatchGroup: DispatchGroup) {
+        let imageURL = cacheURL.appendingPathComponent("art")
         let tempURL = cacheURL.appendingPathComponent("temp")
-        if localVersions.fishImage >= versions.fishImage,
+        if localVersions.artImage >= versions.artImage,
             let contents = try? self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil),
             !contents.isEmpty {
-            self.fishImageList = contents.toImageDict()
+            self.artImageList = contents.toImagesDictForArt()
         } else {
             dispatchGroup.enter()
             try? self.fileManager.removeItem(at: tempURL)
-            let pathReference = self.storage.reference(withPath: "fish.zip")
+            let pathReference = self.storage.reference(withPath: "art.zip")
             pathReference.write(toFile: tempURL) { url, error in
                 guard let url = url else {
                     dispatchGroup.leave()
@@ -181,8 +217,8 @@ final class StorageManager {
                     try? self.fileManager.removeItem(at: self.cacheURL.appendingPathComponent("__MACOSX"))
                     try self.fileManager.unzipItem(at: url, to: self.cacheURL)
                     let contents = try self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil)
-                    self.fishImageList = contents.toImageDict()
-                    self.localVersions.fishImage = versions.fishImage
+                    self.artImageList = contents.toImagesDictForArt()
+                    self.localVersions.artImage = versions.artImage
                     dispatchGroup.leave()
                 } catch {
                     print(error.localizedDescription)
@@ -247,6 +283,34 @@ final class StorageManager {
             }
         }
     }
+    
+    private func fetchArtList(versions: Versions, dispatchGroup: DispatchGroup) {
+        let artURL = cacheURL.appendingPathComponent("art.json")
+        if localVersions.art >= versions.art,
+           let artData = try? Data(contentsOf: artURL),
+            let artList = try? JSONDecoder().decode([Art].self, from: artData) {
+            artListSubject.value = artList
+        } else {
+            dispatchGroup.enter()
+            let pathReference = self.storage.reference(withPath: "art.json")
+            pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                guard let data = data else {
+                    dispatchGroup.leave()
+                    return
+                }
+                do {
+                    let artList = try JSONDecoder().decode([Art].self, from: data)
+                    self.artListSubject.value = artList
+                    try data.write(to: artURL)
+                    self.localVersions.art = versions.art
+                    dispatchGroup.leave()
+                } catch {
+                    print(error.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            }
+        }
+    }
 }
 
 extension String {
@@ -278,5 +342,25 @@ extension Array where Element == URL {
                 let image = UIImage(data: data) else { return nil }
             return (id, image)
         }.reduce(into: [:]) { $0[$1.0] = $1.1 }
+    }
+    
+    func toImagesDictForArt() -> [Int: [UIImage]] {
+        var dict = [Int: [UIImage]]()
+        forEach { url in
+            guard let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) else { return }
+            let name = url.deletingPathExtension().lastPathComponent
+            if name.contains("-"),
+                let id = name.split(separator: "-").first.map(String.init)?.int {
+                var images = dict[id]
+                images?.append(image)
+                dict[id] = images ?? []
+            } else if let id = name.int {
+                var images = dict[id]
+                images?.insert(image, at: 0)
+                dict[id] = images ?? []
+            }
+        }
+        return dict
     }
 }
