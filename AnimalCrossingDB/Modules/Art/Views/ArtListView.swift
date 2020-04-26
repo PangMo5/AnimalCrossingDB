@@ -23,7 +23,7 @@ struct ArtListView: View {
                 WaterfallGrid(self.viewModel.artList) { art in
                     ArtCellView(art: art)
                 }
-                .gridStyle(columnsInPortrait: 2, columnsInLandscape: 3)
+                .gridStyle(columns: 2)
                 .padding([.leading, .trailing])
             }
             .navigationBarTitle("미술품")

@@ -15,23 +15,20 @@ struct ArtDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                if viewModel.art.curioImage != nil {
-                    Image(uiImage: viewModel.art.curioImage!)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                }
-                if !viewModel.art.fakeImages.isEmpty {
-                    Divider()
-                    HStack {
-                        ForEach(viewModel.art.fakeImages) { image in
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                        }
+                HStack {
+                    if viewModel.art.curioImage != nil {
+                        Image(uiImage: viewModel.art.curioImage!)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    ForEach(viewModel.art.fakeImages) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
                     }
                 }
                 Group {
