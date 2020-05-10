@@ -59,6 +59,7 @@ extension Array where Element == Art {
         return filtered.filter {
             let filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
                 || ($0.realName?.lowercased().contains(searchText.lowercased()) ?? false)
+                || ($0.artist?.lowercased().contains(searchText.lowercased()) ?? false)
                 || searchText.isEmpty
             return filtered
         }
