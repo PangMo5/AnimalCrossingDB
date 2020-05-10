@@ -16,6 +16,7 @@ struct MainTabView: View {
         UIKitTabView([
             .init(view: CollectibleListView(viewModel: .init(style: .forYou)), title: "For You", image: "heart.fill"),
             .init(view: CollectibleListView(viewModel: .init(style: .all)), title: "채집물", image: "archivebox.fill"),
+            .init(view: FossilListView(viewModel: .init()), title: "화석", image: "flame.fill"),
             .init(view: ArtListView(viewModel: .init()), title: "미술품", image: "photo.fill")
         ])
     }

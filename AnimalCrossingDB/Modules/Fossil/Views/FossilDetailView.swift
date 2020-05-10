@@ -1,71 +1,56 @@
 //
-//  InsectDetailView.swift
+//  FossilDetailView.swift
 //  AnimalCrossingDB
 //
-//  Created by Shirou on 2020/04/02.
+//  Created by Shirou on 2020/04/26.
 //  Copyright © 2020 Shirou. All rights reserved.
 //
 
 import SwiftUI
 
-struct InsectDetailView: View {
+struct FossilDetailView: View {
     
-    @ObservedObject var viewModel: InsectDetailViewModel
+    @ObservedObject var viewModel: FossilDetailViewModel
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                Image(uiImage: viewModel.insect.image)
+                Image(uiImage: viewModel.fossil.image)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
-                Divider()
                 Group {
                     HStack {
                         Text("이름")
-                        Text(viewModel.insect.name ?? "")
+                        Text(viewModel.fossil.name ?? "")
                             .font(.title)
                             .bold()
                     }
                     Divider()
                     HStack {
                         Text("영문 이름")
-                        Text(viewModel.insect.englishName ?? "")
+                        Text(viewModel.fossil.enName ?? "")
+                            .font(.title)
+                            .bold()
+                    }
+                    Divider()
+                    HStack {
+                        Text("세트 명")
+                        Text(viewModel.fossil.setName ?? "")
                             .font(.title)
                             .bold()
                     }
                     Divider()
                     HStack {
                         Text("가격")
-                        Text("\(viewModel.insect.price?.string ?? "")벨")
-                            .font(.title)
-                            .bold()
-                    }
-                }
-                Group {
-                    Divider()
-                    HStack {
-                        Text("출현 장소")
-                        Text(viewModel.insect.area?.rawValue ?? "")
-                            .font(.title)
-                            .bold()
-                    }
-                    Divider()
-                    HStack {
-                        Text("출현 시기")
-                        AvailableMonthView(monthList: viewModel.insect.monthList)
-                    }
-                    Divider()
-                    HStack {
-                        Text("출현 시간")
-                        Text(viewModel.insect.availableTime ?? "")
+                        Text(viewModel.fossil.price ?? "")
                             .font(.title)
                             .bold()
                     }
                 }
             }.padding()
         }
-        .navigationBarTitle(viewModel.insect.name ?? "")
+        .navigationBarTitle(viewModel.fossil.name ?? "")
         .navigationBarItems(trailing:
             HStack {
                 Button(action: {
@@ -90,8 +75,8 @@ struct InsectDetailView: View {
     }
 }
 
-struct InsectDetailView_Previews: PreviewProvider {
+struct FossilDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InsectDetailView(viewModel: .init(insect: .sampleInsect))
+        FossilDetailView(viewModel: .init(fossil: .sampleFossil))
     }
 }

@@ -28,7 +28,7 @@ struct FishDetailView: View {
                     }
                     Divider()
                     HStack {
-                        Text("영어 이름")
+                        Text("영문 이름")
                         Text(viewModel.fish.englishName ?? "")
                             .font(.title)
                             .bold()

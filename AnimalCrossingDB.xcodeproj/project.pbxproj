@@ -13,6 +13,11 @@
 		9206FFD52447551D002FD871 /* CollectibleFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFD42447551D002FD871 /* CollectibleFilterView.swift */; };
 		9206FFD724475777002FD871 /* CollectibleFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */; };
 		9216FBF824682963002E6063 /* Fossil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FBF724682963002E6063 /* Fossil.swift */; };
+		9216FBFA2468354A002E6063 /* FossilFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FBF92468354A002E6063 /* FossilFilter.swift */; };
+		9216FBFF246837D9002E6063 /* FossilListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FBFE246837D9002E6063 /* FossilListView.swift */; };
+		9216FC01246837EB002E6063 /* FossilListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FC00246837EB002E6063 /* FossilListViewModel.swift */; };
+		9216FC0324683A66002E6063 /* FossilFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FC0224683A66002E6063 /* FossilFilterView.swift */; };
+		9216FC0524683A71002E6063 /* FossilFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FC0424683A71002E6063 /* FossilFilterViewModel.swift */; };
 		922623E9243A1E0900080F0F /* Refresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922623E8243A1E0900080F0F /* Refresher.swift */; };
 		926B635724336A1200BF9D2B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635624336A1200BF9D2B /* MainTabView.swift */; };
 		926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635924336A7200BF9D2B /* CollectibleListView.swift */; };
@@ -43,6 +48,8 @@
 		9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9277711E2435FCA300314ADC /* SwiftEntryKit */; };
 		927771212435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771202435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift */; };
 		927771232436231400314ADC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927771222436231400314ADC /* Settings.bundle */; };
+		928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */; };
+		928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414724683B26005CEA2B /* FossilDetailView.swift */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -83,6 +90,11 @@
 		9206FFD42447551D002FD871 /* CollectibleFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleFilterView.swift; sourceTree = "<group>"; };
 		9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleFilterViewModel.swift; sourceTree = "<group>"; };
 		9216FBF724682963002E6063 /* Fossil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fossil.swift; sourceTree = "<group>"; };
+		9216FBF92468354A002E6063 /* FossilFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FossilFilter.swift; sourceTree = "<group>"; };
+		9216FBFE246837D9002E6063 /* FossilListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FossilListView.swift; path = AnimalCrossingDB/Modules/Fossil/Views/FossilListView.swift; sourceTree = SOURCE_ROOT; };
+		9216FC00246837EB002E6063 /* FossilListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilListViewModel.swift; sourceTree = "<group>"; };
+		9216FC0224683A66002E6063 /* FossilFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FossilFilterView.swift; path = AnimalCrossingDB/Modules/Fossil/Views/FossilFilterView.swift; sourceTree = SOURCE_ROOT; };
+		9216FC0424683A71002E6063 /* FossilFilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilFilterViewModel.swift; sourceTree = "<group>"; };
 		922623E8243A1E0900080F0F /* Refresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresher.swift; sourceTree = "<group>"; };
 		926B635624336A1200BF9D2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		926B635924336A7200BF9D2B /* CollectibleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleListView.swift; sourceTree = "<group>"; };
@@ -111,6 +123,8 @@
 		927771202435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftEntryKit+GangnamSister.swift"; sourceTree = "<group>"; };
 		927771222436231400314ADC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		927771242436244000314ADC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilDetailViewModel.swift; sourceTree = "<group>"; };
+		928A414724683B26005CEA2B /* FossilDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilDetailView.swift; sourceTree = "<group>"; };
 		92BB60D62433610C008E23A4 /* 채집보벳따우.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "채집보벳따우.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BB60D92433610C008E23A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BB60DB2433610C008E23A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,9 +175,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9216FBFB246835A2002E6063 /* Fossil */ = {
+			isa = PBXGroup;
+			children = (
+				9216FBFD246835B0002E6063 /* ViewModels */,
+				9216FBFC246835AC002E6063 /* Views */,
+			);
+			path = Fossil;
+			sourceTree = "<group>";
+		};
+		9216FBFC246835AC002E6063 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9216FC0224683A66002E6063 /* FossilFilterView.swift */,
+				928A414724683B26005CEA2B /* FossilDetailView.swift */,
+				9216FBFE246837D9002E6063 /* FossilListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9216FBFD246835B0002E6063 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9216FC00246837EB002E6063 /* FossilListViewModel.swift */,
+				928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */,
+				9216FC0424683A71002E6063 /* FossilFilterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		922623EB243A25A400080F0F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9216FBFB246835A2002E6063 /* Fossil */,
 				92F8193E2455912E00A91DED /* Art */,
 				92BB6131243365DE008E23A4 /* Main */,
 				927771262439A50D00314ADC /* Collectible */,
@@ -239,6 +283,7 @@
 				92F819562455B5DB00A91DED /* GatherableFilter.swift */,
 				92F819582455B68300A91DED /* ArtFilter.swift */,
 				9216FBF724682963002E6063 /* Fossil.swift */,
+				9216FBF92468354A002E6063 /* FossilFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,7 +723,9 @@
 				926B63822434F10D00BF9D2B /* View+AnimalCrossingDB.swift in Sources */,
 				92F819512455A73600A91DED /* Gatherable.swift in Sources */,
 				92F819532455B5A700A91DED /* ArtFilterView.swift in Sources */,
+				9216FC01246837EB002E6063 /* FossilListViewModel.swift in Sources */,
 				9206FFD724475777002FD871 /* CollectibleFilterViewModel.swift in Sources */,
+				928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */,
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
 				927771182435E90A00314ADC /* SettingViewModel.swift in Sources */,
@@ -689,13 +736,16 @@
 				92F819572455B5DB00A91DED /* GatherableFilter.swift in Sources */,
 				927771102435E62600314ADC /* InsectDetailView.swift in Sources */,
 				926B63802434D0FF00BF9D2B /* Combine+WithLatestFrom.swift in Sources */,
+				928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */,
 				92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */,
 				9277711A2435E95800314ADC /* MailView.swift in Sources */,
 				927770FB2435B3FD00314ADC /* SplashView.swift in Sources */,
 				92F819442455919D00A91DED /* ArtListView.swift in Sources */,
 				92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */,
+				9216FBFA2468354A002E6063 /* FossilFilter.swift in Sources */,
 				926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */,
 				9277711C2435FBDE00314ADC /* PushManager.swift in Sources */,
+				9216FC0524683A71002E6063 /* FossilFilterViewModel.swift in Sources */,
 				926B636824336F6900BF9D2B /* StorageManager.swift in Sources */,
 				92F819552455B5BF00A91DED /* ArtFilterViewModel.swift in Sources */,
 				927771122435E62F00314ADC /* InsectDetailViewModel.swift in Sources */,
@@ -703,9 +753,11 @@
 				92F8194F2455A63D00A91DED /* ArtDetailViewModel.swift in Sources */,
 				92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
+				9216FC0324683A66002E6063 /* FossilFilterView.swift in Sources */,
 				9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,
 				926B636524336F0200BF9D2B /* CollectibleListViewModel.swift in Sources */,
+				9216FBFF246837D9002E6063 /* FossilListView.swift in Sources */,
 				927771212435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift in Sources */,
 				926B637024337BF900BF9D2B /* Fish.swift in Sources */,
 				9206FFD52447551D002FD871 /* CollectibleFilterView.swift in Sources */,

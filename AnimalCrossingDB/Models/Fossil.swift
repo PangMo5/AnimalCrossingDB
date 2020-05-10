@@ -18,35 +18,23 @@ extension DefaultsKeys {
 
 struct Fossil: Gatherable, Codable, Identifiable {
     
-    enum Size: String, Codable {
-        case oneOne = "1x1"
-        case twoTwo = "2x2"
-    }
-    
-    enum TypeEnum: String, Codable {
-        case single
-        case set
-    }
-    
     var id: String {
-        "\(realID ?? 0)_art"
+        "\(realID ?? 0)_fossil"
     }
     var realID: Int?
     var setID: Int?
     var name: String?
     var enName: String?
-    var size: Size?
-    var type: TypeEnum?
     var setName: String?
     var enSetName: String?
     var price: String?
     
     @SwiftyUserDefault(keyPath: \.favoriteFossilIDs)
-    fileprivate var favoriteArtIDsDefault: [Int]
+    fileprivate var favoriteFossilIDsDefault: [Int]
     @SwiftyUserDefault(keyPath: \.gatheredFossilIDs)
-    fileprivate var gatheredArtIDsDefault: [Int]
+    fileprivate var gatheredFossilIDsDefault: [Int]
     @SwiftyUserDefault(keyPath: \.endowmentedFossilIDs)
-    fileprivate var endowmentedArtIDsDefault: [Int]
+    fileprivate var endowmentedFossilIDsDefault: [Int]
 }
 
 extension Fossil {
@@ -56,8 +44,6 @@ extension Fossil {
         case setID
         case name
         case enName
-        case size
-        case type
         case setName
         case enSetName
         case price
@@ -66,48 +52,55 @@ extension Fossil {
 
 extension Fossil {
     
+    var image: UIImage {
+        StorageManager.shared.fossilImageList[realID ?? 0] ?? UIImage(systemName: "flame.fill")!
+    }
+}
+
+extension Fossil {
+    
     var isFavorite: Bool {
         guard let id = realID else { return false }
-        return favoriteArtIDsDefault.contains(id)
+        return favoriteFossilIDsDefault.contains(id)
     }
     
     var isGathered: Bool {
         guard let id = realID else { return false }
-        return gatheredArtIDsDefault.contains(id)
+        return gatheredFossilIDsDefault.contains(id)
     }
     
     var isEndowmented: Bool {
         guard let id = realID else { return false }
-        return endowmentedArtIDsDefault.contains(id)
+        return endowmentedFossilIDsDefault.contains(id)
     }
     
     func switchFavorite() {
         guard let id = realID else { return }
         if isFavorite {
-            favoriteArtIDsDefault.removeAll(id)
+            favoriteFossilIDsDefault.removeAll(id)
         } else {
-            favoriteArtIDsDefault.append(id)
+            favoriteFossilIDsDefault.append(id)
         }
     }
     
     func switchGathering() {
         guard let id = realID else { return }
         if isGathered {
-            gatheredArtIDsDefault.removeAll(id)
+            gatheredFossilIDsDefault.removeAll(id)
             if isEndowmented {
                 switchEndowment()
             }
         } else {
-            gatheredArtIDsDefault.append(id)
+            gatheredFossilIDsDefault.append(id)
         }
     }
     
     func switchEndowment() {
         guard let id = realID else { return }
         if isEndowmented {
-            endowmentedArtIDsDefault.removeAll(id)
+            endowmentedFossilIDsDefault.removeAll(id)
         } else {
-            endowmentedArtIDsDefault.append(id)
+            endowmentedFossilIDsDefault.append(id)
             if !isGathered {
                 switchGathering()
             }
@@ -117,5 +110,5 @@ extension Fossil {
 
 extension Fossil {
     
-    static var sampleArt: Fossil = .init()
+    static var sampleFossil: Fossil = .init()
 }

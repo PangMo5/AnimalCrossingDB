@@ -14,7 +14,7 @@ struct ArtDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     if viewModel.art.curioImage != nil {
                         Image(uiImage: viewModel.art.curioImage!)
@@ -32,24 +32,42 @@ struct ArtDetailView: View {
                     }
                 }
                 Group {
-                    Text(viewModel.art.name ?? "")
-                        .font(.largeTitle)
-                        .bold()
-                    Text("(\(viewModel.art.realName ?? ""))")
-                        .font(.title)
-                        .bold()
-                    Text("- \(viewModel.art.artist ?? "")")
-                        .font(.title)
-                        .bold()
+                    HStack {
+                        Text("이름")
+                        Text(viewModel.art.name ?? "")
+                            .font(.title)
+                            .bold()
+                    }
                     Divider()
-                    Text(viewModel.art.info ?? "")
-                        .font(.headline)
+                    HStack {
+                        Text("실제 이름")
+                        Text(viewModel.art.realName ?? "")
+                            .font(.title)
+                            .bold()
+                    }
                     Divider()
-                    Text(viewModel.art.advice ?? "")
-                        .font(.headline)
-                        .padding(.bottom)
-                }.padding([.leading, .trailing])
-            }
+                    HStack {
+                        Text("작가")
+                        Text(viewModel.art.artist ?? "")
+                            .font(.title)
+                            .bold()
+                    }
+                    Divider()
+                    HStack {
+                        Text("정보")
+                        VStack {
+                            Text(viewModel.art.info ?? "")
+                                .font(.headline)
+                                .bold()
+                            if viewModel.art.advice != nil {
+                                Text(viewModel.art.advice ?? "")
+                                    .font(.headline)
+                                    .bold()
+                            }
+                        }
+                    }
+                }
+            }.padding()
         }
         .navigationBarTitle(viewModel.art.name ?? "")
         .navigationBarItems(trailing:
