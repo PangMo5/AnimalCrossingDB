@@ -58,7 +58,7 @@ extension Array where Element == Art {
         let filtered = gatherableFiltered(filter: filter)
         return filtered.filter {
             let filtered = ($0.name?.lowercased().contains(searchText.lowercased()) ?? false)
-                || ($0.info?.lowercased().contains(searchText.lowercased()) ?? false)
+                || ($0.realName?.lowercased().contains(searchText.lowercased()) ?? false)
                 || searchText.isEmpty
             return filtered
         }
