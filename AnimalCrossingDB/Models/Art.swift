@@ -11,13 +11,22 @@ import UIKit
 import SwiftyUserDefaults
 
 struct Art: Gatherable, Codable, Identifiable {
+
+    enum TypeEnum: String, Codable {
+        case picture = "명화"
+        case piece = "조각"
+    }
     
     var id: String {
         "\(realID ?? 0)_art"
     }
     var realID: Int?
+    var type: TypeEnum?
     var name: String?
+    var realName: String?
+    var artist: String?
     var info: String?
+    var advice: String?
     
     @SwiftyUserDefault(keyPath: \.favoriteArtIDs)
     fileprivate var favoriteArtIDsDefault: [Int]
@@ -27,12 +36,17 @@ struct Art: Gatherable, Codable, Identifiable {
     fileprivate var endowmentedArtIDsDefault: [Int]
 }
 
+
 extension Art {
     
     enum CodingKeys: String, CodingKey {
         case realID = "id"
+        case type
         case name
+        case realName
+        case artist
         case info
+        case advice
     }
 }
 

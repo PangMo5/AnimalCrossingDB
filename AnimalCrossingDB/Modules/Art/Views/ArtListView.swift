@@ -24,6 +24,7 @@ struct ArtListView: View {
                     ArtCellView(art: art)
                 }
                 .gridStyle(columns: 2)
+                .resignKeyboardOnDragGesture()
                 .padding([.leading, .trailing])
             }
             .navigationBarTitle("미술품")
@@ -36,6 +37,7 @@ struct ArtListView: View {
                     SettingView()
             }, trailing: Button(action: {
                 self.isModalFilterView = true
+                UIApplication.shared.endEditing(true)
             }) {
                 if self.viewModel.artFilter.isEnableFilter() {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
@@ -66,6 +68,14 @@ struct ArtCellView: View {
                         .scaledToFit()
                 }
                 Text(art.name ?? "")
+                    .font(.headline)
+                    .padding([.leading, .trailing], 6)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("(\(art.realName ?? ""))")
+                    .font(.headline)
+                    .padding([.leading, .trailing], 6)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("- \(art.artist ?? "")")
                     .font(.headline)
                     .padding([.leading, .trailing, .bottom], 6)
                     .fixedSize(horizontal: false, vertical: true)

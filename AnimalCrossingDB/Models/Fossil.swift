@@ -23,7 +23,7 @@ struct Fossil: Gatherable, Codable, Identifiable {
         case twoTwo = "2x2"
     }
     
-    enum `Type`: String, Codable {
+    enum TypeEnum: String, Codable {
         case single
         case set
     }
@@ -36,7 +36,7 @@ struct Fossil: Gatherable, Codable, Identifiable {
     var name: String?
     var enName: String?
     var size: Size?
-    var type: Type?
+    var type: TypeEnum?
     var setName: String?
     var enSetName: String?
     var price: String?

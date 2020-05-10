@@ -99,6 +99,7 @@ struct CollectibleListView: View {
             }
             Button(action: {
                 self.isModalFilterView = true
+                UIApplication.shared.endEditing(true)
             }) {
                 if self.viewModel.collectibleFilter.isEnableFilter(fromFish: self.collectibleType == .fish) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")

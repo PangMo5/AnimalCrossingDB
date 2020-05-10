@@ -285,14 +285,14 @@ final class StorageManager {
     }
     
     private func fetchArtList(versions: Versions, dispatchGroup: DispatchGroup) {
-        let artURL = cacheURL.appendingPathComponent("art.json")
+        let artURL = cacheURL.appendingPathComponent("art_v2.json")
         if localVersions.art >= versions.art,
            let artData = try? Data(contentsOf: artURL),
             let artList = try? JSONDecoder().decode([Art].self, from: artData) {
             artListSubject.value = artList
         } else {
             dispatchGroup.enter()
-            let pathReference = self.storage.reference(withPath: "art.json")
+            let pathReference = self.storage.reference(withPath: "art_v2.json")
             pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 guard let data = data else {
                     dispatchGroup.leave()

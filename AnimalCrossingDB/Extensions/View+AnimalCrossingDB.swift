@@ -12,7 +12,7 @@ import SwiftUI
 extension UIApplication {
     func endEditing(_ force: Bool) {
         self.windows
-            .filter{$0.isKeyWindow}
+            .filter(\.isKeyWindow)
             .first?
             .endEditing(force)
     }
