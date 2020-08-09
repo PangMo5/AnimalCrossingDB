@@ -15,10 +15,10 @@ import SwiftyUserDefaults
 final class CollectibleFilterViewModel: ObservableObject {
     
     @Published var filter: CollectibleFilter
-    var fromFish: Bool
+    var type: CollectibleType
     
-    init(fromFish: Bool, filter: CollectibleFilter) {
-        self.fromFish = fromFish
+    init(type: CollectibleType, filter: CollectibleFilter) {
+        self.type = type
         self.filter = filter
     }
 }

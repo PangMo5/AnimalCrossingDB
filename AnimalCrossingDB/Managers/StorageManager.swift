@@ -68,17 +68,20 @@ final class StorageManager {
     let fileManager = FileManager.default
     lazy var cacheURL = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     
-    var localVersions = Versions(fish: 0, insect: 0, art: 0, fossil: 0, fishImage: 0, insectImage: 0, artImage: 0, fossilImage: 0)
+    var localVersions = Versions(fish: 0, insect: 0, art: 0, fossil: 0, seafood: 0,
+                                 fishImage: 0, insectImage: 0, artImage: 0, fossilImage: 0, seafoodImage: 0)
     
     var fishImageList = [Int: UIImage]()
     var insectImageList = [Int: UIImage]()
     var artImageList = [Int: [UIImage]]()
     var fossilImageList = [Int: UIImage]()
+    var seafoodImageList = [Int: UIImage]()
     
     let fishListSubject = CurrentValueSubject<[Fish], Never>([])
     let insectListSubject = CurrentValueSubject<[Insect], Never>([])
     let artListSubject = CurrentValueSubject<[Art], Never>([])
     let fossilListSubject = CurrentValueSubject<[Fossil], Never>([])
+    let seafoodListSubject = CurrentValueSubject<[Seafood], Never>([])
     
     init() {
     }
@@ -104,7 +107,8 @@ final class StorageManager {
             if let data = data {
                 versions = try JSONDecoder().decode(Versions.self, from: data)
             } else {
-                versions = Versions(fish: 0, insect: 0, art: 0, fossil: 0, fishImage: 0, insectImage: 0, artImage: 0, fossilImage: 0)
+                versions = Versions(fish: 0, insect: 0, art: 0, fossil: 0, seafood: 0,
+                                    fishImage: 0, insectImage: 0, artImage: 0, fossilImage: 0, seafoodImage: 0)
             }
             
             let versionURL = self.cacheURL.appendingPathComponent("staticDataVersions.json")
@@ -123,6 +127,8 @@ final class StorageManager {
             self.fetchArtImage(versions: versions, dispatchGroup: dispatchGroup)
             self.fetchFossilList(versions: versions, dispatchGroup: dispatchGroup)
             self.fetchFossilImage(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchSeafoodList(versions: versions, dispatchGroup: dispatchGroup)
+            self.fetchSeafoodImage(versions: versions, dispatchGroup: dispatchGroup)
             
             dispatchGroup.notify(queue: .global(qos: .background)) {
                 try? self.localVersions.toJSONString()?.write(to: versionURL, atomically: true, encoding: .utf8)
@@ -367,6 +373,66 @@ final class StorageManager {
                     self.fossilListSubject.value = fossilList
                     try data.write(to: fossilURL)
                     self.localVersions.fossil = versions.fossil
+                    dispatchGroup.leave()
+                } catch {
+                    print(error.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            }
+        }
+    }
+    
+    private func fetchSeafoodList(versions: Versions, dispatchGroup: DispatchGroup) {
+        let seafoodURL = cacheURL.appendingPathComponent("seafood_\(hemisphereDefault.rawValue).json")
+        if localVersions.seafood >= versions.seafood,
+           let seafoodData = try? Data(contentsOf: seafoodURL),
+            let seafoodList = try? JSONDecoder().decode([Seafood].self, from: seafoodData) {
+            seafoodListSubject.value = seafoodList
+        } else {
+            dispatchGroup.enter()
+            let pathReference = self.storage.reference(withPath: "seafood_\(hemisphereDefault.rawValue).json")
+            pathReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                guard let data = data else {
+                    dispatchGroup.leave()
+                    return
+                }
+                do {
+                    let seafoodList = try JSONDecoder().decode([Seafood].self, from: data)
+                    self.seafoodListSubject.value = seafoodList
+                    try data.write(to: seafoodURL)
+                    self.localVersions.seafood = versions.seafood
+                    dispatchGroup.leave()
+                } catch {
+                    print(error.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            }
+        }
+    }
+    
+    private func fetchSeafoodImage(versions: Versions, dispatchGroup: DispatchGroup) {
+        let imageURL = cacheURL.appendingPathComponent("seafood")
+        let tempURL = cacheURL.appendingPathComponent("temp")
+        if localVersions.seafoodImage >= versions.seafoodImage,
+            let contents = try? self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil),
+            !contents.isEmpty {
+            self.seafoodImageList = contents.toImageDict()
+        } else {
+            dispatchGroup.enter()
+            try? self.fileManager.removeItem(at: tempURL)
+            let pathReference = self.storage.reference(withPath: "seafood.zip")
+            pathReference.write(toFile: tempURL) { url, error in
+                guard let url = url else {
+                    dispatchGroup.leave()
+                    return
+                }
+                do {
+                    try? self.fileManager.removeItem(at: imageURL)
+                    try? self.fileManager.removeItem(at: self.cacheURL.appendingPathComponent("__MACOSX"))
+                    try self.fileManager.unzipItem(at: url, to: self.cacheURL)
+                    let contents = try self.fileManager.contentsOfDirectory(at: imageURL, includingPropertiesForKeys: nil)
+                    self.seafoodImageList = contents.toImageDict()
+                    self.localVersions.seafoodImage = versions.seafoodImage
                     dispatchGroup.leave()
                 } catch {
                     print(error.localizedDescription)

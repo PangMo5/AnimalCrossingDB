@@ -13,10 +13,13 @@ struct CollectibleListView: View {
     @State private var segmentIndex = 0
     
     private var collectibleType: CollectibleType {
-        if segmentIndex == 0 {
+        switch segmentIndex {
+        case 0:
             return .fish
-        } else {
+        case 1:
             return .insect
+        default:
+            return .seafood
         }
     }
     
@@ -67,6 +70,8 @@ struct CollectibleListView: View {
                     .tag(0)
                 Text("곤충")
                     .tag(1)
+                Text("해산물")
+                    .tag(2)
             }
             .frame(width: 130)
             .pickerStyle(SegmentedPickerStyle())
@@ -101,13 +106,13 @@ struct CollectibleListView: View {
                 self.isModalFilterView = true
                 UIApplication.shared.endEditing(true)
             }) {
-                if self.viewModel.collectibleFilter.isEnableFilter(fromFish: self.collectibleType == .fish) {
+                if self.viewModel.collectibleFilter.isEnableFilter(type: self.collectibleType) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
                 } else {
                     Image(systemName: "line.horizontal.3.decrease.circle")
                 }
             }.sheet(isPresented: self.$isModalFilterView) {
-                CollectibleFilterView(viewModel: .init(fromFish: self.collectibleType == .fish, filter: self.viewModel.collectibleFilter))
+                CollectibleFilterView(viewModel: .init(type: self.collectibleType, filter: self.viewModel.collectibleFilter))
             }
         }
     }
@@ -122,9 +127,13 @@ extension CollectibleListView {
                     ForEach(self.viewModel.availableFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.collectibleType == .insect {
                     ForEach(self.viewModel.availableInsectList) { insect in
                         InsectListCellView(insect: insect)
+                    }
+                } else {
+                    ForEach(self.viewModel.availableSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
                     }
                 }
             }
@@ -133,9 +142,13 @@ extension CollectibleListView {
                     ForEach(self.viewModel.disavailableFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.collectibleType == .insect {
                     ForEach(self.viewModel.disavailableInsectList) { insect in
                         InsectListCellView(insect: insect)
+                    }
+                } else {
+                    ForEach(self.viewModel.disavailableSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
                     }
                 }
             }
@@ -154,8 +167,10 @@ extension CollectibleListView {
                     .font(.headline).bold()
                 if self.collectibleType == .fish {
                     achievementText(self.viewModel.fishAchievement)
-                } else {
+                } else if self.collectibleType == .insect {
                     achievementText(self.viewModel.insectAchievement)
+                } else {
+                    achievementText(self.viewModel.seafoodAchievement)
                 }
             }) {
                 EmptyView()
@@ -169,13 +184,17 @@ extension CollectibleListView {
                     ForEach(self.viewModel.lastMonthInsectList) { insect in
                         InsectListCellView(insect: insect)
                     }
-                } else if viewModel.collectibleFilter.isEnableFilter(fromFish: collectibleType == .fish) {
+                } else if self.collectibleType == .seafood && !self.viewModel.lastMonthSeafoodList.isEmpty {
+                    ForEach(self.viewModel.lastMonthSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
+                    }
+                } else if viewModel.collectibleFilter.isEnableFilter(type: collectibleType) {
                     HStack {
                         Spacer()
                         VStack(alignment: .center, spacing: 16) {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .font(.largeTitle)
-                            Text("필터에 맞는 \(collectibleType.localized)가 없습니다.")
+                            Text("필터에 맞는 \(collectibleType.localized)(이)가 없습니다.")
                                 .multilineTextAlignment(.center)
                         }
                         Spacer()
@@ -186,7 +205,7 @@ extension CollectibleListView {
                         VStack(alignment: .center, spacing: 16) {
                             Image(systemName: "checkmark.seal.fill")
                                 .font(.largeTitle)
-                            Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(collectibleType.localized)을 잡았습니다.")
+                            Text("\(DateManager.shared.currentDate.month)월까지 잡아야 하는\n모든 \(collectibleType.localized)(을)를 잡았습니다.")
                                 .multilineTextAlignment(.center)
                         }
                         Spacer()
@@ -202,7 +221,11 @@ extension CollectibleListView {
                     ForEach(self.viewModel.nextMonthAvailableInsectList) { insect in
                         InsectListCellView(insect: insect)
                     }
-                } else if viewModel.collectibleFilter.isEnableFilter(fromFish: collectibleType == .fish) {
+                } else if self.collectibleType == .seafood && !self.viewModel.nextMonthAvailableSeafoodList.isEmpty {
+                    ForEach(self.viewModel.nextMonthAvailableSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
+                    }
+                } else if viewModel.collectibleFilter.isEnableFilter(type: collectibleType) {
                     HStack {
                         Spacer()
                         VStack(alignment: .center, spacing: 16) {
@@ -231,9 +254,13 @@ extension CollectibleListView {
                     ForEach(self.viewModel.favoritedFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.collectibleType == .insect {
                     ForEach(self.viewModel.favoritedInsectList) { insect in
                         InsectListCellView(insect: insect)
+                    }
+                } else {
+                    ForEach(self.viewModel.favoritedSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
                     }
                 }
             }
@@ -242,9 +269,13 @@ extension CollectibleListView {
                     ForEach(self.viewModel.endowmentedFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.collectibleType == .insect {
                     ForEach(self.viewModel.endowmentedInsectList) { insect in
                         InsectListCellView(insect: insect)
+                    }
+                } else {
+                    ForEach(self.viewModel.endowmentedSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
                     }
                 }
             }
@@ -253,9 +284,13 @@ extension CollectibleListView {
                     ForEach(self.viewModel.gatheredFishList) { fish in
                         FishListCellView(fish: fish)
                     }
-                } else {
+                } else if self.collectibleType == .insect {
                     ForEach(self.viewModel.gatheredInsectList) { insect in
                         InsectListCellView(insect: insect)
+                    }
+                } else {
+                    ForEach(self.viewModel.gatheredSeafoodList) { seafood in
+                        SeafoodListCellView(seafood: seafood)
                     }
                 }
             }
@@ -322,6 +357,54 @@ struct FishListCellView: View {
                 }
             }.contextMenu {
                 fish.contextMenuContents()
+            }
+        }
+    }
+}
+
+struct SeafoodListCellView: View {
+    
+    var seafood: Seafood
+    
+    var body: some View {
+        NavigationLink(destination: Text("")) {
+            HStack {
+                Image(uiImage: seafood.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 64, height: 64)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "bookmark.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(seafood.isFavorite ? .label : .gray) )
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.caption)
+                            .foregroundColor(Color(seafood.isGathered ? .label : .gray) )
+                            Image(uiImage: UIImage(named: "owl.fill")!.withRenderingMode(.alwaysTemplate))
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .colorMultiply(Color(seafood.isEndowmented ? .label : .gray) )
+                    }
+                    Text(seafood.name ?? "")
+                        .bold()
+                    Text("(\(seafood.englishName ?? ""))")
+                        .font(.footnote)
+                }.foregroundColor(.init(seafood.isAvailable ? .label : .gray))
+                Spacer()
+                VStack(alignment: .trailing) {
+                    HStack {
+                        Group {
+                            Image(systemName: "clock")
+                                .font(.footnote)
+                            Text(seafood.availableTime ?? "")
+                                .font(.footnote)
+                                .bold()
+                        }.foregroundColor(Color(seafood.hourList[safe: DateManager.shared.currentDate.hour] == true ? .label : .red) )
+                    }
+                }
+            }.contextMenu {
+                seafood.contextMenuContents()
             }
         }
     }

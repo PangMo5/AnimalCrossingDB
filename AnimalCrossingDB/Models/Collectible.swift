@@ -52,30 +52,30 @@ protocol Collectible: Gatherable, Identifiable {
     var availableTime: String? { get set }
     var allDayMonths: [Int]? { get set }
     
-    var hour0: Bool { get set }
-    var hour1: Bool { get set }
-    var hour2: Bool { get set }
-    var hour3: Bool { get set }
-    var hour4: Bool { get set }
-    var hour5: Bool { get set }
-    var hour6: Bool { get set }
-    var hour7: Bool { get set }
-    var hour8: Bool { get set }
-    var hour9: Bool { get set }
-    var hour10: Bool { get set }
-    var hour11: Bool { get set }
-    var hour12: Bool { get set }
-    var hour13: Bool { get set }
-    var hour14: Bool { get set }
-    var hour15: Bool { get set }
-    var hour16: Bool { get set }
-    var hour17: Bool { get set }
-    var hour18: Bool { get set }
-    var hour19: Bool { get set }
-    var hour20: Bool { get set }
-    var hour21: Bool { get set }
-    var hour22: Bool { get set }
-    var hour23: Bool { get set }
+    var hour0: Bool { get }
+    var hour1: Bool { get }
+    var hour2: Bool { get }
+    var hour3: Bool { get }
+    var hour4: Bool { get }
+    var hour5: Bool { get }
+    var hour6: Bool { get }
+    var hour7: Bool { get }
+    var hour8: Bool { get }
+    var hour9: Bool { get }
+    var hour10: Bool { get }
+    var hour11: Bool { get }
+    var hour12: Bool { get }
+    var hour13: Bool { get }
+    var hour14: Bool { get }
+    var hour15: Bool { get }
+    var hour16: Bool { get }
+    var hour17: Bool { get }
+    var hour18: Bool { get }
+    var hour19: Bool { get }
+    var hour20: Bool { get }
+    var hour21: Bool { get }
+    var hour22: Bool { get }
+    var hour23: Bool { get }
     
     var month1: Bool { get set }
     var month2: Bool { get set }
@@ -94,6 +94,7 @@ protocol Collectible: Gatherable, Identifiable {
 enum CollectibleType {
     case fish
     case insect
+    case seafood
     
     var localized: String {
         switch self {
@@ -101,6 +102,8 @@ enum CollectibleType {
             return "고기"
         case .insect:
             return "곤충"
+        case .seafood:
+            return "해산물"
         }
     }
 }

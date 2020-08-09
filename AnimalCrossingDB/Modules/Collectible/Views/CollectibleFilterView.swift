@@ -68,27 +68,46 @@ extension CollectibleFilterView {
     
     var collectionSection: some View {
         Section(header: Text("특성")) {
-            if viewModel.fromFish {
+            if viewModel.type == .fish || viewModel.type == .seafood {
                 HStack {
                     Text("크기")
                     Spacer()
-                    if viewModel.filter.fishSize == nil {
-                        Text("전체")
-                    } else {
-                        Text(viewModel.filter.fishSize?.localized ?? "")
+                    if viewModel.type == .fish {
+                        if viewModel.filter.fishSize == nil {
+                            Text("전체")
+                        } else {
+                            Text(viewModel.filter.fishSize?.localized ?? "")
+                        }
+                    } else if viewModel.type == .seafood {
+                        if viewModel.filter.seafoodSize == nil {
+                            Text("전체")
+                        } else {
+                            Text(viewModel.filter.seafoodSize?.localized ?? "")
+                        }
                     }
                 }.onTapGesture {
                     self.showingFishSizeSheet = true
                 }.actionSheet(isPresented: self.$showingFishSizeSheet) {
                     var buttons = [
                         ActionSheet.Button.default(Text("전체")) {
-                            self.viewModel.filter.fishSize = nil
+                            if viewModel.type == .fish {
+                                self.viewModel.filter.fishSize = nil
+                            } else if viewModel.type == .seafood {
+                                self.viewModel.filter.seafoodSize = nil
+                            }
                         }
                     ]
-                    buttons.append(contentsOf: Fish.Size.allCases.map { size in ActionSheet.Button.default(Text(size.localized)) {
-                        self.viewModel.filter.fishSize = size
+                    if viewModel.type == .fish {
+                        buttons.append(contentsOf: Fish.Size.allCases.map { size in ActionSheet.Button.default(Text(size.localized)) {
+                            self.viewModel.filter.fishSize = size
                         }
-                    })
+                        })
+                    } else if viewModel.type == .seafood {
+                        buttons.append(contentsOf: Seafood.Size.allCases.map { size in ActionSheet.Button.default(Text(size.localized)) {
+                            self.viewModel.filter.seafoodSize = size
+                        }
+                        })
+                    }
                     buttons.append(.cancel())
                     return ActionSheet(title: Text("필러링 할 크기를 선택해주세요."), buttons: buttons)
                 }
@@ -96,13 +115,13 @@ extension CollectibleFilterView {
             HStack {
                 Text("출현 장소")
                 Spacer()
-                if viewModel.fromFish {
+                if viewModel.type == .fish {
                     if viewModel.filter.fishArea == nil {
                         Text("전체")
                     } else {
                         Text(viewModel.filter.fishArea?.localized ?? "")
                     }
-                } else {
+                } else if viewModel.type == .insect {
                     if viewModel.filter.insectArea == nil {
                         Text("전체")
                     } else {
@@ -114,19 +133,19 @@ extension CollectibleFilterView {
             }.actionSheet(isPresented: self.$showingAreaSheet) {
                 var buttons = [
                     ActionSheet.Button.default(Text("전체")) {
-                        if self.viewModel.fromFish {
+                        if self.viewModel.type == .fish {
                             self.viewModel.filter.fishArea = nil
-                        } else {
+                        } else if self.viewModel.type == .insect {
                             self.viewModel.filter.insectArea = nil
                         }
                     }
                 ]
-                if self.viewModel.fromFish {
+                if self.viewModel.type == .fish {
                     buttons.append(contentsOf: Fish.Area.allCases.map { area in ActionSheet.Button.default(Text(area.localized)) {
                         self.viewModel.filter.fishArea = area
                         }
                     })
-                } else {
+                } else if self.viewModel.type == .insect {
                     buttons.append(contentsOf: Insect.Area.allCases.map { area in ActionSheet.Button.default(Text(area.rawValue)) {
                         self.viewModel.filter.insectArea = area
                         }
@@ -169,6 +188,6 @@ extension CollectibleFilterView {
 
 struct CollectibleFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectibleFilterView(viewModel: .init(fromFish: true, filter: .init()))
+        CollectibleFilterView(viewModel: .init(type: .fish, filter: .init()))
     }
 }

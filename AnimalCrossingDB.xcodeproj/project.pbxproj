@@ -19,6 +19,7 @@
 		9216FC0324683A66002E6063 /* FossilFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FC0224683A66002E6063 /* FossilFilterView.swift */; };
 		9216FC0524683A71002E6063 /* FossilFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9216FC0424683A71002E6063 /* FossilFilterViewModel.swift */; };
 		922623E9243A1E0900080F0F /* Refresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922623E8243A1E0900080F0F /* Refresher.swift */; };
+		924BECFF24E040B3008400C0 /* Seafood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924BECFE24E040B3008400C0 /* Seafood.swift */; };
 		926B635724336A1200BF9D2B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635624336A1200BF9D2B /* MainTabView.swift */; };
 		926B635A24336A7200BF9D2B /* CollectibleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B635924336A7200BF9D2B /* CollectibleListView.swift */; };
 		926B635E24336D7B00BF9D2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926B635D24336D7B00BF9D2B /* GoogleService-Info.plist */; };
@@ -96,6 +97,7 @@
 		9216FC0224683A66002E6063 /* FossilFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FossilFilterView.swift; path = AnimalCrossingDB/Modules/Fossil/Views/FossilFilterView.swift; sourceTree = SOURCE_ROOT; };
 		9216FC0424683A71002E6063 /* FossilFilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilFilterViewModel.swift; sourceTree = "<group>"; };
 		922623E8243A1E0900080F0F /* Refresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresher.swift; sourceTree = "<group>"; };
+		924BECFE24E040B3008400C0 /* Seafood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seafood.swift; sourceTree = "<group>"; };
 		926B635624336A1200BF9D2B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		926B635924336A7200BF9D2B /* CollectibleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleListView.swift; sourceTree = "<group>"; };
 		926B635D24336D7B00BF9D2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				92F819502455A73600A91DED /* Gatherable.swift */,
 				926B638A2434FE8F00BF9D2B /* Collectible.swift */,
 				926B636F24337BF900BF9D2B /* Fish.swift */,
+				924BECFE24E040B3008400C0 /* Seafood.swift */,
 				926B63852434F75600BF9D2B /* Insect.swift */,
 				927770F2243507CB00314ADC /* Versions.swift */,
 				9206FFD0244753D1002FD871 /* CollectibleFilter.swift */,
@@ -753,6 +756,7 @@
 				92F8194F2455A63D00A91DED /* ArtDetailViewModel.swift in Sources */,
 				92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */,
 				927770FD2435B49B00314ADC /* ActivityIndicator.swift in Sources */,
+				924BECFF24E040B3008400C0 /* Seafood.swift in Sources */,
 				9216FC0324683A66002E6063 /* FossilFilterView.swift in Sources */,
 				9206FFCE2441B9FF002FD871 /* DateManager.swift in Sources */,
 				926B637D2434D00700BF9D2B /* SearchBar.swift in Sources */,

@@ -85,6 +85,9 @@ final class CollectibleListViewModel: ObservableObject {
     @Published var availableInsectList = [Insect]()
     @Published var disavailableInsectList = [Insect]()
     
+    @Published var availableSeafoodList = [Seafood]()
+    @Published var disavailableSeafoodList = [Seafood]()
+    
     @Published var lastMonthFishList = [Fish]()
     @Published var nextMonthAvailableFishList = [Fish]()
     @Published var favoritedFishList = [Fish]()
@@ -97,8 +100,15 @@ final class CollectibleListViewModel: ObservableObject {
     @Published var gatheredInsectList = [Insect]()
     @Published var endowmentedInsectList = [Insect]()
     
+    @Published var lastMonthSeafoodList = [Seafood]()
+    @Published var nextMonthAvailableSeafoodList = [Seafood]()
+    @Published var favoritedSeafoodList = [Seafood]()
+    @Published var gatheredSeafoodList = [Seafood]()
+    @Published var endowmentedSeafoodList = [Seafood]()
+    
     @Published var fishAchievement: (Int, Int) = (0, 0)
     @Published var insectAchievement: (Int, Int) = (0, 0)
+    @Published var seafoodAchievement: (Int, Int) = (0, 0)
     
     init(style: Style) {
         self.style = style
@@ -159,8 +169,8 @@ final class CollectibleListViewModel: ObservableObject {
         
         let filteredInsectList = Publishers.CombineLatest4($refresh, sortedInsectList, $searchText, $collectibleFilter)
             .debounce(for: .milliseconds(250), scheduler: DispatchQueue.global(qos: .background))
-            .map { _, fishList, text, filter in
-                fishList.filtered(searchText: text, filter: filter)
+            .map { _, insectList, text, filter in
+                insectList.filtered(searchText: text, filter: filter)
         }
         
         filteredInsectList
@@ -200,6 +210,51 @@ final class CollectibleListViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.endowmentedInsectList, on: self).store(in: &disposables)
         
+        let sortedSeafoodList = Publishers.CombineLatest(StorageManager.shared.seafoodListSubject, $sortType)
+            .map { $0.0.sorted(sort: $0.1) }
+        
+        let filteredSeafoodList = Publishers.CombineLatest4($refresh, sortedSeafoodList, $searchText, $collectibleFilter)
+            .debounce(for: .milliseconds(250), scheduler: DispatchQueue.global(qos: .background))
+            .map { _, seafoodList, text, filter in
+                seafoodList.filtered(searchText: text, filter: filter)
+        }
+        
+        filteredSeafoodList
+            .map { $0.filter(\.isAvailable) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.availableSeafoodList, on: self)
+            .store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter { !$0.isAvailable } }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.disavailableSeafoodList, on: self).store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter { $0.isLastMonth && !$0.isGathered } }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.lastMonthSeafoodList, on: self).store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter(\.isAvailableNextMonth) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.nextMonthAvailableSeafoodList, on: self).store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter(\.isFavorite) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.favoritedSeafoodList, on: self).store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter { $0.isGathered && !$0.isEndowmented } }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.gatheredSeafoodList, on: self).store(in: &disposables)
+        
+        filteredSeafoodList
+            .map { $0.filter(\.isEndowmented) }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.endowmentedSeafoodList, on: self).store(in: &disposables)
+        
         Publishers.CombineLatest(StorageManager.shared.fishListSubject, $refresh).map { fishes, _ in
             (fishes.count { $0.isGathered }, fishes.count)
         }.assign(to: \.fishAchievement, on: self).store(in: &disposables)
@@ -207,6 +262,10 @@ final class CollectibleListViewModel: ObservableObject {
         Publishers.CombineLatest(StorageManager.shared.insectListSubject, $refresh).map { insects, _ in
             (insects.count { $0.isGathered }, insects.count)
         }.assign(to: \.insectAchievement, on: self).store(in: &disposables)
+        
+        Publishers.CombineLatest(StorageManager.shared.seafoodListSubject, $refresh).map { insects, _ in
+            (insects.count { $0.isGathered }, insects.count)
+        }.assign(to: \.seafoodAchievement, on: self).store(in: &disposables)
     }
 }
 
@@ -239,6 +298,22 @@ extension Array where Element == Fish {
             if let area = filter.fishArea {
                 filtered = $0.area == area && filtered
             }
+            return filtered
+        }
+    }
+}
+
+extension Array where Element == Seafood {
+    
+    func filtered(searchText: String, filter: CollectibleFilter) -> [Element] {
+        let filtered = collectibleFiltered(searchText: searchText, filter: filter)
+        return filtered.filter {
+            var filtered = true
+            
+            if let size = filter.seafoodSize {
+                filtered = $0.size == size && filtered
+            }
+            
             return filtered
         }
     }

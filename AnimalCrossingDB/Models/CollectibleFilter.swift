@@ -18,18 +18,19 @@ struct CollectibleFilter: GatherableFilter, Codable, DefaultsSerializable {
     var onlyAvailable: Bool = false
     var onlyDisavailable: Bool = false
     var month: Int?
+    var seafoodSize: Seafood.Size?
     var fishSize: Fish.Size?
     var fishArea: Fish.Area?
     var insectArea: Insect.Area?
     
-    func isEnableFilter(fromFish: Bool) -> Bool {
+    func isEnableFilter(type: CollectibleType) -> Bool {
         onlyFavorite ||
-        onlyGathered ||
-        onlyEndowmented ||
-        onlyNeedGathered ||
-        month != nil ||
-        (fishSize != nil && fromFish) ||
-        (fishArea != nil && fromFish) ||
-        (insectArea != nil && !fromFish)
+            onlyGathered ||
+            onlyEndowmented ||
+            onlyNeedGathered ||
+            month != nil ||
+            (fishSize != nil && type == .fish) ||
+            (fishArea != nil && type == .fish) ||
+            (insectArea != nil && type == .insect)
     }
 }
