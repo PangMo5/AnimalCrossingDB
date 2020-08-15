@@ -367,7 +367,7 @@ struct SeafoodListCellView: View {
     var seafood: Seafood
     
     var body: some View {
-        NavigationLink(destination: Text("")) {
+        NavigationLink(destination: SeafoodDetailView(viewModel: .init(seafood: seafood))) {
             HStack {
                 Image(uiImage: seafood.image)
                     .resizable()

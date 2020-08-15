@@ -49,6 +49,8 @@
 		9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9277711E2435FCA300314ADC /* SwiftEntryKit */; };
 		927771212435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927771202435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift */; };
 		927771232436231400314ADC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 927771222436231400314ADC /* Settings.bundle */; };
+		92807A1C24E82CC300E848CC /* SeafoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92807A1B24E82CC300E848CC /* SeafoodDetailView.swift */; };
+		92807A1E24E82CD200E848CC /* SeafoodDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92807A1D24E82CD200E848CC /* SeafoodDetailViewModel.swift */; };
 		928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */; };
 		928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414724683B26005CEA2B /* FossilDetailView.swift */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
@@ -125,6 +127,8 @@
 		927771202435FD4F00314ADC /* SwiftEntryKit+GangnamSister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftEntryKit+GangnamSister.swift"; sourceTree = "<group>"; };
 		927771222436231400314ADC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		927771242436244000314ADC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		92807A1B24E82CC300E848CC /* SeafoodDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeafoodDetailView.swift; sourceTree = "<group>"; };
+		92807A1D24E82CD200E848CC /* SeafoodDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeafoodDetailViewModel.swift; sourceTree = "<group>"; };
 		928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilDetailViewModel.swift; sourceTree = "<group>"; };
 		928A414724683B26005CEA2B /* FossilDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FossilDetailView.swift; sourceTree = "<group>"; };
 		92BB60D62433610C008E23A4 /* 채집보벳따우.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "채집보벳따우.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +219,7 @@
 				927771262439A50D00314ADC /* Collectible */,
 				92BB6130243364F5008E23A4 /* Fish */,
 				92BB6132243365E8008E23A4 /* Insect */,
+				92807A1824E82C6900E848CC /* Seafood */,
 				9277710C2435E5B800314ADC /* Settings */,
 			);
 			path = Modules;
@@ -377,6 +382,31 @@
 				9206FFD624475777002FD871 /* CollectibleFilterViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		92807A1824E82C6900E848CC /* Seafood */ = {
+			isa = PBXGroup;
+			children = (
+				92807A1A24E82CA800E848CC /* Views */,
+				92807A1924E82CA300E848CC /* ViewModels */,
+			);
+			path = Seafood;
+			sourceTree = "<group>";
+		};
+		92807A1924E82CA300E848CC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				92807A1D24E82CD200E848CC /* SeafoodDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		92807A1A24E82CA800E848CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92807A1B24E82CC300E848CC /* SeafoodDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		92BB60CD2433610C008E23A4 = {
@@ -732,6 +762,7 @@
 				927770F3243507CB00314ADC /* Versions.swift in Sources */,
 				926B638B2434FE8F00BF9D2B /* Collectible.swift in Sources */,
 				927771182435E90A00314ADC /* SettingViewModel.swift in Sources */,
+				92807A1E24E82CD200E848CC /* SeafoodDetailViewModel.swift in Sources */,
 				927771002435B71600314ADC /* SplashViewModel.swift in Sources */,
 				922623E9243A1E0900080F0F /* Refresher.swift in Sources */,
 				927771082435E24000314ADC /* TabBar.swift in Sources */,
@@ -767,6 +798,7 @@
 				9206FFD52447551D002FD871 /* CollectibleFilterView.swift in Sources */,
 				927771162435E90200314ADC /* SettingView.swift in Sources */,
 				926B635724336A1200BF9D2B /* MainTabView.swift in Sources */,
+				92807A1C24E82CC300E848CC /* SeafoodDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +955,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"AnimalCrossingDB/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BHXT8RHFR;
 				ENABLE_PREVIEWS = YES;
@@ -937,7 +969,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDB;
 				PRODUCT_NAME = "채집보벳따우";
 				SWIFT_VERSION = 5.0;
@@ -951,7 +983,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"AnimalCrossingDB/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BHXT8RHFR;
 				ENABLE_PREVIEWS = YES;
@@ -965,7 +997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShirouCo.AnimalCrossingDB;
 				PRODUCT_NAME = "채집보벳따우";
 				SWIFT_VERSION = 5.0;

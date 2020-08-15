@@ -80,6 +80,7 @@ struct Seafood: Collectible, Codable {
     var price: Int?
     var area: Area?
     var size: Size?
+    var speed: Speed?
     var availableTime: String?
     var allDayMonths: [Int]? = []
     
@@ -176,6 +177,7 @@ extension Seafood {
         case time2
         case time3
         case time4
+        case speed
     }
 }
 

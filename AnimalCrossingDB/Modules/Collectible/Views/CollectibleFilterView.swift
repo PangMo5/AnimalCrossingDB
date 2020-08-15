@@ -90,9 +90,9 @@ extension CollectibleFilterView {
                 }.actionSheet(isPresented: self.$showingFishSizeSheet) {
                     var buttons = [
                         ActionSheet.Button.default(Text("전체")) {
-                            if viewModel.type == .fish {
+                            if self.viewModel.type == .fish {
                                 self.viewModel.filter.fishSize = nil
-                            } else if viewModel.type == .seafood {
+                            } else if self.viewModel.type == .seafood {
                                 self.viewModel.filter.seafoodSize = nil
                             }
                         }
