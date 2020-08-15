@@ -105,54 +105,56 @@ extension CollectibleFilterView {
                     } else if viewModel.type == .seafood {
                         buttons.append(contentsOf: Seafood.Size.allCases.map { size in ActionSheet.Button.default(Text(size.localized)) {
                             self.viewModel.filter.seafoodSize = size
-                        }
+                            }
                         })
                     }
                     buttons.append(.cancel())
                     return ActionSheet(title: Text("필러링 할 크기를 선택해주세요."), buttons: buttons)
                 }
             }
-            HStack {
-                Text("출현 장소")
-                Spacer()
-                if viewModel.type == .fish {
-                    if viewModel.filter.fishArea == nil {
-                        Text("전체")
-                    } else {
-                        Text(viewModel.filter.fishArea?.localized ?? "")
+            if viewModel.type == .fish || viewModel.type == .insect {
+                HStack {
+                    Text("출현 장소")
+                    Spacer()
+                    if viewModel.type == .fish {
+                        if viewModel.filter.fishArea == nil {
+                            Text("전체")
+                        } else {
+                            Text(viewModel.filter.fishArea?.localized ?? "")
+                        }
+                    } else if viewModel.type == .insect {
+                        if viewModel.filter.insectArea == nil {
+                            Text("전체")
+                        } else {
+                            Text(viewModel.filter.insectArea?.rawValue ?? "")
+                        }
                     }
-                } else if viewModel.type == .insect {
-                    if viewModel.filter.insectArea == nil {
-                        Text("전체")
-                    } else {
-                        Text(viewModel.filter.insectArea?.rawValue ?? "")
+                }.onTapGesture {
+                    self.showingAreaSheet = true
+                }.actionSheet(isPresented: self.$showingAreaSheet) {
+                    var buttons = [
+                        ActionSheet.Button.default(Text("전체")) {
+                            if self.viewModel.type == .fish {
+                                self.viewModel.filter.fishArea = nil
+                            } else if self.viewModel.type == .insect {
+                                self.viewModel.filter.insectArea = nil
+                            }
+                        }
+                    ]
+                    if self.viewModel.type == .fish {
+                        buttons.append(contentsOf: Fish.Area.allCases.map { area in ActionSheet.Button.default(Text(area.localized)) {
+                            self.viewModel.filter.fishArea = area
+                            }
+                        })
+                    } else if self.viewModel.type == .insect {
+                        buttons.append(contentsOf: Insect.Area.allCases.map { area in ActionSheet.Button.default(Text(area.rawValue)) {
+                            self.viewModel.filter.insectArea = area
+                            }
+                        })
                     }
+                    buttons.append(.cancel())
+                    return ActionSheet(title: Text("필러링 할 출현 장소를 선택해주세요."), buttons: buttons)
                 }
-            }.onTapGesture {
-                self.showingAreaSheet = true
-            }.actionSheet(isPresented: self.$showingAreaSheet) {
-                var buttons = [
-                    ActionSheet.Button.default(Text("전체")) {
-                        if self.viewModel.type == .fish {
-                            self.viewModel.filter.fishArea = nil
-                        } else if self.viewModel.type == .insect {
-                            self.viewModel.filter.insectArea = nil
-                        }
-                    }
-                ]
-                if self.viewModel.type == .fish {
-                    buttons.append(contentsOf: Fish.Area.allCases.map { area in ActionSheet.Button.default(Text(area.localized)) {
-                        self.viewModel.filter.fishArea = area
-                        }
-                    })
-                } else if self.viewModel.type == .insect {
-                    buttons.append(contentsOf: Insect.Area.allCases.map { area in ActionSheet.Button.default(Text(area.rawValue)) {
-                        self.viewModel.filter.insectArea = area
-                        }
-                    })
-                }
-                buttons.append(.cancel())
-                return ActionSheet(title: Text("필러링 할 출현 장소를 선택해주세요."), buttons: buttons)
             }
         }
     }
