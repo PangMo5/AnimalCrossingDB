@@ -47,6 +47,7 @@ final class ArtListViewModel: ObservableObject {
                                   $artFilter)
             .debounce(for: .milliseconds(250), scheduler: DispatchQueue.global(qos: .background))
             .map { $0.0.sorted(by: \.id).filtered(searchText: $0.2, filter: $0.3) }
+            .receive(on: DispatchQueue.main)
             .assign(to: \.artList, on: self)
             .store(in: &disposables)
     }

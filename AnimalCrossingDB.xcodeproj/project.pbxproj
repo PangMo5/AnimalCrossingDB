@@ -54,6 +54,7 @@
 		928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */; };
 		928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414724683B26005CEA2B /* FossilDetailView.swift */; };
 		928AE10F2544B77B007B4635 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 928AE10E2544B77B007B4635 /* Grid */; };
+		928AE1162544C41E007B4635 /* ASCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 928AE1152544C41E007B4635 /* ASCollectionView */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -161,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				928AE1162544C41E007B4635 /* ASCollectionView in Frameworks */,
 				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */,
@@ -568,6 +570,7 @@
 				927770F524350FBA00314ADC /* ZIPFoundation */,
 				9277711E2435FCA300314ADC /* SwiftEntryKit */,
 				928AE10E2544B77B007B4635 /* Grid */,
+				928AE1152544C41E007B4635 /* ASCollectionView */,
 			);
 			productName = AnimalCrossingDB;
 			productReference = 92BB60D62433610C008E23A4 /* 채집보벳따우.app */;
@@ -627,6 +630,7 @@
 				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+				928AE1142544C41E007B4635 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
 			projectDirPath = "";
@@ -1116,6 +1120,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		928AE1142544C41E007B4635 /* XCRemoteSwiftPackageReference "ASCollectionView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apptekstudios/ASCollectionView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.1;
+			};
+		};
 		92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
@@ -1146,6 +1158,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
 			productName = Grid;
+		};
+		928AE1152544C41E007B4635 /* ASCollectionView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 928AE1142544C41E007B4635 /* XCRemoteSwiftPackageReference "ASCollectionView" */;
+			productName = ASCollectionView;
 		};
 		92BB60FF2433623E008E23A4 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;
