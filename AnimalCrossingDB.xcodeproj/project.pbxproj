@@ -53,7 +53,6 @@
 		92807A1E24E82CD200E848CC /* SeafoodDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92807A1D24E82CD200E848CC /* SeafoodDetailViewModel.swift */; };
 		928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */; };
 		928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414724683B26005CEA2B /* FossilDetailView.swift */; };
-		928AE10F2544B77B007B4635 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 928AE10E2544B77B007B4635 /* Grid */; };
 		928AE1162544C41E007B4635 /* ASCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 928AE1152544C41E007B4635 /* ASCollectionView */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
@@ -167,7 +166,6 @@
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */,
 				927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */,
-				928AE10F2544B77B007B4635 /* Grid in Frameworks */,
 				927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,7 +567,6 @@
 				927770F0243506D300314ADC /* SwiftyUserDefaults */,
 				927770F524350FBA00314ADC /* ZIPFoundation */,
 				9277711E2435FCA300314ADC /* SwiftEntryKit */,
-				928AE10E2544B77B007B4635 /* Grid */,
 				928AE1152544C41E007B4635 /* ASCollectionView */,
 			);
 			productName = AnimalCrossingDB;
@@ -629,7 +626,6 @@
 				927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
-				928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				928AE1142544C41E007B4635 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
@@ -1112,14 +1108,6 @@
 				minimumVersion = 1.2.3;
 			};
 		};
-		928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-extensions/swiftui-grid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
 		928AE1142544C41E007B4635 /* XCRemoteSwiftPackageReference "ASCollectionView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apptekstudios/ASCollectionView";
@@ -1153,11 +1141,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
-		};
-		928AE10E2544B77B007B4635 /* Grid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
-			productName = Grid;
 		};
 		928AE1152544C41E007B4635 /* ASCollectionView */ = {
 			isa = XCSwiftPackageProductDependency;

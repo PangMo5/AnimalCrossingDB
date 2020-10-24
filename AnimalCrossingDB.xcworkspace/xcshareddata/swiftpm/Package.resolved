@@ -47,15 +47,6 @@
         }
       },
       {
-        "package": "Grid",
-        "repositoryURL": "https://github.com/swift-extensions/swiftui-grid",
-        "state": {
-          "branch": null,
-          "revision": "a3441f80bd01029507bc19e463e7c7208ffcf3f9",
-          "version": "1.0.4"
-        }
-      },
-      {
         "package": "SwiftyUserDefaults",
         "repositoryURL": "https://github.com/sunshinejr/SwiftyUserDefaults",
         "state": {
