@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
-import WaterfallGrid
+import Grid
 
 struct ArtListView: View {
     
     @State private var isModalSettingView = false
     @State private var isModalFilterView = false
+    @State var style = StaggeredGridStyle(.vertical, tracks: .count(2), spacing: 8)
     
     @ObservedObject var viewModel: ArtListViewModel
     
@@ -20,13 +21,18 @@ struct ArtListView: View {
         NavigationView {
             VStack {
                 SearchBar(text: self.$viewModel.searchText)
-                WaterfallGrid(self.viewModel.artList) { art in
-                    ArtCellView(art: art)
+                ScrollView(style.axes) {
+                    Grid(self.viewModel.artList, id: \.id) { art in
+                        ArtCellView(art: art)
+                    }
+                    .animation(.easeInOut)
+                    .resignKeyboardOnDragGesture()
+                    .padding([.leading, .trailing])
                 }
-                .gridStyle(columns: 2)
-                .resignKeyboardOnDragGesture()
-                .padding([.leading, .trailing])
             }
+            .gridStyle(
+                style
+            )
             .navigationBarTitle("미술품")
             .navigationBarItems(leading:
                 Button(action: {

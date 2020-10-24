@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/huri000/SwiftEntryKit",
         "state": {
           "branch": null,
-          "revision": "796981500de29ee72f72ef8e9c46eaed2fe6364e",
-          "version": "1.2.3"
+          "revision": "f280a02c60f4c2563561312df26a357a1cf714e2",
+          "version": "1.2.6"
         }
       },
       {
@@ -29,21 +29,21 @@
         }
       },
       {
+        "package": "Grid",
+        "repositoryURL": "https://github.com/swift-extensions/swiftui-grid",
+        "state": {
+          "branch": null,
+          "revision": "a3441f80bd01029507bc19e463e7c7208ffcf3f9",
+          "version": "1.0.4"
+        }
+      },
+      {
         "package": "SwiftyUserDefaults",
         "repositoryURL": "https://github.com/sunshinejr/SwiftyUserDefaults",
         "state": {
           "branch": null,
           "revision": "1930a81a299b074fd72eee09e88e452ad37dc34d",
           "version": "5.0.0"
-        }
-      },
-      {
-        "package": "WaterfallGrid",
-        "repositoryURL": "https://github.com/paololeonardi/WaterfallGrid",
-        "state": {
-          "branch": null,
-          "revision": "67bb0263a45357651608faafcd51fe39cfd3cf30",
-          "version": "0.4.0"
         }
       },
       {

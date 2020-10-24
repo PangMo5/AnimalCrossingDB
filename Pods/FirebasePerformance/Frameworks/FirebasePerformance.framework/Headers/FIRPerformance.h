@@ -1,3 +1,17 @@
+// Copyright 2020 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #import <Foundation/Foundation.h>
 
 #import "FIRTrace.h"
@@ -6,9 +20,9 @@
  * This class allows you to configure the Firebase Performance Reporting SDK. It also provides the
  * interfaces to create timers and enable or disable automatic metrics capture.
  *
- * This SDK uses a Firebase Instance ID token to identify the app instance and periodically sends
- * data to the Firebase backend. (see `[FIRInstanceID getIDWithHandler:]`).
- * To stop the periodic sync, call `[FIRInstanceID deleteIDWithHandler:]` and
+ * This SDK uses a Firebase Installations ID to identify the app instance and periodically sends
+ * data to the Firebase backend. (see `[FIRInstallations installationIDWithCompletion:]`).
+ * To stop the periodic sync, call `[FIRInstallations deleteWithCompletion:]` and
  * either disable this SDK or set FIRPerformance.dataCollectionEnabled to NO.
  */
 NS_EXTENSION_UNAVAILABLE("FirebasePerformance does not support app extensions at this time.")
@@ -48,8 +62,7 @@ NS_SWIFT_NAME(Performance)
  * @param name The name of the Trace.
  * @return The FIRTrace object.
  */
-+ (nullable FIRTrace *)startTraceWithName:(nonnull NSString *)name
-    NS_SWIFT_NAME(startTrace(name:));
++ (nullable FIRTrace *)startTraceWithName:(nonnull NSString *)name NS_SWIFT_NAME(startTrace(name:));
 
 /**
  * Creates an instance of FIRTrace. This API does not start the trace. To start the trace, use the

@@ -28,7 +28,7 @@ final class ArtListViewModel: ObservableObject {
         }
     }
     
-    @Published fileprivate var refresh = false
+    @Published var refresh = false
     
     @Published var artList = [Art]()
     

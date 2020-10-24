@@ -53,6 +53,7 @@
 		92807A1E24E82CD200E848CC /* SeafoodDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92807A1D24E82CD200E848CC /* SeafoodDetailViewModel.swift */; };
 		928A414624683B1D005CEA2B /* FossilDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414524683B1D005CEA2B /* FossilDetailViewModel.swift */; };
 		928A414824683B26005CEA2B /* FossilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A414724683B26005CEA2B /* FossilDetailView.swift */; };
+		928AE10F2544B77B007B4635 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 928AE10E2544B77B007B4635 /* Grid */; };
 		92BB60DA2433610C008E23A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60D92433610C008E23A4 /* AppDelegate.swift */; };
 		92BB60DC2433610C008E23A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB60DB2433610C008E23A4 /* SceneDelegate.swift */; };
 		92BB60E02433610E008E23A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BB60DF2433610E008E23A4 /* Assets.xcassets */; };
@@ -63,7 +64,6 @@
 		92F8193A2455811900A91DED /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819392455811900A91DED /* Art.swift */; };
 		92F819442455919D00A91DED /* ArtListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819432455919D00A91DED /* ArtListView.swift */; };
 		92F81946245591B600A91DED /* ArtListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F81945245591B600A91DED /* ArtListViewModel.swift */; };
-		92F8194924559CE800A91DED /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 92F8194824559CE800A91DED /* WaterfallGrid */; };
 		92F8194D2455A62E00A91DED /* ArtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8194C2455A62E00A91DED /* ArtDetailView.swift */; };
 		92F8194F2455A63D00A91DED /* ArtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F8194E2455A63D00A91DED /* ArtDetailViewModel.swift */; };
 		92F819512455A73600A91DED /* Gatherable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F819502455A73600A91DED /* Gatherable.swift */; };
@@ -164,8 +164,8 @@
 				92BB61002433623E008E23A4 /* SwifterSwift in Frameworks */,
 				FEEA96A693C3CF36A611A8B7 /* Pods_AnimalCrossingDB.framework in Frameworks */,
 				9277711F2435FCA300314ADC /* SwiftEntryKit in Frameworks */,
-				92F8194924559CE800A91DED /* WaterfallGrid in Frameworks */,
 				927770F1243506D300314ADC /* SwiftyUserDefaults in Frameworks */,
+				928AE10F2544B77B007B4635 /* Grid in Frameworks */,
 				927770F624350FBA00314ADC /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,7 +567,7 @@
 				927770F0243506D300314ADC /* SwiftyUserDefaults */,
 				927770F524350FBA00314ADC /* ZIPFoundation */,
 				9277711E2435FCA300314ADC /* SwiftEntryKit */,
-				92F8194824559CE800A91DED /* WaterfallGrid */,
+				928AE10E2544B77B007B4635 /* Grid */,
 			);
 			productName = AnimalCrossingDB;
 			productReference = 92BB60D62433610C008E23A4 /* 채집보벳따우.app */;
@@ -626,7 +626,7 @@
 				927770EF243506D300314ADC /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 				927770F424350FBA00314ADC /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
-				92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+				928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 			);
 			productRefGroup = 92BB60D72433610C008E23A4 /* Products */;
 			projectDirPath = "";
@@ -1108,20 +1108,20 @@
 				minimumVersion = 1.2.3;
 			};
 		};
+		928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-extensions/swiftui-grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 		92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.1.0;
-			};
-		};
-		92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1142,15 +1142,15 @@
 			package = 9277711D2435FCA300314ADC /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
 		};
+		928AE10E2544B77B007B4635 /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 928AE10D2544B77B007B4635 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
+		};
 		92BB60FF2433623E008E23A4 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92BB60FE2433623E008E23A4 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
 			productName = SwifterSwift;
-		};
-		92F8194824559CE800A91DED /* WaterfallGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 92F8194724559CE800A91DED /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
-			productName = WaterfallGrid;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
